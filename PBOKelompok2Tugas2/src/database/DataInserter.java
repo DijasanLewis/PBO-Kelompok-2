@@ -15,122 +15,183 @@ import java.sql.SQLException;
  * @author yedij
  */
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import mform.entity.DataPerkebunan;
+
 public class DataInserter {
+    private DataPerkebunan dataPerkebunan;
 
-    public void insertKantorPusat(String nama, String alamat, String kodePos, String telepon, String email, String fax, String provinsiKode, String kabKotaKode) {
-        String sql = "INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, nama);
-            pstmt.setString(2, alamat);
-            pstmt.setString(3, kodePos);
-            pstmt.setString(4, telepon);
-            pstmt.setString(5, email);
-            pstmt.setString(6, fax);
-            pstmt.setString(7, provinsiKode);
-            pstmt.setString(8, kabKotaKode);
-            pstmt.executeUpdate();
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/StatistikTebu2022";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "your_password"; // Ganti dengan password MySQL Anda
+
+    public boolean insertData(DataPerkebunan dataPerkebunan) {
+        Connection connection = null;
+        PreparedStatement psPerusahaan = null;
+        PreparedStatement psKantorPusat = null;
+        PreparedStatement psGrupPerusahaan = null;
+        PreparedStatement psKebun = null;
+        PreparedStatement psKeteranganPetugas = null;
+
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            connection.setAutoCommit(false);
+
+            // Insert data kantor pusat
+            String sqlKantorPusat = "INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            psKantorPusat = connection.prepareStatement(sqlKantorPusat, PreparedStatement.RETURN_GENERATED_KEYS);
+            psKantorPusat.setString(1, dataPerkebunan.getKantorPusat().getNama());
+            psKantorPusat.setString(2, dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap());
+            psKantorPusat.setString(3, dataPerkebunan.getKantorPusat().getAlamat().getKodePos());
+            psKantorPusat.setString(4, dataPerkebunan.getKantorPusat().getAlamat().getTelepon());
+            psKantorPusat.setString(5, dataPerkebunan.getKantorPusat().getAlamat().getEmail());
+            psKantorPusat.setString(6, dataPerkebunan.getKantorPusat().getAlamat().getFax());
+            psKantorPusat.setString(7, dataPerkebunan.getKantorPusat().getAlamat().getProv());
+            psKantorPusat.setString(8, dataPerkebunan.getKantorPusat().getAlamat().getKabKota());
+            psKantorPusat.executeUpdate();
+
+            // Get generated ID for kantor_pusat
+            int kantorPusatId = getGeneratedId(psKantorPusat);
+
+            // Insert data grup perusahaan
+            String sqlGrupPerusahaan = "INSERT INTO grup_perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            psGrupPerusahaan = connection.prepareStatement(sqlGrupPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
+            psGrupPerusahaan.setString(1, dataPerkebunan.getGroupPerusahaan().getNama());
+            psGrupPerusahaan.setString(2, dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
+            psGrupPerusahaan.setString(3, dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos());
+            psGrupPerusahaan.setString(4, dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon());
+            psGrupPerusahaan.setString(5, dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail());
+            psGrupPerusahaan.setString(6, dataPerkebunan.getGroupPerusahaan().getAlamat().getFax());
+            psGrupPerusahaan.setString(7, dataPerkebunan.getGroupPerusahaan().getAlamat().getProv());
+            psGrupPerusahaan.setString(8, dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota());
+            psGrupPerusahaan.executeUpdate();
+
+            // Get generated ID for grup_perusahaan
+            int grupPerusahaanId = getGeneratedId(psGrupPerusahaan);
+
+            // Insert data perusahaan
+            String sqlPerusahaan = "INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id, kecamatan_id, desa_kelurahan_id, " +
+                    "nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, " +
+                    "status_pemodalan, bentuk_badan_hukum, pelaksana_kemitraan, kebun_plasma_konversi, punya_unit_pengolahan_produksi, tahun_berdiri, jenis_perusahaan_tebu, " +
+                    "stok_pabrik_gula, stok_pedagang, stok_petani) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            psPerusahaan = connection.prepareStatement(sqlPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
+            psPerusahaan.setString(1, dataPerkebunan.getPerusahaan().getNama());
+            psPerusahaan.setString(2, dataPerkebunan.getPerusahaan().getAlamat().getAlamatLengkap());
+            psPerusahaan.setString(3, dataPerkebunan.getPerusahaan().getAlamat().getKodePos());
+            psPerusahaan.setString(4, dataPerkebunan.getPerusahaan().getAlamat().getTelepon());
+            psPerusahaan.setString(5, dataPerkebunan.getPerusahaan().getAlamat().getEmail());
+            psPerusahaan.setString(6, dataPerkebunan.getPerusahaan().getAlamat().getFax());
+            psPerusahaan.setString(7, dataPerkebunan.getPerusahaan().getAlamat().getProv());
+            psPerusahaan.setString(8, dataPerkebunan.getPerusahaan().getAlamat().getKabKota());
+            psPerusahaan.setString(9, dataPerkebunan.getPerusahaan().getKecamatan());
+            psPerusahaan.setString(10, dataPerkebunan.getPerusahaan().getDesaKel());
+            psPerusahaan.setString(11, dataPerkebunan.getPerusahaan().getNamaPIC());
+            psPerusahaan.setString(12, dataPerkebunan.getPerusahaan().getTelpPIC());
+            psPerusahaan.setString(13, dataPerkebunan.getPerusahaan().getJabatanPIC());
+            psPerusahaan.setString(14, dataPerkebunan.getPerusahaan().getJK_PIC());
+            psPerusahaan.setString(15, dataPerkebunan.getPerusahaan().getUnitKerjaPIC());
+            psPerusahaan.setString(16, dataPerkebunan.getPerusahaan().getStatus());
+            psPerusahaan.setDouble(17, dataPerkebunan.getPerusahaan().getLintang());
+            psPerusahaan.setDouble(18, dataPerkebunan.getPerusahaan().getBujur());
+            psPerusahaan.setString(19, dataPerkebunan.getPerusahaan().getKBLI());
+            psPerusahaan.setInt(20, kantorPusatId);
+            psPerusahaan.setInt(21, grupPerusahaanId);
+            psPerusahaan.setString(22, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getStatusPemodalan());
+            psPerusahaan.setString(23, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getBentukBadanHukum());
+            psPerusahaan.setString(24, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getPelaksanaanKemitraan());
+            psPerusahaan.setString(25, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getKebunPlasmaKonversi());
+            psPerusahaan.setString(26, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getUnitPengolahanProduksi());
+            psPerusahaan.setInt(27, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getTahunBerdiri());
+            psPerusahaan.setString(28, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getJenisPerusahaanTebu());
+            psPerusahaan.setDouble(29, dataPerkebunan.getPerusahaan().getStokGKP().getStokPabrikGula());
+            psPerusahaan.setDouble(30, dataPerkebunan.getPerusahaan().getStokGKP().getStokPedagang());
+            psPerusahaan.setDouble(31, dataPerkebunan.getPerusahaan().getStokGKP().getStokPetani());
+            psPerusahaan.executeUpdate();
+
+            // Get generated ID for perusahaan
+            int perusahaanId = getGeneratedId(psPerusahaan);
+
+            // Insert data kebun
+            String sqlKebun = "INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_id, kab_kota_id, luas_areal_tanam, produk_utama, luas_areal_tebang, kode_kbki, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            psKebun = connection.prepareStatement(sqlKebun);
+            for (int i = 0; i < dataPerkebunan.getJumlahKebun(); i++) {
+                Kebun kebun = dataPerkebunan.getKebun(i);
+                psKebun.setInt(1, perusahaanId);
+                psKebun.setString(2, kebun.getNamaKebun());
+                psKebun.setString(3, kebun.getLetak().getProv());
+                psKebun.setString(4, kebun.getLetak().getKabKota());
+                psKebun.setDouble(5, kebun.getLuasArealTanam());
+                psKebun.setString(6, kebun.getProdukUtama());
+                psKebun.setDouble(7, kebun.getProduksi().getLuasArealTebang());
+                psKebun.setString(8, kebun.getKodeKBKI());
+                psKebun.setDouble(9, kebun.getProduksi().getProduksiTebu());
+                psKebun.setDouble(10, kebun.getProduksi().getProduksiGKP());
+                psKebun.setDouble(11, kebun.getProduksi().getProduksiTetes());
+                psKebun.setDouble(12, kebun.getProduksi().getProduksiHablur());
+                psKebun.setDouble(13, kebun.getProduksi().getPendemenHablur());
+                psKebun.addBatch();
+            }
+            psKebun.executeBatch();
+
+            // Insert data keterangan petugas
+            String sqlKeteranganPetugas = "INSERT INTO keterangan_petugas (perusahaan_id, nama_pencacah, tanggal_mencacah, nama_pemeriksa, tanggal_memeriksa) VALUES (?, ?, ?, ?, ?)";
+            psKeteranganPetugas = connection.prepareStatement(sqlKeteranganPetugas);
+            psKeteranganPetugas.setInt(1, perusahaanId);
+            psKeteranganPetugas.setString(2, dataPerkebunan.getKeteranganPetugas().getNamaPencacah());
+            psKeteranganPetugas.setDate(3, java.sql.Date.valueOf(dataPerkebunan.getKeteranganPetugas().getTanggalMencacah()));
+            psKeteranganPetugas.setString(4, dataPerkebunan.getKeteranganPetugas().getNamaPemeriksa());
+            psKeteranganPetugas.setDate(5, java.sql.Date.valueOf(dataPerkebunan.getKeteranganPetugas().getTanggalMemeriksa()));
+            psKeteranganPetugas.executeUpdate();
+
+            connection.commit();
+            System.out.println("Data berhasil disimpan ke dalam database.");
+            return true;
+
         } catch (SQLException e) {
             e.printStackTrace();
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            System.out.println("Terjadi kesalahan saat menyimpan data: " + e.getMessage());
+            return false;
+        } finally {
+            closeResources(connection, psPerusahaan, psKantorPusat, psGrupPerusahaan, psKebun, psKeteranganPetugas);
         }
     }
 
-    public void insertGrupPerusahaan(String nama, String alamat, String kodePos, String telepon, String email, String fax, String provinsiKode, String kabKotaKode) {
-        String sql = "INSERT INTO grup_perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, nama);
-            pstmt.setString(2, alamat);
-            pstmt.setString(3, kodePos);
-            pstmt.setString(4, telepon);
-            pstmt.setString(5, email);
-            pstmt.setString(6, fax);
-            pstmt.setString(7, provinsiKode);
-            pstmt.setString(8, kabKotaKode);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    private int getGeneratedId(PreparedStatement ps) throws SQLException {
+        try (ResultSet rs = ps.getGeneratedKeys()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                throw new SQLException("Gagal mendapatkan ID yang dihasilkan.");
+            }
         }
     }
 
-    public void insertPerusahaan(String nama, String alamat, String kodePos, String telepon, String email, String fax, String provinsiKode, String kabKotaKode, String kecamatanKode, String desaKelurahanKode, String namaPic, String teleponPic, String jabatanPic, String jenisKelaminPic, String unitKerjaPic, String status, double latitude, double longitude, String kbli, int kantorPusatId, int grupPerusahaanId, String statusPemodalan, String bentukBadanHukum, String pelaksanaKemitraan, String kebunPlasmaKonversi, String punyaUnitPengolahanProduksi, int tahunBerdiri, String jenisPerusahaanTebu, double stokPabrikGula, double stokPedagang, double stokPetani) {
-        String sql = "INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode, kecamatan_kode, desa_kelurahan_kode, nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, status_pemodalan, bentuk_badan_hukum, pelaksana_kemitraan, kebun_plasma_konversi, punya_unit_pengolahan_produksi, tahun_berdiri, jenis_perusahaan_tebu, stok_pabrik_gula, stok_pedagang, stok_petani) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, nama);
-            pstmt.setString(2, alamat);
-            pstmt.setString(3, kodePos);
-            pstmt.setString(4, telepon);
-            pstmt.setString(5, email);
-            pstmt.setString(6, fax);
-            pstmt.setString(7, provinsiKode);
-            pstmt.setString(8, kabKotaKode);
-            pstmt.setString(9, kecamatanKode);
-            pstmt.setString(10, desaKelurahanKode);
-            pstmt.setString(11, namaPic);
-            pstmt.setString(12, teleponPic);
-            pstmt.setString(13, jabatanPic);
-            pstmt.setString(14, jenisKelaminPic);
-            pstmt.setString(15, unitKerjaPic);
-            pstmt.setString(16, status);
-            pstmt.setDouble(17, latitude);
-            pstmt.setDouble(18, longitude);
-            pstmt.setString(19, kbli);
-            pstmt.setInt(20, kantorPusatId);
-            pstmt.setInt(21, grupPerusahaanId);
-            pstmt.setString(22, statusPemodalan);
-            pstmt.setString(23, bentukBadanHukum);
-            pstmt.setString(24, pelaksanaKemitraan);
-            pstmt.setString(25, kebunPlasmaKonversi);
-            pstmt.setString(26, punyaUnitPengolahanProduksi);
-            pstmt.setInt(27, tahunBerdiri);
-            pstmt.setString(28, jenisPerusahaanTebu);
-            pstmt.setDouble(29, stokPabrikGula);
-            pstmt.setDouble(30, stokPedagang);
-            pstmt.setDouble(31, stokPetani);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    private void closeResources(Connection connection, PreparedStatement... psArray) {
+        for (PreparedStatement ps : psArray) {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-    }
-    
-    // Method for inserting data into 'kebun'
-    public void insertKebun(int perusahaanId, String namaKebun, String provinsiKode, String kabKotaKode, double luasArealTanam, String produkUtama, double luasArealTebang, String kodeKbki, double produksiTebu, double produksiGkp, double produksiTetes, double produksiHablur, double rendemenHablur) {
-        String sql = "INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_kode, kab_kota_kode, luas_areal_tanam, produk_utama, luas_areal_tebang, kode_kbki, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, perusahaanId);
-            pstmt.setString(2, namaKebun);
-            pstmt.setString(3, provinsiKode);
-            pstmt.setString(4, kabKotaKode);
-            pstmt.setDouble(5, luasArealTanam);
-            pstmt.setString(6, produkUtama);
-            pstmt.setDouble(7, luasArealTebang);
-            pstmt.setString(8, kodeKbki);
-            pstmt.setDouble(9, produksiTebu);
-            pstmt.setDouble(10, produksiGkp);
-            pstmt.setDouble(11, produksiTetes);
-            pstmt.setDouble(12, produksiHablur);
-            pstmt.setDouble(13, rendemenHablur);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Method for inserting data into 'keterangan_petugas'
-    public void insertKeteranganPetugas(int perusahaanId, String namaPencacah, java.sql.Date tanggalMencacah, String namaPemeriksa, java.sql.Date tanggalMemeriksa) {
-        String sql = "INSERT INTO keterangan_petugas (perusahaan_id, nama_pencacah, tanggal_mencacah, nama_pemeriksa, tanggal_memeriksa) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, perusahaanId);
-            pstmt.setString(2, namaPencacah);
-            pstmt.setDate(3, tanggalMencacah);
-            pstmt.setString(4, namaPemeriksa);
-            pstmt.setDate(5, tanggalMemeriksa);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
