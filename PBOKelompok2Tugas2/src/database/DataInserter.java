@@ -5,28 +5,19 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import mform.entity.DataPerkebunan;
+import mform.entity.Kebun;
 
 /**
  *
  * @author yedij
  */
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import mform.entity.DataPerkebunan;
-
 public class DataInserter {
-    private DataPerkebunan dataPerkebunan;
-
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/StatistikTebu2022";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "your_password"; // Ganti dengan password MySQL Anda
 
     public boolean insertData(DataPerkebunan dataPerkebunan) {
         Connection connection = null;
@@ -37,7 +28,7 @@ public class DataInserter {
         PreparedStatement psKeteranganPetugas = null;
 
         try {
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            connection = DatabaseConnection.getConnection();
             connection.setAutoCommit(false);
 
             // Insert data kantor pusat
@@ -91,7 +82,7 @@ public class DataInserter {
             psPerusahaan.setString(11, dataPerkebunan.getPerusahaan().getNamaPIC());
             psPerusahaan.setString(12, dataPerkebunan.getPerusahaan().getTelpPIC());
             psPerusahaan.setString(13, dataPerkebunan.getPerusahaan().getJabatanPIC());
-            psPerusahaan.setString(14, dataPerkebunan.getPerusahaan().getJK_PIC());
+            psPerusahaan.setString(14, String.valueOf(dataPerkebunan.getPerusahaan().getJK_PIC())); // Convert char to String
             psPerusahaan.setString(15, dataPerkebunan.getPerusahaan().getUnitKerjaPIC());
             psPerusahaan.setString(16, dataPerkebunan.getPerusahaan().getStatus());
             psPerusahaan.setDouble(17, dataPerkebunan.getPerusahaan().getLintang());
@@ -99,39 +90,37 @@ public class DataInserter {
             psPerusahaan.setString(19, dataPerkebunan.getPerusahaan().getKBLI());
             psPerusahaan.setInt(20, kantorPusatId);
             psPerusahaan.setInt(21, grupPerusahaanId);
-            psPerusahaan.setString(22, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getStatusPemodalan());
-            psPerusahaan.setString(23, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getBentukBadanHukum());
-            psPerusahaan.setString(24, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getPelaksanaanKemitraan());
-            psPerusahaan.setString(25, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getKebunPlasmaKonversi());
-            psPerusahaan.setString(26, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getUnitPengolahanProduksi());
+            psPerusahaan.setString(22, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getStatusPemodalan()));
+            psPerusahaan.setString(23, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getBentukBadanHukum()));
+            psPerusahaan.setString(24, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getPelaksanaanKemitraan()));
+            psPerusahaan.setString(25, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getKebunPlasmaKonversi()));
+            psPerusahaan.setString(26, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getUnitPengolahanProduksi()));
             psPerusahaan.setInt(27, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getTahunBerdiri());
-            psPerusahaan.setString(28, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getJenisPerusahaanTebu());
-            psPerusahaan.setDouble(29, dataPerkebunan.getPerusahaan().getStokGKP().getStokPabrikGula());
-            psPerusahaan.setDouble(30, dataPerkebunan.getPerusahaan().getStokGKP().getStokPedagang());
-            psPerusahaan.setDouble(31, dataPerkebunan.getPerusahaan().getStokGKP().getStokPetani());
+            psPerusahaan.setString(28, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getJenisPerusahaanTebu()));
+            psPerusahaan.setDouble(29, dataPerkebunan.getStokGKP().getStokPabrikGula());
+            psPerusahaan.setDouble(30, dataPerkebunan.getStokGKP().getStokPedagang());
+            psPerusahaan.setDouble(31, dataPerkebunan.getStokGKP().getStokPetani());
             psPerusahaan.executeUpdate();
 
             // Get generated ID for perusahaan
             int perusahaanId = getGeneratedId(psPerusahaan);
 
             // Insert data kebun
-            String sqlKebun = "INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_id, kab_kota_id, luas_areal_tanam, produk_utama, luas_areal_tebang, kode_kbki, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlKebun = "INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_id, kab_kota_id, luas_areal_tanam, luas_areal_tebang, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             psKebun = connection.prepareStatement(sqlKebun);
             for (int i = 0; i < dataPerkebunan.getJumlahKebun(); i++) {
                 Kebun kebun = dataPerkebunan.getKebun(i);
                 psKebun.setInt(1, perusahaanId);
-                psKebun.setString(2, kebun.getNamaKebun());
+                psKebun.setString(2, kebun.getJenisKebun());
                 psKebun.setString(3, kebun.getLetak().getProv());
                 psKebun.setString(4, kebun.getLetak().getKabKota());
                 psKebun.setDouble(5, kebun.getLuasArealTanam());
-                psKebun.setString(6, kebun.getProdukUtama());
-                psKebun.setDouble(7, kebun.getProduksi().getLuasArealTebang());
-                psKebun.setString(8, kebun.getKodeKBKI());
-                psKebun.setDouble(9, kebun.getProduksi().getProduksiTebu());
-                psKebun.setDouble(10, kebun.getProduksi().getProduksiGKP());
-                psKebun.setDouble(11, kebun.getProduksi().getProduksiTetes());
-                psKebun.setDouble(12, kebun.getProduksi().getProduksiHablur());
-                psKebun.setDouble(13, kebun.getProduksi().getPendemenHablur());
+                psKebun.setDouble(6, kebun.getProduksi().getLuasArealTebang());
+                psKebun.setDouble(7, kebun.getProduksi().getProduksiTebu());
+                psKebun.setDouble(8, kebun.getProduksi().getProduksiGKP());
+                psKebun.setDouble(9, kebun.getProduksi().getProduksiTetes());
+                psKebun.setDouble(10, kebun.getProduksi().getProduksiHablur());
+                psKebun.setDouble(11, kebun.getProduksi().getRendemenHablur());
                 psKebun.addBatch();
             }
             psKebun.executeBatch();
@@ -195,4 +184,3 @@ public class DataInserter {
         }
     }
 }
-

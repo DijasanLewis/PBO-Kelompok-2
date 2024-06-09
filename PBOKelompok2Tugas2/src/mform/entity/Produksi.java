@@ -63,11 +63,11 @@ public class Produksi {
         this.produksiHablur = produksiHablur;
     }
 
-    public double getPendemenHablur() {
+    public double getRendemenHablur() {
         return pendemenHablur;
     }
 
-    public void setPendemenHablur(double pendemenHablur) {
+    public void setRendemenHablur(double pendemenHablur) {
         this.pendemenHablur = pendemenHablur;
     }
     

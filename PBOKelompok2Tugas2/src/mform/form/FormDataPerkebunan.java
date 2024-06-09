@@ -235,7 +235,7 @@ public class FormDataPerkebunan extends Form{
                 super.addErrorMessages("Produksi Hablur Invalid: tidak boleh negatif");
             }
             //Pendemen Hablur
-            if(dataPerkebunan.getKebun(i).getProduksi().getPendemenHablur() < 0){
+            if(dataPerkebunan.getKebun(i).getProduksi().getRendemenHablur() < 0){
                 super.addErrorMessages("Pendemen Hablur Invalid: tidak boleh negatif");
             }
         }
@@ -316,7 +316,7 @@ public class FormDataPerkebunan extends Form{
                 writer.write("Kabupaten/Kota: " + dataPerkebunan.getKebun(i).getLetak().getKabKota() + "\n");
                 writer.write("Provinsi: " + dataPerkebunan.getKebun(i).getLetak().getProv() + "\n");
                 writer.write("Luas Areal Tebang: " + dataPerkebunan.getKebun(i).getProduksi().getLuasArealTebang() + "\n");
-                writer.write("Pendemen Hablur: " + dataPerkebunan.getKebun(i).getProduksi().getPendemenHablur() + "\n");
+                writer.write("Pendemen Hablur: " + dataPerkebunan.getKebun(i).getProduksi().getRendemenHablur() + "\n");
                 writer.write("Produksi GKP: " + dataPerkebunan.getKebun(i).getProduksi().getProduksiGKP() + "\n");
                 writer.write("Produksi Hablur: " + dataPerkebunan.getKebun(i).getProduksi().getProduksiHablur() + "\n");
                 writer.write("Produksi Tebu: " + dataPerkebunan.getKebun(i).getProduksi().getProduksiTebu() + "\n");
@@ -470,7 +470,7 @@ public class FormDataPerkebunan extends Form{
             System.out.println("Kabupaten/Kota: " + dataPerkebunan.getKebun(i).getLetak().getKabKota());
             System.out.println("Provinsi: " + dataPerkebunan.getKebun(i).getLetak().getProv());
             System.out.println("Luas Areal Tebang: " + dataPerkebunan.getKebun(i).getProduksi().getLuasArealTebang());
-            System.out.println("Pendemen Hablur: " + dataPerkebunan.getKebun(i).getProduksi().getPendemenHablur());
+            System.out.println("Pendemen Hablur: " + dataPerkebunan.getKebun(i).getProduksi().getRendemenHablur());
             System.out.println("Produksi GKP: " + dataPerkebunan.getKebun(i).getProduksi().getProduksiGKP());
             System.out.println("Produksi Hablur: " + dataPerkebunan.getKebun(i).getProduksi().getProduksiHablur());
             System.out.println("Produksi Tebu: " + dataPerkebunan.getKebun(i).getProduksi().getProduksiTebu());

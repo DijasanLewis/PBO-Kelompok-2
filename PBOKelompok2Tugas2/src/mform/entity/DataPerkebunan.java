@@ -35,6 +35,11 @@ public class DataPerkebunan {
     public Perusahaan getPerusahaan() {
         return perusahaan;
     }
+    
+    public void setPerusahaan(Perusahaan perusahaan){
+        this.perusahaan = perusahaan;
+    }
+    
         // ===2===
     
     //============
@@ -51,7 +56,12 @@ public class DataPerkebunan {
         if (kantorPusat == null) {
             kantorPusat = new KantorPusat();
         }
+    }
+    
+    public void setKantorPusat(KantorPusat kantorPusat) {
+        this.kantorPusat = kantorPusat;
     }    
+    
     //BAGIAN GROUP PERUSAHAAN
     public GroupPerusahaan getGroupPerusahaan() {
         if (groupPerusahaan != null) {
@@ -66,6 +76,11 @@ public class DataPerkebunan {
             groupPerusahaan = new GroupPerusahaan();
         }
     }   
+    
+    public void setGroupPerusahaan(GroupPerusahaan groupPerusahaan) {
+        this.groupPerusahaan = groupPerusahaan;
+    }   
+    
     //BAGIAN KEBUN
     public Kebun getKebun(int nomor) {
         if (kebun != null) {
@@ -80,6 +95,14 @@ public class DataPerkebunan {
             jumlahKebun++;
         }
     }
+    
+    public void setKebun(Kebun kebun) {
+        if (jumlahKebun < 10) {
+            this.kebun[jumlahKebun] = kebun; // Mengakses indeks yang sesuai dalam array
+            jumlahKebun++;
+        }
+    }
+
     
     public void resetKebun(){
         if (kebun != null) {
@@ -116,7 +139,7 @@ public class DataPerkebunan {
         return keteranganPetugas;
     }
     
-    public void setStokGKP(KeteranganPetugas keteranganPetugas){
+    public void setKeteranganPetugas(KeteranganPetugas keteranganPetugas){
         this.keteranganPetugas = keteranganPetugas;
     }
 }

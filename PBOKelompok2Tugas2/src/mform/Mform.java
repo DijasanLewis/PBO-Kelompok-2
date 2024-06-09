@@ -69,7 +69,7 @@ public class Mform {
         dataPerkebunan.getKebun(0).getLetak().setKabKota("20");
         dataPerkebunan.getKebun(0).getLetak().setProv("10");
         dataPerkebunan.getKebun(0).getProduksi().setLuasArealTebang(0.88d);
-        dataPerkebunan.getKebun(0).getProduksi().setPendemenHablur(15.0d);
+        dataPerkebunan.getKebun(0).getProduksi().setRendemenHablur(15.0d);
         dataPerkebunan.getKebun(0).getProduksi().setProduksiGKP(2.5d);
         dataPerkebunan.getKebun(0).getProduksi().setProduksiHablur(2.0d);
         dataPerkebunan.getKebun(0).getProduksi().setProduksiTebu(1.2d);
@@ -80,7 +80,7 @@ public class Mform {
         dataPerkebunan.getKebun(1).getLetak().setKabKota("50");
         dataPerkebunan.getKebun(1).getLetak().setProv("12");
         dataPerkebunan.getKebun(1).getProduksi().setLuasArealTebang(0.88d);
-        dataPerkebunan.getKebun(1).getProduksi().setPendemenHablur(15.0d);
+        dataPerkebunan.getKebun(1).getProduksi().setRendemenHablur(15.0d);
         dataPerkebunan.getKebun(1).getProduksi().setProduksiGKP(2.5d);
         dataPerkebunan.getKebun(1).getProduksi().setProduksiHablur(2.0d);
         dataPerkebunan.getKebun(1).getProduksi().setProduksiTebu(1.2d);
