@@ -440,26 +440,32 @@ public class FormDataPerkebunan extends Form{
         System.out.println("KBLI: " + dataPerkebunan.getPerusahaan().getKBLI());
 
         // Informasi Kantor Pusat
-        System.out.println("\n===== Informasi Kantor Pusat =====");
-        System.out.println("Nama: " + dataPerkebunan.getKantorPusat().getNama());
-        System.out.println("Alamat: " + dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap());
-        System.out.println("Kode Pos: " + dataPerkebunan.getKantorPusat().getAlamat().getKodePos());
-        System.out.println("Telepon: " + dataPerkebunan.getKantorPusat().getAlamat().getTelepon());
-        System.out.println("Email: " + dataPerkebunan.getKantorPusat().getAlamat().getEmail());
-        System.out.println("Fax: " + dataPerkebunan.getKantorPusat().getAlamat().getFax());
-        System.out.println("Provinsi: " + dataPerkebunan.getKantorPusat().getAlamat().getProv());
-        System.out.println("Kabupaten/Kota: " + dataPerkebunan.getKantorPusat().getAlamat().getKabKota());
+        KantorPusat kantorPusat = dataPerkebunan.getKantorPusat();
+        if (kantorPusat != null) {
+            System.out.println("\n===== Informasi Kantor Pusat ====="); 
+            System.out.println("Nama: " + dataPerkebunan.getKantorPusat().getNama());
+            System.out.println("Alamat: " + dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap());
+            System.out.println("Kode Pos: " + dataPerkebunan.getKantorPusat().getAlamat().getKodePos());
+            System.out.println("Telepon: " + dataPerkebunan.getKantorPusat().getAlamat().getTelepon());
+            System.out.println("Email: " + dataPerkebunan.getKantorPusat().getAlamat().getEmail());
+            System.out.println("Fax: " + dataPerkebunan.getKantorPusat().getAlamat().getFax());
+            System.out.println("Provinsi: " + dataPerkebunan.getKantorPusat().getAlamat().getProv());
+            System.out.println("Kabupaten/Kota: " + dataPerkebunan.getKantorPusat().getAlamat().getKabKota());
+        }
 
         // Informasi Group Perusahaan
-        System.out.println("\n===== Informasi Group Perusahaan =====");
-        System.out.println("Nama: " + dataPerkebunan.getGroupPerusahaan().getNama());
-        System.out.println("Alamat: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
-        System.out.println("Kode Pos: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos());
-        System.out.println("Telepon: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon());
-        System.out.println("Email: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail());
-        System.out.println("Fax: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getFax());
-        System.out.println("Provinsi: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getProv());
-        System.out.println("Kabupaten/Kota: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota());
+        GroupPerusahaan groupPerusahaan = dataPerkebunan.getGroupPerusahaan();
+        if (groupPerusahaan != null) {
+            System.out.println("\n===== Informasi Group Perusahaan =====");
+            System.out.println("Nama: " + dataPerkebunan.getGroupPerusahaan().getNama());
+            System.out.println("Alamat: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
+            System.out.println("Kode Pos: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos());
+            System.out.println("Telepon: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon());
+            System.out.println("Email: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail());
+            System.out.println("Fax: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getFax());
+            System.out.println("Provinsi: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getProv());
+            System.out.println("Kabupaten/Kota: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota());
+        }
 
         // Informasi Keterangan Perusahaan
         System.out.println("\n===== Keterangan Perusahaan =====");
@@ -476,7 +482,7 @@ public class FormDataPerkebunan extends Form{
         System.out.println("Nama Produk Utama: " + dataPerkebunan.getProdukUtama());
         System.out.println("Kode KBKI: " + dataPerkebunan.getKBKI());
         for (int i = 0; i < dataPerkebunan.getJumlahKebun(); i++) {
-            System.out.println("Kebun ke-" + (i+1));
+            System.out.println("\nKebun ke-" + (i+1));
             System.out.println("Kabupaten/Kota: " + dataPerkebunan.getKebun(i).getLetak().getKabKota());
             System.out.println("Provinsi: " + dataPerkebunan.getKebun(i).getLetak().getProv());
             System.out.println("Luas Areal Tebang: " + dataPerkebunan.getKebun(i).getProduksi().getLuasArealTebang());

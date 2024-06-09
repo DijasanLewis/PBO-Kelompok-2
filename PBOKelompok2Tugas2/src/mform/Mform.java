@@ -4,6 +4,7 @@
  */
 package mform;
 
+import database.*;
 import java.util.List;
 import mform.entity.*;
 import mform.form.*;
@@ -110,7 +111,21 @@ public class Mform {
             System.out.println("Print data");
             form.print();
             form.save("data_perkebunan.txt");
+            
+            // Memasukkan data ke dalam database
+            System.out.println("MEMASUKKAN DATA KE DALAM DATABSE");
+            DataInserter dataInserter = new DataInserter();
+            dataInserter.insertData(dataPerkebunan);
+            
             form.reset();
+            
+            //Mencoba mengambil data dari database
+            System.out.println("MENGAMBIL DATA \"Perusahaan Tebu Sejahtera\" DARI DATABSE");
+            DataRetriever dataRetriever = new DataRetriever();
+            dataPerkebunan = dataRetriever.retrieveData("Perusahaan Tebu Sejahtera");
+            form.setDataPerkebunan(dataPerkebunan);
+            //
+            
             form.print();
         }
     }

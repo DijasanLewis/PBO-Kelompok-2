@@ -32,7 +32,7 @@ public class DataInserter {
             connection.setAutoCommit(false);
 
             // Insert data kantor pusat
-            String sqlKantorPusat = "INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlKantorPusat = "INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             psKantorPusat = connection.prepareStatement(sqlKantorPusat, PreparedStatement.RETURN_GENERATED_KEYS);
             psKantorPusat.setString(1, dataPerkebunan.getKantorPusat().getNama());
             psKantorPusat.setString(2, dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap());
@@ -48,7 +48,7 @@ public class DataInserter {
             int kantorPusatId = getGeneratedId(psKantorPusat);
 
             // Insert data grup perusahaan
-            String sqlGrupPerusahaan = "INSERT INTO grup_perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlGrupPerusahaan = "INSERT INTO grup_perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             psGrupPerusahaan = connection.prepareStatement(sqlGrupPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
             psGrupPerusahaan.setString(1, dataPerkebunan.getGroupPerusahaan().getNama());
             psGrupPerusahaan.setString(2, dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
@@ -64,10 +64,10 @@ public class DataInserter {
             int grupPerusahaanId = getGeneratedId(psGrupPerusahaan);
 
             // Insert data perusahaan
-            String sqlPerusahaan = "INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id, kecamatan_id, desa_kelurahan_id, " +
+            String sqlPerusahaan = "INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode, kecamatan_kode, desa_kelurahan_kode, " +
                 "nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, " +
                 "status_pemodalan, bentuk_badan_hukum, pelaksana_kemitraan, kebun_plasma_konversi, punya_unit_pengolahan_produksi, tahun_berdiri, jenis_perusahaan_tebu, " +
-                "produk_utama, kode_kbki, stok_pabrik_gula, stok_pedagang, stok_petani) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "produk_utama, kode_kbki, stok_pabrik_gula, stok_pedagang, stok_petani) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             psPerusahaan = connection.prepareStatement(sqlPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
             psPerusahaan.setString(1, dataPerkebunan.getPerusahaan().getNama());
             psPerusahaan.setString(2, dataPerkebunan.getPerusahaan().getAlamat().getAlamatLengkap());
@@ -104,12 +104,11 @@ public class DataInserter {
             psPerusahaan.setDouble(33, dataPerkebunan.getStokGKP().getStokPetani());
             psPerusahaan.executeUpdate();
 
-
             // Get generated ID for perusahaan
             int perusahaanId = getGeneratedId(psPerusahaan);
 
             // Insert data kebun
-            String sqlKebun = "INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_id, kab_kota_id, luas_areal_tanam, luas_areal_tebang, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlKebun = "INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_kode, kab_kota_kode, luas_areal_tanam, luas_areal_tebang, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             psKebun = connection.prepareStatement(sqlKebun);
             for (int i = 0; i < dataPerkebunan.getJumlahKebun(); i++) {
                 Kebun kebun = dataPerkebunan.getKebun(i);
@@ -186,4 +185,4 @@ public class DataInserter {
             }
         }
     }
-}
+}   

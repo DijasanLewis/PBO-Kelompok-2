@@ -26,7 +26,7 @@ public class DataRetriever {
     public DataPerkebunan retrieveData(String namaPerusahaan) {
         DataPerkebunan dataPerkebunan = new DataPerkebunan();
 
-        String sql = "SELECT p.id AS perusahaan_id, * FROM perusahaan p " +
+        String sql = "SELECT p.id AS perusahaan_id, p.*, kp.*, gp.* FROM perusahaan p " +
                      "LEFT JOIN kantor_pusat kp ON p.kantor_pusat_id = kp.id " +
                      "LEFT JOIN grup_perusahaan gp ON p.grup_perusahaan_id = gp.id " +
                      "WHERE p.nama = ?";
@@ -95,7 +95,7 @@ public class DataRetriever {
                 dataPerkebunan.setKBKI(rs.getString("p.kode_kbki"));
                 int perusahaanId = rs.getInt("perusahaan_id");
                 addKebunToDataPerkebunan(dataPerkebunan, conn, perusahaanId);
-                addKeteranganPetugasToDataPerkebunan(dataPerkebunan, conn, perusahaanId);
+                addKeteranganPetugasToDataPerkebunan(dataPerkebunan, conn, perusahaanId);   
             }
 
         } catch (SQLException e) {
