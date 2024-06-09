@@ -95,6 +95,14 @@ CREATE TABLE keterangan_petugas (
     FOREIGN KEY (perusahaan_id) REFERENCES perusahaan(id)
 );
 
+-- Tabel untuk Login User Pencacah/Pemeriksa
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    name VARCHAR(50),
+    password VARCHAR(50)
+);
+
 -- INSERT DATA CONTOH
 -- Kantor Pusat
 INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode)
@@ -135,6 +143,13 @@ VALUES
 (3, 'Dewi Lestari', '2024-06-03', 'Citra Dewi', '2024-06-05'),
 (4, 'Rudi Hidayat', '2024-06-04', 'Ani Wijaya', '2024-06-06');
 
+-- Akun user
+INSERT INTO user (username, name, password)
+VALUES 
+('yedija', 'Alvin Jeremy Naiborhu', '222212488'),
+('fatih', 'Fatih Hakim Mudzaky', '222212603'),
+('yedija', 'Yedija Lewi Suryadi', '222212921'),
+('zahra', 'Zahra Mufidah Arian', '222212932');
 
 -- CONTOH SELECT DATA TIPE 1
 SELECT 
