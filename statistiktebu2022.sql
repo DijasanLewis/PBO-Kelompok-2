@@ -58,8 +58,8 @@ CREATE TABLE perusahaan (
     punya_unit_pengolahan_produksi CHAR(1),
     tahun_berdiri INT,
     jenis_perusahaan_tebu CHAR(1),
-    produk_utama VARCHAR(50), -- kolom yang dipindahkan
-    kode_kbki VARCHAR(10), -- kolom yang dipindahkan
+    produk_utama VARCHAR(50),
+    kode_kbki VARCHAR(10),
     stok_pabrik_gula DOUBLE,
     stok_pedagang DOUBLE,
     stok_petani DOUBLE,
@@ -111,10 +111,10 @@ VALUES
 -- Perusahaan
 INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode, kecamatan_kode, desa_kelurahan_kode, nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, status_pemodalan, bentuk_badan_hukum, pelaksana_kemitraan, kebun_plasma_konversi, punya_unit_pengolahan_produksi, tahun_berdiri, jenis_perusahaan_tebu, produk_utama, kode_kbki, stok_pabrik_gula, stok_pedagang, stok_petani)
 VALUES 
-('Perusahaan Tebu Subur', 'Jl. Subur No. 5', '60295', '021456789', 'admin@tebusubur.com', '021456780', '01', '01', '001', '001', 'Budi Darmawan', '08123456789', 'Manager', '1', 'Pengolahan', 'aktif', -6.175110, 106.865039, '011', 1, 1, '1', '1', '1', '1', '1', 1985, '1', 'Tebu', 'A123', 1000.0, 500.0, 200.0),
-('Perusahaan Tebu Sejahtera', 'Jl. Subur No. 6', '60298', '021567892', 'admin@tebusejahtera.com', '021567893', '02', '02', '002', '002', 'Agus Santoso', '08134567890', 'Manager', '1', 'Pengolahan', 'aktif', -6.200000, 106.900000, '012', 2, 2, '2', '1', '1', '1', '1', 1990, '2', 'Tebu', 'B123', 1500.0, 700.0, 300.0),
-('Perusahaan Tebu Maju', 'Jl. Maju No. 25', '60299', '021678903', 'admin@tebumaju.com', '021678904', '02', '02', '002', '002', 'Rina Wijaya', '08145678901', 'Manager', '2', 'Pengolahan', 'aktif', -6.210000, 106.910000, '013', 1, 2, '3', '1', '1', '1', '1', 2000, '3', 'Tebu', 'C123', 2000.0, 800.0, 400.0),
-('Perusahaan Tebu Makmur', 'Jl. Makmur No. 30', '60300', '021789012', 'admin@tebumakmur.com', '021789013', '03', '03', '003', '003', 'Andi Suryadi', '08156789012', 'Manager', '1', 'Pengolahan', 'aktif', -6.220000, 106.920000, '014', 2, 1, '4', '1', '1', '1', '1', 1995, '1', 'Tebu', 'D123', 2500.0, 900.0, 500.0);
+('Perusahaan Tebu Subur', 'Jl. Subur No. 5', '60295', '021456789', 'admin@tebusubur.com', '021456780', '01', '01', '001', '001', 'Budi Darmawan', '08123456789', 'Manager', '1', 'Pengolahan', 'aktif', -6.175110, 106.865039, '011', 1, 1, '1', '1', '1', '1', '1', 1985, '1', 'Tebu', '1234567890', 1000.0, 500.0, 200.0),
+('Perusahaan Tebu Sejahtera', 'Jl. Subur No. 6', '60298', '021567892', 'admin@tebusejahtera.com', '021567893', '02', '02', '002', '002', 'Agus Santoso', '08134567890', 'Manager', '1', 'Pengolahan', 'aktif', -6.200000, 106.900000, '012', 2, 2, '2', '1', '1', '1', '1', 1990, '2', 'Tebu', '2345678901', 1500.0, 700.0, 300.0),
+('Perusahaan Tebu Maju', 'Jl. Maju No. 25', '60299', '021678903', 'admin@tebumaju.com', '021678904', '02', '02', '002', '002', 'Rina Wijaya', '08145678901', 'Manager', '2', 'Pengolahan', 'aktif', -6.210000, 106.910000, '013', 1, 2, '3', '1', '1', '1', '1', 2000, '3', 'Tebu', '3456789012', 2000.0, 800.0, 400.0),
+('Perusahaan Tebu Makmur', 'Jl. Makmur No. 30', '60300', '021789012', 'admin@tebumakmur.com', '021789013', '03', '03', '003', '003', 'Andi Suryadi', '08156789012', 'Manager', '1', 'Pengolahan', 'aktif', -6.220000, 106.920000, '014', 2, 1, '4', '1', '1', '1', '1', 1995, '1', 'Tebu', '4567890123', 2500.0, 900.0, 500.0);
 
 -- Kebun
 INSERT INTO kebun (perusahaan_id, nama_kebun, provinsi_kode, kab_kota_kode, luas_areal_tanam, luas_areal_tebang, produksi_tebu, produksi_gkp, produksi_tetes, produksi_hablur, rendemen_hablur)

@@ -65,9 +65,9 @@ public class DataInserter {
 
             // Insert data perusahaan
             String sqlPerusahaan = "INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_id, kab_kota_id, kecamatan_id, desa_kelurahan_id, " +
-                    "nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, " +
-                    "status_pemodalan, bentuk_badan_hukum, pelaksana_kemitraan, kebun_plasma_konversi, punya_unit_pengolahan_produksi, tahun_berdiri, jenis_perusahaan_tebu, " +
-                    "stok_pabrik_gula, stok_pedagang, stok_petani) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, " +
+                "status_pemodalan, bentuk_badan_hukum, pelaksana_kemitraan, kebun_plasma_konversi, punya_unit_pengolahan_produksi, tahun_berdiri, jenis_perusahaan_tebu, " +
+                "produk_utama, kode_kbki, stok_pabrik_gula, stok_pedagang, stok_petani) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             psPerusahaan = connection.prepareStatement(sqlPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
             psPerusahaan.setString(1, dataPerkebunan.getPerusahaan().getNama());
             psPerusahaan.setString(2, dataPerkebunan.getPerusahaan().getAlamat().getAlamatLengkap());
@@ -97,10 +97,13 @@ public class DataInserter {
             psPerusahaan.setString(26, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getUnitPengolahanProduksi()));
             psPerusahaan.setInt(27, dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getTahunBerdiri());
             psPerusahaan.setString(28, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getJenisPerusahaanTebu()));
-            psPerusahaan.setDouble(29, dataPerkebunan.getStokGKP().getStokPabrikGula());
-            psPerusahaan.setDouble(30, dataPerkebunan.getStokGKP().getStokPedagang());
-            psPerusahaan.setDouble(31, dataPerkebunan.getStokGKP().getStokPetani());
+            psPerusahaan.setString(29, dataPerkebunan.getProdukUtama());
+            psPerusahaan.setString(30, dataPerkebunan.getKBKI());
+            psPerusahaan.setDouble(31, dataPerkebunan.getStokGKP().getStokPabrikGula());
+            psPerusahaan.setDouble(32, dataPerkebunan.getStokGKP().getStokPedagang());
+            psPerusahaan.setDouble(33, dataPerkebunan.getStokGKP().getStokPetani());
             psPerusahaan.executeUpdate();
+
 
             // Get generated ID for perusahaan
             int perusahaanId = getGeneratedId(psPerusahaan);

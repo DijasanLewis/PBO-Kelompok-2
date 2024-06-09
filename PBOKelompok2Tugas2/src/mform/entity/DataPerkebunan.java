@@ -19,14 +19,17 @@ public class DataPerkebunan {
     private GroupPerusahaan groupPerusahaan;
     private Kebun kebun[];
     private int jumlahKebun;
-    private StokGKP stokGKP;
+    //=== Dari Data Produksi ===
     private String produkUtama;
+    private String kbki;
+    private StokGKP stokGKP;
     private KeteranganPetugas keteranganPetugas;
     
     public DataPerkebunan(){
         perusahaan = new Perusahaan();
         stokGKP = new StokGKP();
         kebun = new Kebun[10];
+        keteranganPetugas = new KeteranganPetugas();
         jumlahKebun = 0;
     }
     //BAGIAN PERUSAHAAN
@@ -125,13 +128,21 @@ public class DataPerkebunan {
     public void setStokGKP(StokGKP stokGKP){
         this.stokGKP = stokGKP;
     }
-    //BAGIAN Produk Utama
+    //BAGIAN Produk Utama dan Kode KBKI
     public String getProdukUtama() {
         return produkUtama;
     }
 
     public void setProdukUtama(String produkUtama) {
         this.produkUtama = produkUtama;
+    }
+    
+    public String getKBKI() {
+        return kbki;
+    }
+
+    public void setKBKI(String kbki) {
+        this.kbki = kbki;
     }
     
     //BAGIAN KETERANGAN PERUSAHAAN

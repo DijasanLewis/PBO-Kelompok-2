@@ -62,7 +62,7 @@ public class DataRetriever {
                 groupPerusahaan.getAlamat().setKabKota(rs.getString("gp.kab_kota_kode"));
                 dataPerkebunan.setGroupPerusahaan(groupPerusahaan);
 
-                // Set Perusahaan details
+                // Set Perusahaan
                 Perusahaan perusahaan = new Perusahaan();
                 perusahaan.setNama(rs.getString("p.nama"));
                 perusahaan.getAlamat().setAlamatLengkap(rs.getString("p.alamat"));
@@ -90,7 +90,9 @@ public class DataRetriever {
                 perusahaan.getKeteranganPerusahaan().setJenisPerusahaanTebu(rs.getString("p.jenis_perusahaan_tebu").charAt(0));
                 dataPerkebunan.setPerusahaan(perusahaan);
 
-                // Fetching kebun and keterangan petugas
+                // Set kebun dan keterangan petugas
+                dataPerkebunan.setProdukUtama(rs.getString("p.produk_utama"));
+                dataPerkebunan.setKBKI(rs.getString("p.kode_kbki"));
                 int perusahaanId = rs.getInt("perusahaan_id");
                 addKebunToDataPerkebunan(dataPerkebunan, conn, perusahaanId);
                 addKeteranganPetugasToDataPerkebunan(dataPerkebunan, conn, perusahaanId);

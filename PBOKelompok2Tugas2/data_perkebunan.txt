@@ -49,28 +49,36 @@ Tahun Berdiri: 2010
 Jenis Perusahaan Tebu: 1
 
 ===== Informasi Kebun =====
+Nama Produk Utama: Tebu Impor
+Kode KBKI: 1234567890
 Kebun ke-1
 Kabupaten/Kota: 20
 Provinsi: 10
 Luas Areal Tebang: 0.88
-Pendemen Hablur: 15.0
+Rendemen Hablur: 15.0
 Produksi GKP: 2.5
 Produksi Hablur: 2.0
 Produksi Tebu: 1.2
 Produksi Tetes: 0.5
-Jenis Kebun: sendiri
+Jenis Kebun: Tebu Sendiri
 Kebun ke-2
 Kabupaten/Kota: 50
 Provinsi: 12
 Luas Areal Tebang: 0.88
-Pendemen Hablur: 15.0
+Rendemen Hablur: 15.0
 Produksi GKP: 2.5
 Produksi Hablur: 2.0
 Produksi Tebu: 1.2
 Produksi Tetes: 0.5
-Jenis Kebun: pihak ketiga
+Jenis Kebun: Tebu Rakyat
 
 ===== Informasi Stok GKP =====
 Stok Pabrik Gula: 2.1
 Stok Pedagang: 1.5
 Stok Petani: 4.1
+
+===== Informasi Keterangan Petugas =====
+Nama Pencacah: Amir Syarifudin
+Tanggal Mencacah: 2024-06-09
+Nama Pemeriksa: Bambang Sucipto
+Tanggal Memeriksa: 2024-06-09

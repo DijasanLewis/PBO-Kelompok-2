@@ -65,6 +65,7 @@ public class Mform {
         dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setJenisPerusahaanTebu('1');
         // KEBUN
         dataPerkebunan.setProdukUtama("Tebu Impor");
+        dataPerkebunan.setKBKI("1234567890");
         dataPerkebunan.setKebun();
         dataPerkebunan.getKebun(0).getLetak().setKabKota("20");
         dataPerkebunan.getKebun(0).getLetak().setProv("10");
@@ -74,7 +75,7 @@ public class Mform {
         dataPerkebunan.getKebun(0).getProduksi().setProduksiHablur(2.0d);
         dataPerkebunan.getKebun(0).getProduksi().setProduksiTebu(1.2d);
         dataPerkebunan.getKebun(0).getProduksi().setProduksiTetes(0.5d);
-        dataPerkebunan.getKebun(0).setJenisKebun("sendiri");
+        dataPerkebunan.getKebun(0).setJenisKebun("Tebu Sendiri");
         
         dataPerkebunan.setKebun();
         dataPerkebunan.getKebun(1).getLetak().setKabKota("50");
@@ -85,12 +86,16 @@ public class Mform {
         dataPerkebunan.getKebun(1).getProduksi().setProduksiHablur(2.0d);
         dataPerkebunan.getKebun(1).getProduksi().setProduksiTebu(1.2d);
         dataPerkebunan.getKebun(1).getProduksi().setProduksiTetes(0.5d);
-        dataPerkebunan.getKebun(1).setJenisKebun("pihak ketiga");
+        dataPerkebunan.getKebun(1).setJenisKebun("Tebu Rakyat");
 
         //Stok GKP
         dataPerkebunan.getStokGKP().setStokPabrikGula(2.1d);
         dataPerkebunan.getStokGKP().setStokPedagang(1.5d);
         dataPerkebunan.getStokGKP().setStokPetani(4.1d);
+        
+        //Keterangan Petugas
+        dataPerkebunan.getKeteranganPetugas().setNamaPencacah("Amir Syarifudin");
+        dataPerkebunan.getKeteranganPetugas().setNamaPemeriksa("Bambang Sucipto");
         form.setDataPerkebunan(dataPerkebunan);
         if(!form.validate()){
             System.out.println("Data invalid. Fix errors below:");

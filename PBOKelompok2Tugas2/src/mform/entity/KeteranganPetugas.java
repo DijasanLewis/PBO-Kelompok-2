@@ -18,7 +18,7 @@ public class KeteranganPetugas {
     public KeteranganPetugas(){
     }
     
-    public void setPencacah(String namaPencacah){
+    public void setNamaPencacah(String namaPencacah){
         this.namaPencacah = namaPencacah;
         this.tanggalMencacah = LocalDate.now();
     }
@@ -28,13 +28,21 @@ public class KeteranganPetugas {
         this.tanggalMencacah = tanggalMencacah;
     }
     
-    public void setPemeriksa(String namaPemeriksa){
+    public void setTanggalMencacah(LocalDate tanggalMencacah) {
+        this.tanggalMencacah = tanggalMencacah;
+    }
+    
+    public void setNamaPemeriksa(String namaPemeriksa){
         this.namaPemeriksa = namaPemeriksa;
         this.tanggalMemeriksa = LocalDate.now();
     }
     
      public void setPemeriksa(String namaPemeriksa, LocalDate tanggalMemeriksa){
         this.namaPemeriksa = namaPemeriksa;
+        this.tanggalMemeriksa = tanggalMemeriksa;
+    }
+          
+    public void setTanggalMemeriksa(LocalDate tanggalMemeriksa) {
         this.tanggalMemeriksa = tanggalMemeriksa;
     }
 
