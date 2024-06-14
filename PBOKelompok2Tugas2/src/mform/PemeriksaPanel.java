@@ -50,7 +50,7 @@ public class PemeriksaPanel extends javax.swing.JFrame {
 
         cariLabel.setText("Cari nama perusahaan:");
 
-        cariTextField.setText("Perusahaan Tebu Sejahtera");
+        cariTextField.setText("");
 
         cariButton.setText("CARI");
         cariButton.addActionListener(new java.awt.event.ActionListener() {
