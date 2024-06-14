@@ -258,7 +258,6 @@ public class DataKuesioner extends javax.swing.JFrame {
                 message += (string + "\n");
             }
             JOptionPane.showMessageDialog(this, message);
-            System.out.println(message);
         }
         
     }//GEN-LAST:event_simpanGlobalButtonActionPerformed
