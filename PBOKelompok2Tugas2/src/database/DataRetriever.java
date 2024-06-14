@@ -91,6 +91,11 @@ public class DataRetriever {
                 perusahaan.getKeteranganPerusahaan().setTahunBerdiri(rs.getInt("p.tahun_berdiri"));
                 perusahaan.getKeteranganPerusahaan().setJenisPerusahaanTebu(rs.getString("p.jenis_perusahaan_tebu").charAt(0));
                 dataPerkebunan.setPerusahaan(perusahaan);
+
+                //Set Stok GKP
+                dataPerkebunan.getStokGKP().setStokPabrikGula(Double.parseDouble(rs.getString("p.stok_pabrik_gula")));
+                dataPerkebunan.getStokGKP().setStokPedagang(Double.parseDouble(rs.getString("p.stok_pedagang")));
+                dataPerkebunan.getStokGKP().setStokPetani(Double.parseDouble(rs.getString("p.stok_petani")));
                 
                 // Set kebun dan keterangan petugas
                 dataPerkebunan.setProdukUtama(rs.getString("p.produk_utama"));

@@ -36,26 +36,7 @@ public class Mform {
         dataPerkebunan.getPerusahaan().setLintang(80.10);
         dataPerkebunan.getPerusahaan().setBujur(100.10);
         dataPerkebunan.getPerusahaan().setKBLI("12345");
-        // KANTOR PUSAT
-        dataPerkebunan.setKantorPusat();
-        dataPerkebunan.getKantorPusat().setNama("Perusahaan Tebu Pusat");
-        dataPerkebunan.getKantorPusat().getAlamat().setAlamatLengkap("Jalan Pusat No.1");
-        dataPerkebunan.getKantorPusat().getAlamat().setKodePos("12345");
-        dataPerkebunan.getKantorPusat().getAlamat().setTelepon("081112233445");
-        dataPerkebunan.getKantorPusat().getAlamat().setEmail("PerusahaanTebuPusat@gmail.com");
-        dataPerkebunan.getKantorPusat().getAlamat().setFax("021012233445");
-        dataPerkebunan.getKantorPusat().getAlamat().setProv("31");
-        dataPerkebunan.getKantorPusat().getAlamat().setKabKota("71");
-        // GROUP PERUSAHAAN
-        dataPerkebunan.setGroupPerusahaan();
-        dataPerkebunan.getGroupPerusahaan().setNama("Group Perusahaan Tebu");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setAlamatLengkap("Jalan Perusahaan Tebu No.15");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setKodePos("84756");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setTelepon("081298765432");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setEmail("GroupPerusahaanTebu@gmail.com");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setFax("021098765432");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setProv("12");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setKabKota("78");
+
         //KETERANGAN PERUSAHAAN
         dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setStatusPemodalan('1');
         dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('1');
