@@ -4,6 +4,8 @@
  */
 package mform;
 
+import javax.swing.JOptionPane;
+
 import database.DataRetriever;
 import mform.entity.DataPerkebunan;
 
@@ -160,11 +162,14 @@ public class PemeriksaPanel extends javax.swing.JFrame {
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         try{
-            if(dataPerkebunan.getPerusahaan().getNama() != null){
+            if(dataPerkebunan != null){
                 this.setVisible(false);
                 new DataKuesioner().setVisible(true);
                 revalidate();
                 repaint();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Data Perusahaan Tidak Ditemukan");
             }
         }
         catch (Exception e){
