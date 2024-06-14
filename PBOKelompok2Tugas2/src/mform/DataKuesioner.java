@@ -4,8 +4,14 @@
  */
 package mform;
 
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import mform.PanelData.*;
 import mform.entity.*;
+import mform.form.Form;
+import mform.form.FormDataPerkebunan;
 
 /**
  *
@@ -57,7 +63,6 @@ public class DataKuesioner extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 700));
 
         jScrollPane1.setMaximumSize(new java.awt.Dimension(520, 625));
         jScrollPane1.setMinimumSize(new java.awt.Dimension(520, 625));
@@ -65,7 +70,7 @@ public class DataKuesioner extends javax.swing.JFrame {
 
         jLabel1.setText("Nama Petugas:");
 
-        simpanGlobalButton.setText("Simpan Perubahan");
+        simpanGlobalButton.setText("Simpan ke Database");
         simpanGlobalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanGlobalButtonActionPerformed(evt);
@@ -239,7 +244,23 @@ public class DataKuesioner extends javax.swing.JFrame {
         //Masukkan stok gkp
         Panel4.panel4SaveButton.doClick();
         dp.setStokGKP(Panel4.stokGKP);
-
+        
+        //Validasi & upload data ke database
+        FormDataPerkebunan form = new FormDataPerkebunan(dp);
+        form.validate();
+        if(form.getErrorMessages().isEmpty()){
+            //Save ke database
+        }
+        else{
+            List<String> errorMessages = form.getErrorMessages();
+            String message = "Data Tidak Valid. Perbaiki error berikut:\n";
+            for (String string : errorMessages) {
+                message += (string + "\n");
+            }
+            JOptionPane.showMessageDialog(this, message);
+            System.out.println(message);
+        }
+        
     }//GEN-LAST:event_simpanGlobalButtonActionPerformed
 
     //Bikin Panel3 sebanyak jumlah kebun

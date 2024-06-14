@@ -75,9 +75,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[700, 700]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -146,7 +143,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="simpanGlobalButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Simpan Perubahan"/>
+        <Property name="text" type="java.lang.String" value="Simpan ke Database"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpanGlobalButtonActionPerformed"/>
