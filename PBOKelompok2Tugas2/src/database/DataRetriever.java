@@ -70,6 +70,8 @@ public class DataRetriever {
                 perusahaan.getAlamat().setTelepon(rs.getString("p.telepon"));
                 perusahaan.getAlamat().setEmail(rs.getString("p.email"));
                 perusahaan.getAlamat().setFax(rs.getString("p.fax"));
+                perusahaan.getAlamat().setProv(rs.getString("p.provinsi_kode"));
+                perusahaan.getAlamat().setKabKota(rs.getString("p.kab_kota_kode"));
                 perusahaan.setKecamatan(rs.getString("p.kecamatan_kode"));
                 perusahaan.setDesaKel(rs.getString("p.desa_kelurahan_kode"));
                 perusahaan.setNamaPIC(rs.getString("p.nama_pic"));
@@ -89,7 +91,7 @@ public class DataRetriever {
                 perusahaan.getKeteranganPerusahaan().setTahunBerdiri(rs.getInt("p.tahun_berdiri"));
                 perusahaan.getKeteranganPerusahaan().setJenisPerusahaanTebu(rs.getString("p.jenis_perusahaan_tebu").charAt(0));
                 dataPerkebunan.setPerusahaan(perusahaan);
-
+                
                 // Set kebun dan keterangan petugas
                 dataPerkebunan.setProdukUtama(rs.getString("p.produk_utama"));
                 dataPerkebunan.setKBKI(rs.getString("p.kode_kbki"));
