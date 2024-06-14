@@ -159,7 +159,6 @@ public class Panel1b extends javax.swing.JPanel {
 
     private void panel1bSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel1bSaveButtonActionPerformed
         save();
-        System.out.println("Kantor Pusat Tersimpan");
     }//GEN-LAST:event_panel1bSaveButtonActionPerformed
 
     //Isi form dengan data dari database
