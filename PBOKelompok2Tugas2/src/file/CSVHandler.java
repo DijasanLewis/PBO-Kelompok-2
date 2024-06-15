@@ -137,8 +137,9 @@ public class CSVHandler {
             
         } catch (Exception e) {
             System.err.println(e.getMessage());
+            return false;
         }
 
-        return false;
+        return true;
     }
 }
