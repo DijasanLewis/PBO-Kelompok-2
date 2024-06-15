@@ -82,7 +82,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nama petugas: " + MainFrame_Login.namaPemeriksa);
 
-        simpanGlobalButton.setText("Simpan ke Database");
+        simpanGlobalButton.setText("Selesai Periksa");
         simpanGlobalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanGlobalButtonActionPerformed(evt);
@@ -312,9 +312,9 @@ public class DataKuesioner extends javax.swing.JFrame {
         int idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
         isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
 */
-        //Kalau update berhasil tampilkan dialog berhasil disimpan
+        //Tampilan dialog tergantung data berhasil disimpan apa gak
         if(isUpdated){
-            JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
+            JOptionPane.showMessageDialog(this, "Data Selesai Diperiksa");
 
             //Balik ke login
             this.setVisible(false);
@@ -323,7 +323,7 @@ public class DataKuesioner extends javax.swing.JFrame {
             repaint();
         }
         else{
-            JOptionPane.showMessageDialog(this, "Gagal Menyimpan Data");
+            JOptionPane.showMessageDialog(this, "Data Gagal Disimpan ke Database");
         }
         
     }//GEN-LAST:event_simpanGlobalButtonActionPerformed

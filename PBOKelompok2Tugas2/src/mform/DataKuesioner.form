@@ -156,7 +156,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="simpanGlobalButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Simpan ke Database"/>
+        <Property name="text" type="java.lang.String" value="Selesai Periksa"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpanGlobalButtonActionPerformed"/>

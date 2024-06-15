@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import database.DataRetriever;
 import file.CSVHandler;
+import file.XlsxHandler;
 import mform.entity.DataPerkebunan;
 
 /**
@@ -25,6 +26,7 @@ public class PemeriksaPanel extends javax.swing.JFrame {
      */
     public PemeriksaPanel() {
         initComponents();
+        pathTextField.setText("");
     }
 
     /**
@@ -174,26 +176,51 @@ public class PemeriksaPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_cariButtonActionPerformed
 
     private void csvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvButtonActionPerformed
-        // TODO add your handling code here: Handle output ke bentuk file csv
         String filePath = pathTextField.getText();
-        //Ambil data
-        DataRetriever dr = new DataRetriever();
-        ArrayList<DataPerkebunan> dataPerkebunans = dr.retrieveAllData();
 
-        //Tulis file
-        CSVHandler ch = new CSVHandler();
-        boolean isWritten = ch.WriteCSV(filePath, dataPerkebunans);
-        if(isWritten){
-            JOptionPane.showMessageDialog(this, "Berhasil menyimpan file");
+        if(filePath.equals("")){
+            JOptionPane.showMessageDialog(this, "Silakan pilih path untuk output!");
         }
         else{
-            JOptionPane.showMessageDialog(this, "Gagal menyimpan file");
+            //Ambil data
+            DataRetriever dr = new DataRetriever();
+            ArrayList<DataPerkebunan> dataPerkebunans = dr.retrieveAllData();
+    
+            //Tulis file
+            CSVHandler ch = new CSVHandler();
+            boolean isWritten = ch.WriteCSV(filePath, dataPerkebunans);
+            if(isWritten){
+                JOptionPane.showMessageDialog(this, "Berhasil menyimpan file");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan file");
+            }
         }
 
     }//GEN-LAST:event_csvButtonActionPerformed
 
     private void excelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelButtonActionPerformed
-        // TODO add your handling code here: Handle output ke bentuk file excel
+        String filePath = pathTextField.getText();
+        //Cek user sudah pilih lokasi output atau belum
+        if(filePath.equals("")){
+            JOptionPane.showMessageDialog(this, "Silakan pilih path untuk output!");
+        }
+        else{
+            //Ambil data
+            DataRetriever dr = new DataRetriever();
+            ArrayList<DataPerkebunan> dataPerkebunans = dr.retrieveAllData();
+    
+            //Tulis file
+            XlsxHandler xh = new XlsxHandler();
+            boolean isWritten = xh.WriteXlsx(filePath, dataPerkebunans);
+            if(isWritten){
+                JOptionPane.showMessageDialog(this, "Berhasil menyimpan file");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan file");
+            }
+        }
+
     }//GEN-LAST:event_excelButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
@@ -225,7 +252,7 @@ public class PemeriksaPanel extends javax.swing.JFrame {
         chooser.setAcceptAllFileFilterUsed(false);
         //    
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-             pathTextField.setText(chooser.getSelectedFile() + "\\output.csv");
+             pathTextField.setText(chooser.getSelectedFile().toString());
         }
         else {
            System.out.println("No Selection ");
