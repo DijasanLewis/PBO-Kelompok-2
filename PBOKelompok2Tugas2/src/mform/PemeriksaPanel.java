@@ -4,9 +4,13 @@
  */
 package mform;
 
+import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import database.DataRetriever;
+import file.CSVHandler;
 import mform.entity.DataPerkebunan;
 
 /**
@@ -41,6 +45,8 @@ public class PemeriksaPanel extends javax.swing.JFrame {
         csvButton = new javax.swing.JButton();
         excelButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
+        pathTextField = new javax.swing.JTextField();
+        pathChooserButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +56,7 @@ public class PemeriksaPanel extends javax.swing.JFrame {
 
         cariLabel.setText("Cari nama perusahaan:");
 
-        cariTextField.setText("");
+        cariTextField.setText("Perusahaan Tebu Sejahtera");
 
         cariButton.setText("CARI");
         cariButton.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +91,13 @@ public class PemeriksaPanel extends javax.swing.JFrame {
             }
         });
 
+        pathChooserButton.setText("Pilih");
+        pathChooserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pathChooserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,8 +112,13 @@ public class PemeriksaPanel extends javax.swing.JFrame {
                                 .addComponent(csvButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(excelButton))
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pathTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pathChooserButton)))
+                        .addGap(0, 9, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(hasilLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -126,8 +144,11 @@ public class PemeriksaPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hasilLabel)
                     .addComponent(editButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(pathTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pathChooserButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(csvButton)
@@ -154,6 +175,15 @@ public class PemeriksaPanel extends javax.swing.JFrame {
 
     private void csvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvButtonActionPerformed
         // TODO add your handling code here: Handle output ke bentuk file csv
+        String filePath = pathTextField.getText();
+        //Ambil data
+        DataRetriever dr = new DataRetriever();
+        ArrayList<DataPerkebunan> dataPerkebunans = dr.retrieveAllData();
+
+        //Tulis file
+        CSVHandler ch = new CSVHandler();
+        ch.WriteCSV(filePath, dataPerkebunans);
+
     }//GEN-LAST:event_csvButtonActionPerformed
 
     private void excelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelButtonActionPerformed
@@ -176,6 +206,25 @@ public class PemeriksaPanel extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_editButtonActionPerformed
+
+    private void pathChooserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathChooserButtonActionPerformed
+        String title = "Pilih Folder";
+        JFileChooser chooser = new JFileChooser(); 
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle(title);
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        //
+        // disable the "All files" option.
+        //
+        chooser.setAcceptAllFileFilterUsed(false);
+        //    
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
+             pathTextField.setText(chooser.getSelectedFile() + "\\output.csv");
+        }
+        else {
+           System.out.println("No Selection ");
+        }
+    }//GEN-LAST:event_pathChooserButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,5 +271,7 @@ public class PemeriksaPanel extends javax.swing.JFrame {
     private javax.swing.JLabel hasilLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel judulLable;
+    private javax.swing.JButton pathChooserButton;
+    private javax.swing.JTextField pathTextField;
     // End of variables declaration//GEN-END:variables
 }
