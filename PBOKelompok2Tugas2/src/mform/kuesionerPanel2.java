@@ -4,17 +4,24 @@
  */
 package mform;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import mform.entity.DataPerkebunan;
+
 /**
  *
  * @author USER
  */
 public class kuesionerPanel2 extends javax.swing.JFrame {
-
+    private String namaPetugas;
+    private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MF_Blok2
      */
-    public kuesionerPanel2() {
+    public kuesionerPanel2(String namaPetugas, DataPerkebunan dataPerkebunan) {
         initComponents();
+        this.namaPetugas = namaPetugas;
+        this.dataPerkebunan = dataPerkebunan;
     }
 
     /**
@@ -26,106 +33,127 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        status_pemodalanbuttonGroup = new javax.swing.ButtonGroup();
+        pelaksana_kemitraanGroup = new javax.swing.ButtonGroup();
+        kebun_plasma_belum_konversibuttonGroup = new javax.swing.ButtonGroup();
+        unit_pengolahanbuttonGroup = new javax.swing.ButtonGroup();
+        kebun_pabrikbuttonGroup = new javax.swing.ButtonGroup();
         jLabel17 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        pmdnRadioButton = new javax.swing.JRadioButton();
+        pmaRadioButton = new javax.swing.JRadioButton();
+        bentuk_badan_hukumComboBox = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        ya_pelaksana_kemitraanRadioButton = new javax.swing.JRadioButton();
+        tidak_pelaksana_kemitraanRadioButton = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
-        jRadioButton13 = new javax.swing.JRadioButton();
-        jRadioButton14 = new javax.swing.JRadioButton();
+        ya_kebun_plasma_belum_dikonversiRadioButton = new javax.swing.JRadioButton();
+        tidak_kebun_plasma_belum_dikonversiRadioButton = new javax.swing.JRadioButton();
         jLabel25 = new javax.swing.JLabel();
-        jRadioButton15 = new javax.swing.JRadioButton();
-        jRadioButton16 = new javax.swing.JRadioButton();
+        ya_unit_pengolahan_produksiRadioButton = new javax.swing.JRadioButton();
+        tidak_unit_pengolahan_produksiRadioButton = new javax.swing.JRadioButton();
         jLabel26 = new javax.swing.JLabel();
-        jRadioButton17 = new javax.swing.JRadioButton();
-        jRadioButton18 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        kebunRadioButton = new javax.swing.JRadioButton();
+        pabrikRadioButton = new javax.swing.JRadioButton();
+        tahun_berdiri_perusahaanTextField = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jRadioButton19 = new javax.swing.JRadioButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        kebun_pabrikRadioButton = new javax.swing.JRadioButton();
+        nextToggleButton = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        produk_UtamaTextField = new javax.swing.JTextField();
+        kbkiTextField = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jumlah_KebunComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel17.setText("Status Permodalan/Pemilikan:");
 
-        jRadioButton1.setText("PMDN");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        status_pemodalanbuttonGroup.add(pmdnRadioButton);
+        pmdnRadioButton.setText("PMDN");
+        pmdnRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                pmdnRadioButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("PMA");
+        status_pemodalanbuttonGroup.add(pmaRadioButton);
+        pmaRadioButton.setText("PMA");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Persero/Perum", "Perusahaan Daerah (PD)/BUMD", "Perseroan Terbatas (PT)", "Koperasi/KUD", "Yayasan", "NV", "CV", "Firma", "Perwakilan Perusahaan/Lembaga Asing" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        bentuk_badan_hukumComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Persero/Perum", "Perusahaan Daerah (PD)/BUMD", "Perseroan Terbatas (PT)", "Koperasi/KUD", "Yayasan", "NV", "CV", "Firma", "Perwakilan Perusahaan/Lembaga Asing" }));
+        bentuk_badan_hukumComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                bentuk_badan_hukumComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel18.setText("Status:");
+        jLabel18.setText("Bentuk Badan Hukum:");
 
         jLabel19.setText("Apakah sebagai Pelaksana Kemitraan?");
 
-        jRadioButton3.setText("Ya");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        pelaksana_kemitraanGroup.add(ya_pelaksana_kemitraanRadioButton);
+        ya_pelaksana_kemitraanRadioButton.setText("Ya");
+        ya_pelaksana_kemitraanRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                ya_pelaksana_kemitraanRadioButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton4.setText("Tidak");
+        pelaksana_kemitraanGroup.add(tidak_pelaksana_kemitraanRadioButton);
+        tidak_pelaksana_kemitraanRadioButton.setText("Tidak");
 
         jLabel24.setText("Apakah mempunyai Kebun Plasma yang belum dikonversi?");
 
-        jRadioButton13.setText("Ya");
-        jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
+        kebun_plasma_belum_konversibuttonGroup.add(ya_kebun_plasma_belum_dikonversiRadioButton);
+        ya_kebun_plasma_belum_dikonversiRadioButton.setText("Ya");
+        ya_kebun_plasma_belum_dikonversiRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton13ActionPerformed(evt);
+                ya_kebun_plasma_belum_dikonversiRadioButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton14.setText("Tidak");
+        kebun_plasma_belum_konversibuttonGroup.add(tidak_kebun_plasma_belum_dikonversiRadioButton);
+        tidak_kebun_plasma_belum_dikonversiRadioButton.setText("Tidak");
 
         jLabel25.setText("Apakah mempunyai unit pengolahan produksi?");
 
-        jRadioButton15.setText("Ya");
-        jRadioButton15.addActionListener(new java.awt.event.ActionListener() {
+        unit_pengolahanbuttonGroup.add(ya_unit_pengolahan_produksiRadioButton);
+        ya_unit_pengolahan_produksiRadioButton.setText("Ya");
+        ya_unit_pengolahan_produksiRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton15ActionPerformed(evt);
+                ya_unit_pengolahan_produksiRadioButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton16.setText("Tidak");
+        unit_pengolahanbuttonGroup.add(tidak_unit_pengolahan_produksiRadioButton);
+        tidak_unit_pengolahan_produksiRadioButton.setText("Tidak");
 
         jLabel26.setText("Tahun berdiri/operasional perusahaan");
 
-        jRadioButton17.setText("Kebun");
-        jRadioButton17.addActionListener(new java.awt.event.ActionListener() {
+        kebun_pabrikbuttonGroup.add(kebunRadioButton);
+        kebunRadioButton.setText("Kebun");
+        kebunRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton17ActionPerformed(evt);
+                kebunRadioButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton18.setText("Pabrik");
+        kebun_pabrikbuttonGroup.add(pabrikRadioButton);
+        pabrikRadioButton.setText("Pabrik");
 
         jLabel27.setText("Apakah mempunyai kebun/pabrik/kebun dan pabrik");
 
-        jRadioButton19.setText("Kebun dan Pabrik");
+        kebun_pabrikbuttonGroup.add(kebun_pabrikRadioButton);
+        kebun_pabrikRadioButton.setText("Kebun dan Pabrik");
 
-        jToggleButton1.setText("NEXT");
+        nextToggleButton.setText("NEXT");
+        nextToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextToggleButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Jumlah Kebun :");
 
@@ -137,7 +165,7 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("KETERANGAN PERUSAHAAN/KANTOR ADMINISTRATUR");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jumlah_KebunComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,26 +188,26 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton3)
-                                    .addComponent(jRadioButton13)
-                                    .addComponent(jRadioButton15))
+                                    .addComponent(ya_pelaksana_kemitraanRadioButton)
+                                    .addComponent(ya_kebun_plasma_belum_dikonversiRadioButton)
+                                    .addComponent(ya_unit_pengolahan_produksiRadioButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton4)
-                                    .addComponent(jRadioButton14)
-                                    .addComponent(jRadioButton16)))
+                                    .addComponent(tidak_pelaksana_kemitraanRadioButton)
+                                    .addComponent(tidak_kebun_plasma_belum_dikonversiRadioButton)
+                                    .addComponent(tidak_unit_pengolahan_produksiRadioButton)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton17)
+                                .addComponent(kebunRadioButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton18)
+                                .addComponent(pabrikRadioButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton19))
-                            .addComponent(jTextField1)
+                                .addComponent(kebun_pabrikRadioButton))
+                            .addComponent(tahun_berdiri_perusahaanTextField)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(pmdnRadioButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(pmaRadioButton))
+                            .addComponent(bentuk_badan_hukumComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,10 +215,10 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(produk_UtamaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kbkiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jumlah_KebunComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(nextToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
         );
@@ -199,93 +227,180 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel22)
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jLabel17))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(pmdnRadioButton)
+                        .addComponent(pmaRadioButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1)
+                    .addComponent(bentuk_badan_hukumComboBox)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
-                            .addComponent(jRadioButton3))
+                            .addComponent(ya_pelaksana_kemitraanRadioButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton13)
+                                .addComponent(ya_kebun_plasma_belum_dikonversiRadioButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jRadioButton15)
+                                    .addComponent(ya_unit_pengolahan_produksiRadioButton)
                                     .addComponent(jLabel25)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton4)
+                        .addComponent(tidak_pelaksana_kemitraanRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton14)
+                        .addComponent(tidak_kebun_plasma_belum_dikonversiRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton16)))
+                        .addComponent(tidak_unit_pengolahan_produksiRadioButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tahun_berdiri_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jRadioButton19)
-                    .addComponent(jRadioButton17)
-                    .addComponent(jRadioButton18))
+                    .addComponent(kebun_pabrikRadioButton)
+                    .addComponent(kebunRadioButton)
+                    .addComponent(pabrikRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jumlah_KebunComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(produk_UtamaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kbkiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
+                .addComponent(nextToggleButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void pmdnRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmdnRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_pmdnRadioButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void bentuk_badan_hukumComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bentuk_badan_hukumComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_bentuk_badan_hukumComboBoxActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void ya_pelaksana_kemitraanRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ya_pelaksana_kemitraanRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_ya_pelaksana_kemitraanRadioButtonActionPerformed
 
-    private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
+    private void ya_kebun_plasma_belum_dikonversiRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ya_kebun_plasma_belum_dikonversiRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton13ActionPerformed
+    }//GEN-LAST:event_ya_kebun_plasma_belum_dikonversiRadioButtonActionPerformed
 
-    private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
+    private void ya_unit_pengolahan_produksiRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ya_unit_pengolahan_produksiRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton15ActionPerformed
+    }//GEN-LAST:event_ya_unit_pengolahan_produksiRadioButtonActionPerformed
 
-    private void jRadioButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton17ActionPerformed
+    private void kebunRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kebunRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton17ActionPerformed
+    }//GEN-LAST:event_kebunRadioButtonActionPerformed
+
+    private void nextToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextToggleButtonActionPerformed
+        // TODO add your handling code here:
+        //Keterangan perusahaan
+        if(pmdnRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setStatusPemodalan('1');
+        }
+        if(pmaRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setStatusPemodalan('2');
+        }
+        //Bentuk badan hukum
+        if("Persero/Perum".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('1');
+        }
+        if("Perusahaan Daerah (PD)/BUMD".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('2');
+        }
+        if("Perseroan Terbatas (PT)".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('3');
+        }
+        if("Koperasi/KUD".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('4');
+        }
+        if("Yayasan".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('5');
+        }
+        if("NV".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('6');
+        }
+        if("CV".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('7');
+        }
+        if("Firma".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('8');
+        }
+        if("Perwakilan Perusahaan/Lembaga Asing".equals(bentuk_badan_hukumComboBox.getSelectedItem().toString())){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setBentukBadanHukum('9');
+        }
+        //Pelaksana kemitraan
+        if(ya_pelaksana_kemitraanRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setPelaksanaanKemitraan('1');
+        }
+        if(tidak_pelaksana_kemitraanRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setPelaksanaanKemitraan('2');
+        }
+        //Kebun plasma konversi
+        if(ya_kebun_plasma_belum_dikonversiRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setKebunPlasmaKonversi('1');
+        }
+        if(tidak_kebun_plasma_belum_dikonversiRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setKebunPlasmaKonversi('2');
+        }
+        
+        //Unit pengolahan produksi
+        if(ya_unit_pengolahan_produksiRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setUnitPengolahanProduksi('1');
+        }
+        if(tidak_unit_pengolahan_produksiRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setUnitPengolahanProduksi('2');
+        }
+        
+        dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setTahunBerdiri(Integer.parseInt(tahun_berdiri_perusahaanTextField.getText()));
+        
+        //Jenis perusahaan tebu
+        if(kebunRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setJenisPerusahaanTebu('1');
+        }
+        if(pabrikRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setJenisPerusahaanTebu('2');
+        }
+        if(kebun_pabrikRadioButton.isSelected()){
+            dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setJenisPerusahaanTebu('3');
+        }
+        
+        dataPerkebunan.setProdukUtama(produk_UtamaTextField.getText());
+        dataPerkebunan.setKBKI(kbkiTextField.getText());
+        
+        int jumlah_Kebun = Integer.parseInt(jumlah_KebunComboBox.getSelectedItem().toString());
+        int nomorKebun = 1;
+        setVisible(false);
+        kuesionerPanel3 panel3 = new kuesionerPanel3(namaPetugas, jumlah_Kebun, nomorKebun, dataPerkebunan);
+        panel3.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_nextToggleButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        String namaPetugas = null;
+        DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -319,14 +434,13 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel2().setVisible(true);
+                new kuesionerPanel2(namaPetugas, dataPerkebunan).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> bentuk_badan_hukumComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -338,20 +452,26 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton13;
-    private javax.swing.JRadioButton jRadioButton14;
-    private javax.swing.JRadioButton jRadioButton15;
-    private javax.swing.JRadioButton jRadioButton16;
-    private javax.swing.JRadioButton jRadioButton17;
-    private javax.swing.JRadioButton jRadioButton18;
-    private javax.swing.JRadioButton jRadioButton19;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JComboBox<String> jumlah_KebunComboBox;
+    private javax.swing.JTextField kbkiTextField;
+    private javax.swing.JRadioButton kebunRadioButton;
+    private javax.swing.JRadioButton kebun_pabrikRadioButton;
+    private javax.swing.ButtonGroup kebun_pabrikbuttonGroup;
+    private javax.swing.ButtonGroup kebun_plasma_belum_konversibuttonGroup;
+    private javax.swing.JToggleButton nextToggleButton;
+    private javax.swing.JRadioButton pabrikRadioButton;
+    private javax.swing.ButtonGroup pelaksana_kemitraanGroup;
+    private javax.swing.JRadioButton pmaRadioButton;
+    private javax.swing.JRadioButton pmdnRadioButton;
+    private javax.swing.JTextField produk_UtamaTextField;
+    private javax.swing.ButtonGroup status_pemodalanbuttonGroup;
+    private javax.swing.JTextField tahun_berdiri_perusahaanTextField;
+    private javax.swing.JRadioButton tidak_kebun_plasma_belum_dikonversiRadioButton;
+    private javax.swing.JRadioButton tidak_pelaksana_kemitraanRadioButton;
+    private javax.swing.JRadioButton tidak_unit_pengolahan_produksiRadioButton;
+    private javax.swing.ButtonGroup unit_pengolahanbuttonGroup;
+    private javax.swing.JRadioButton ya_kebun_plasma_belum_dikonversiRadioButton;
+    private javax.swing.JRadioButton ya_pelaksana_kemitraanRadioButton;
+    private javax.swing.JRadioButton ya_unit_pengolahan_produksiRadioButton;
     // End of variables declaration//GEN-END:variables
 }

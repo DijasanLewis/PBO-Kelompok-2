@@ -1,5 +1,7 @@
 package mform;
 
+import mform.entity.DataPerkebunan;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,11 +12,27 @@ package mform;
  * @author USER
  */
 public class kuesionerPanel1b extends javax.swing.JFrame {
+    private String namaPetugas;
+    private boolean memilikiKantorPusat;
+    private boolean memilikiGroupPerusahaan;
+    private DataPerkebunan dataPerkebunan;
 
     /**
      * Creates new form MF_Blok1_b
      */
-    public kuesionerPanel1b() {
+    public kuesionerPanel1b(String namaPetugas, boolean memilikiKantorPusat, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
+        this.namaPetugas = namaPetugas;
+        this.memilikiKantorPusat = memilikiKantorPusat;
+        this.memilikiGroupPerusahaan = memilikiGroupPerusahaan;
+        this.dataPerkebunan = dataPerkebunan;
+        
+        // Jika tidak memiliki Kantor Pusat
+        if (!memilikiKantorPusat) {
+            kuesionerPanel1c panel1c = new kuesionerPanel1c(namaPetugas, memilikiGroupPerusahaan, dataPerkebunan);
+            panel1c.setVisible(true);
+            dispose();
+            return;
+        }
         initComponents();
     }
 
@@ -28,48 +46,48 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        kode_pos_kantor_pusatTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        telepon_kantor_pusatTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        email_kantor_pusatTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        alamat_kantor_pusatTextArea = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        fax_kantor_pusatTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        provinsi_kode_kantor_pusatTextField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jTextField3 = new javax.swing.JTextField();
+        kab_kota_kode_kantor_pusatTextField = new javax.swing.JTextField();
+        nextToggleButton = new javax.swing.JToggleButton();
+        nama_kantor_pusatTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("2. Nama Kantor Pusat:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        kode_pos_kantor_pusatTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                kode_pos_kantor_pusatTextFieldActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Telepon:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        telepon_kantor_pusatTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                telepon_kantor_pusatTextFieldActionPerformed(evt);
             }
         });
 
         jLabel8.setText("Email:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        email_kantor_pusatTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                email_kantor_pusatTextFieldActionPerformed(evt);
             }
         });
 
@@ -77,15 +95,15 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
 
         jLabel3.setText("Alamat:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        alamat_kantor_pusatTextArea.setColumns(20);
+        alamat_kantor_pusatTextArea.setRows(5);
+        jScrollPane1.setViewportView(alamat_kantor_pusatTextArea);
 
         jLabel4.setText("Kode Pos:");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        fax_kantor_pusatTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                fax_kantor_pusatTextFieldActionPerformed(evt);
             }
         });
 
@@ -93,21 +111,26 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
 
         jLabel11.setText("Provinsi:");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        provinsi_kode_kantor_pusatTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                provinsi_kode_kantor_pusatTextFieldActionPerformed(evt);
             }
         });
 
         jLabel13.setText("Kabupaten/Kota:");
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        kab_kota_kode_kantor_pusatTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                kab_kota_kode_kantor_pusatTextFieldActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setText("NEXT");
+        nextToggleButton.setText("NEXT");
+        nextToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextToggleButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,10 +139,10 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nama_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
@@ -135,27 +158,27 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(kode_pos_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(email_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel9)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(nextToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel5)
                                                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jTextField6)
-                                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                        .addComponent(fax_kantor_pusatTextField)
+                                                        .addComponent(telepon_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                                .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(kab_kota_kode_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                .addComponent(provinsi_kode_kantor_pusatTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addContainerGap())
         );
@@ -165,7 +188,7 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nama_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,62 +198,83 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kode_pos_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(telepon_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(email_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fax_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10))))
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(provinsi_kode_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kab_kota_kode_kantor_pusatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
+                .addComponent(nextToggleButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void kode_pos_kantor_pusatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pos_kantor_pusatTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_kode_pos_kantor_pusatTextFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void telepon_kantor_pusatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telepon_kantor_pusatTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_telepon_kantor_pusatTextFieldActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void email_kantor_pusatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_kantor_pusatTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_email_kantor_pusatTextFieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void fax_kantor_pusatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fax_kantor_pusatTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_fax_kantor_pusatTextFieldActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void provinsi_kode_kantor_pusatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinsi_kode_kantor_pusatTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_provinsi_kode_kantor_pusatTextFieldActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void kab_kota_kode_kantor_pusatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kab_kota_kode_kantor_pusatTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_kab_kota_kode_kantor_pusatTextFieldActionPerformed
+
+    private void nextToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextToggleButtonActionPerformed
+        // TODO add your handling code here:
+        dataPerkebunan.setKantorPusat();
+        dataPerkebunan.getKantorPusat().setNama(nama_kantor_pusatTextField.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setAlamatLengkap(alamat_kantor_pusatTextArea.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setKodePos(kode_pos_kantor_pusatTextField.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setTelepon(telepon_kantor_pusatTextField.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setEmail(email_kantor_pusatTextField.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setFax(fax_kantor_pusatTextField.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setProv(provinsi_kode_kantor_pusatTextField.getText());
+        dataPerkebunan.getKantorPusat().getAlamat().setKabKota(kab_kota_kode_kantor_pusatTextField.getText());
+        
+        kuesionerPanel1c panel1c = new kuesionerPanel1c(namaPetugas, memilikiGroupPerusahaan, dataPerkebunan);
+        panel1c.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_nextToggleButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        String namaPetugas = null;
+        boolean memilikiKantorPusat = false;
+        boolean memilikiGroupPerusahaan = false;
+        DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -264,12 +308,15 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel1b().setVisible(true);
+                new kuesionerPanel1b(namaPetugas, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea alamat_kantor_pusatTextArea;
+    private javax.swing.JTextField email_kantor_pusatTextField;
+    private javax.swing.JTextField fax_kantor_pusatTextField;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -280,14 +327,11 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField kab_kota_kode_kantor_pusatTextField;
+    private javax.swing.JTextField kode_pos_kantor_pusatTextField;
+    private javax.swing.JTextField nama_kantor_pusatTextField;
+    private javax.swing.JToggleButton nextToggleButton;
+    private javax.swing.JTextField provinsi_kode_kantor_pusatTextField;
+    private javax.swing.JTextField telepon_kantor_pusatTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,17 +4,21 @@
  */
 package mform;
 
-
+import database.DatabaseConnection;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 /**
  *
  * @author yedij
  */
 public class MainFrame_Login extends javax.swing.JFrame {
-    public static String namaPemeriksa = "Fatih Hakim Mudzaky";
+    private DatabaseConnection databaseConnection;
+    
     /**
      * Creates new form MainFrame
      */
     public MainFrame_Login() {
+        this.databaseConnection = new DatabaseConnection();
         initComponents();
     }
 
@@ -160,11 +164,28 @@ public class MainFrame_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_pemeriksaRadioButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        if(pemeriksaRadioButton.isSelected()){
-            this.setVisible(false);
-            new PemeriksaPanel().setVisible(true);
-            revalidate();
-            repaint();
+        // TODO add your handling code here:
+        String username = usernameTextField.getText();
+        char[] passwordChar = passwordField.getPassword();
+        
+        try {
+            if (databaseConnection.verifyCredentials(username, passwordChar)) {
+                String namaPetugas = databaseConnection.getNamaPetugas(username); // Menyimpan Nama Perugas
+                 if (pencacahRadioButton.isSelected()) {
+                    kuesionerPanel1 kuesioner = new kuesionerPanel1(namaPetugas);
+                    kuesioner.setVisible(true);
+                    dispose();
+                } else if (pemeriksaRadioButton.isSelected()) {
+                    //editAndExport editdanexport = new editAndExport();
+                    //editdanexport.setVisible(true);
+                    //dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } finally {
+            // Clear the password array
+            Arrays.fill(passwordChar, '\0');
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -197,14 +218,13 @@ public class MainFrame_Login extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame_Login().setVisible(true);
             }
         });
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -219,5 +239,4 @@ public class MainFrame_Login extends javax.swing.JFrame {
     private javax.swing.JRadioButton pencacahRadioButton;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
-
 }
