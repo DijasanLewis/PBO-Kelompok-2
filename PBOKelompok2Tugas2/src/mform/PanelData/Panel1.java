@@ -44,9 +44,9 @@ public class Panel1 extends javax.swing.JPanel {
         perempuanRadioButton = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        emailTextField = new javax.swing.JTextField();
-        statusComboBox = new javax.swing.JComboBox<>();
         faxTextField = new javax.swing.JTextField();
+        statusComboBox = new javax.swing.JComboBox<>();
+        emailTextField = new javax.swing.JTextField();
         panel1SaveButton = new javax.swing.JToggleButton();
         jLabel8 = new javax.swing.JLabel();
         namaPerusahaan = new javax.swing.JTextField();
@@ -99,7 +99,19 @@ public class Panel1 extends javax.swing.JPanel {
 
         jLabel18.setText("Status:");
 
+        faxTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                faxTextFieldActionPerformed(evt);
+            }
+        });
+
         statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tutup", "Tutup Sementara" }));
+
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailTextFieldActionPerformed(evt);
+            }
+        });
 
         panel1SaveButton.setText("SAVE CHANGE");
         panel1SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +208,7 @@ public class Panel1 extends javax.swing.JPanel {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(kodePosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(provinsiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(faxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGap(56, 56, 56)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
@@ -223,7 +235,7 @@ public class Panel1 extends javax.swing.JPanel {
                                     .addComponent(perempuanRadioButton)
                                     .addComponent(lakiRadioButton)))
                             .addComponent(teleponTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(teleponPICTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panel1SaveButton)))
                     .addGroup(layout.createSequentialGroup()
@@ -269,7 +281,7 @@ public class Panel1 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
-                                    .addComponent(faxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel9)
@@ -327,7 +339,7 @@ public class Panel1 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8)
-                                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(faxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(116, 116, 116)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel16)
@@ -348,6 +360,14 @@ public class Panel1 extends javax.swing.JPanel {
     private void panel1SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel1SaveButtonActionPerformed
         save();
     }//GEN-LAST:event_panel1SaveButtonActionPerformed
+
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailTextFieldActionPerformed
+
+    private void faxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faxTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_faxTextFieldActionPerformed
     
     //Isi form dengan data dari database
     private void setField(){
