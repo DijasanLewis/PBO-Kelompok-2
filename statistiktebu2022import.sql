@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2024 pada 20.26
+-- Waktu pembuatan: 14 Jun 2024 pada 23.05
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -106,7 +106,9 @@ INSERT INTO `kebun` (`id`, `perusahaan_id`, `nama_kebun`, `provinsi_kode`, `kab_
 (4, 2, 'Pembelian dari Pihak Ketiga', '02', '02', 100, 100, 2000, 1000, 500, 250, 12.5),
 (5, 3, 'Tebu Sendiri', '02', '02', 700, 700, 14000, 7000, 3500, 1750, 12.5),
 (6, 4, 'Tebu Sendiri', '03', '03', 800, 800, 16000, 8000, 4000, 2000, 12.5),
-(7, 4, 'Tebu Rakyat', '03', '03', 400, 400, 8000, 4000, 2000, 1000, 12.5);
+(7, 4, 'Tebu Rakyat', '03', '03', 400, 400, 8000, 4000, 2000, 1000, 12.5),
+(8, 7, 'Tebu Sendiri', '10', '20', 0, 0.88, 1.2, 2.5, 0.5, 2, 15),
+(9, 7, 'Tebu Rakyat', '12', '50', 0, 0.88, 1.2, 2.5, 0.5, 2, 15);
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,8 @@ INSERT INTO `keterangan_petugas` (`id`, `perusahaan_id`, `nama_pencacah`, `tangg
 (1, 1, 'Joko Susilo', '2024-06-01', 'Siti Rahayu', '2024-06-03'),
 (2, 2, 'Ahmad Yani', '2024-06-02', 'Budi Santoso', '2024-06-04'),
 (3, 3, 'Dewi Lestari', '2024-06-03', 'Citra Dewi', '2024-06-05'),
-(4, 4, 'Rudi Hidayat', '2024-06-04', 'Ani Wijaya', '2024-06-06');
+(4, 4, 'Rudi Hidayat', '2024-06-04', 'Ani Wijaya', '2024-06-06'),
+(5, 7, 'Amir Syarifudin', '2024-06-14', 'Bambang Sucipto', '2024-06-14');
 
 -- --------------------------------------------------------
 
@@ -184,7 +187,8 @@ INSERT INTO `perusahaan` (`id`, `nama`, `alamat`, `kode_pos`, `telepon`, `email`
 (1, 'Perusahaan Tebu Subur', 'Jl. Subur No. 5', '60295', '021456789', 'admin@tebusubur.com', '021456780', '01', '01', '001', '001', 'Budi Darmawan', '08123456789', 'Manager', '1', 'Pengolahan', 'aktif', -6.17511, 106.865039, '011', 1, 1, '1', '1', '1', '1', '1', 1985, '1', 'Tebu', '1234567890', 1000, 500, 200),
 (2, 'Perusahaan Tebu Sejahtera', 'Jl. Subur No. 6', '60298', '021567892', 'admin@tebusejahtera.com', '021567893', '02', '02', '002', '002', 'Agus Santoso', '08134567890', 'Manager', '1', 'Pengolahan', 'aktif', -6.2, 106.9, '012', 2, 2, '2', '1', '1', '1', '1', 1990, '2', 'Tebu', '2345678901', 1500, 700, 300),
 (3, 'Perusahaan Tebu Maju', 'Jl. Maju No. 25', '60299', '021678903', 'admin@tebumaju.com', '021678904', '02', '02', '002', '002', 'Rina Wijaya', '08145678901', 'Manager', '2', 'Pengolahan', 'aktif', -6.21, 106.91, '013', 1, 2, '3', '1', '1', '1', '1', 2000, '3', 'Tebu', '3456789012', 2000, 800, 400),
-(4, 'Perusahaan Tebu Makmur', 'Jl. Makmur No. 30', '60300', '021789012', 'admin@tebumakmur.com', '021789013', '03', '03', '003', '003', 'Andi Suryadi', '08156789012', 'Manager', '1', 'Pengolahan', 'aktif', -6.22, 106.92, '014', 2, 1, '4', '1', '1', '1', '1', 1995, '1', 'Tebu', '4567890123', 2500, 900, 500);
+(4, 'Perusahaan Tebu Makmur', 'Jl. Makmur No. 30', '60300', '021789012', 'admin@tebumakmur.com', '021789013', '03', '03', '003', '003', 'Andi Suryadi', '08156789012', 'Manager', '1', 'Pengolahan', 'aktif', -6.22, 106.92, '014', 2, 1, '4', '1', '1', '1', '1', 1995, '1', 'Tebu', '4567890123', 2500, 900, 500),
+(7, 'NamaPerusahaanTest', 'Jalan Stis no.5 Jakarta', '12345', '081312345678', 'Perusahaantebu@gmail.com', '021012345678', '31', '71', '111', '111', 'NamaPICTest', '123456789012', 'JabatanPICTest', '1', 'UnitKerjaPICTest', 'aktif', 80.1, 100.1, '12345', NULL, NULL, '1', '1', '1', '1', '1', 2010, '1', 'Tebu Impor', '1234567890', 2.1, 1.5, 4.1);
 
 -- --------------------------------------------------------
 
@@ -273,19 +277,19 @@ ALTER TABLE `kantor_pusat`
 -- AUTO_INCREMENT untuk tabel `kebun`
 --
 ALTER TABLE `kebun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `keterangan_petugas`
 --
 ALTER TABLE `keterangan_petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `perusahaan`
 --
 ALTER TABLE `perusahaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

@@ -19,26 +19,6 @@ Koordinat Lintang: 80.1
 Koordinat Bujur: 100.1
 KBLI: 12345
 
-===== Informasi Kantor Pusat =====
-Nama: Perusahaan Tebu Pusat
-Alamat: Jalan Pusat No.1
-Kode Pos: 12345
-Telepon: 081112233445
-Email: PerusahaanTebuPusat@gmail.com
-Fax: 021012233445
-Provinsi: 31
-Kabupaten/Kota: 71
-
-===== Informasi Group Perusahaan =====
-Nama: Group Perusahaan Tebu
-Alamat: Jalan Perusahaan Tebu No.15
-Kode Pos: 84756
-Telepon: 081298765432
-Email: GroupPerusahaanTebu@gmail.com
-Fax: 021098765432
-Provinsi: 12
-Kabupaten/Kota: 78
-
 ===== Keterangan Perusahaan =====
 Status Pemodalan: 1
 Bentuk Badan Hukum: 1
@@ -79,6 +59,6 @@ Stok Petani: 4.1
 
 ===== Informasi Keterangan Petugas =====
 Nama Pencacah: Amir Syarifudin
-Tanggal Mencacah: 2024-06-09
+Tanggal Mencacah: 2024-06-14
 Nama Pemeriksa: Bambang Sucipto
-Tanggal Memeriksa: 2024-06-09
+Tanggal Memeriksa: 2024-06-14
