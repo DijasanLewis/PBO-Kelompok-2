@@ -25,9 +25,10 @@ public class Panel3duplikat extends javax.swing.JPanel {
      */
     public Panel3duplikat(JScrollPane pane) {
         this.pane = pane;
-        kebuns[DataKuesioner.indexPanel] = PemeriksaPanel.dataPerkebunan.getKebun(DataKuesioner.indexPanel + 1);
-        kebun = PemeriksaPanel.dataPerkebunan.getKebun(DataKuesioner.indexPanel + 1);
+        kebuns[DataKuesioner.indexPanel] = PemeriksaPanel.dataPerkebunan.getKebun(DataKuesioner.indexPanel);
+        kebun = PemeriksaPanel.dataPerkebunan.getKebun(DataKuesioner.indexPanel);
         initComponents();
+        judulLabel.setText("LUAS TANAMAN DAN PRODUKSI KEBUN KE-" + (DataKuesioner.indexPanel + 1));
         setField();
     }
 
@@ -49,7 +50,7 @@ public class Panel3duplikat extends javax.swing.JPanel {
     private void initComponents() {
 
         provTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        judulLabel = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         rendemenHablurTextField = new javax.swing.JTextField();
         kabKotaTextField = new javax.swing.JTextField();
@@ -73,9 +74,9 @@ public class Panel3duplikat extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         nextButton = new javax.swing.JButton();
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("LUAS TANAMAN DAN PRODUKSI");
+        judulLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        judulLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judulLabel.setText("LUAS TANAMAN DAN PRODUKSI");
 
         jLabel12.setText("Rendemen Hablur (%): ");
 
@@ -155,21 +156,19 @@ public class Panel3duplikat extends javax.swing.JPanel {
                             .addComponent(jenisKebunComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(provTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kabKotaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel3SaveButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nextButton)
                 .addContainerGap())
+            .addComponent(judulLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
+                .addComponent(judulLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -230,7 +229,7 @@ public class Panel3duplikat extends javax.swing.JPanel {
         System.out.println(DataKuesioner.indexPanel);
         DataKuesioner.indexPanel++;
 
-        if(DataKuesioner.indexPanel > PemeriksaPanel.dataPerkebunan.getJumlahKebun()-2){
+        if(DataKuesioner.indexPanel > PemeriksaPanel.dataPerkebunan.getJumlahKebun()-1){
             DataKuesioner.indexPanel = 0;
         }
         try {
@@ -333,7 +332,6 @@ public class Panel3duplikat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -342,6 +340,7 @@ public class Panel3duplikat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<String> jenisKebunComboBox;
+    private javax.swing.JLabel judulLabel;
     private javax.swing.JTextField kabKotaTextField;
     private javax.swing.JTextField luasTanamTextField;
     private javax.swing.JTextField luasTebangTextField;
