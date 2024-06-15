@@ -282,6 +282,12 @@ public class DataKuesioner extends javax.swing.JFrame {
         //Kalau update berhasil tampilkan dialog berhasil disimpan
         if(isUpdated){
             JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
+
+            //Balik ke login
+            this.setVisible(false);
+            new MainFrame_Login().setVisible(true);
+            revalidate();
+            repaint();
         }
         else{
             JOptionPane.showMessageDialog(this, "Gagal Menyimpan Data");
