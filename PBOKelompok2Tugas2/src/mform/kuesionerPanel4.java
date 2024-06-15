@@ -4,17 +4,26 @@
  */
 package mform;
 
+import database.DataInserter;
+import database.DataRetriever;
+import java.util.List;
+import mform.entity.DataPerkebunan;
+import mform.form.FormDataPerkebunan;
+
 /**
  *
  * @author USER
  */
 public class kuesionerPanel4 extends javax.swing.JFrame {
-
+    private String namaPetugas;
+    private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MF_BlokV
      */
-    public kuesionerPanel4() {
+    public kuesionerPanel4(String namaPetugas, DataPerkebunan dataPerkebunan) {
         initComponents();
+        this.namaPetugas = namaPetugas;
+        this.dataPerkebunan = dataPerkebunan;
     }
 
     /**
@@ -28,12 +37,12 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
 
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        stok_pabrik_gulaTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        stok_pedagangTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        stok_petaniTextField = new javax.swing.JTextField();
+        simpanToggleButton = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
 
         jToggleButton1.setText("NEXT");
@@ -42,29 +51,34 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
 
         jLabel6.setText("Stok Pabrik Gula (Ton):");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        stok_pabrik_gulaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                stok_pabrik_gulaTextFieldActionPerformed(evt);
             }
         });
 
         jLabel7.setText("Stok Pedagang (Ton):");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        stok_pedagangTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                stok_pedagangTextFieldActionPerformed(evt);
             }
         });
 
         jLabel8.setText("Stok Petani (Ton):");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        stok_petaniTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                stok_petaniTextFieldActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("SIMPAN");
+        simpanToggleButton.setText("SIMPAN");
+        simpanToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanToggleButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -75,22 +89,25 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToggleButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField5)))))
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(simpanToggleButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(stok_pedagangTextField)
+                                    .addComponent(stok_petaniTextField)
+                                    .addComponent(stok_pabrik_gulaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,40 +115,77 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stok_pabrik_gulaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stok_pedagangTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stok_petaniTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton2)
+                .addComponent(simpanToggleButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void stok_pabrik_gulaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stok_pabrik_gulaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_stok_pabrik_gulaTextFieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void stok_pedagangTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stok_pedagangTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_stok_pedagangTextFieldActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void stok_petaniTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stok_petaniTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_stok_petaniTextFieldActionPerformed
+
+    private void simpanToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanToggleButtonActionPerformed
+        // TODO add your handling code here:
+        dataPerkebunan.getStokGKP().setStokPabrikGula(Double.parseDouble(stok_pabrik_gulaTextField.getText()));
+        dataPerkebunan.getStokGKP().setStokPedagang(Double.parseDouble(stok_pedagangTextField.getText()));
+        dataPerkebunan.getStokGKP().setStokPetani(Double.parseDouble(stok_petaniTextField.getText()));
+        FormDataPerkebunan form = new FormDataPerkebunan();
+        dataPerkebunan.getKeteranganPetugas().setNamaPencacah(namaPetugas);
+        dataPerkebunan.getKeteranganPetugas().setNamaPemeriksa("NamaPemeriksaTest");
+        form.setDataPerkebunan(dataPerkebunan);
+        
+        //Validate
+        if(!form.validate()){
+            System.out.println("Data invalid. Fix errors below:");
+            List<String> errorMessages = form.getErrorMessages();
+            for (String errorMessage : errorMessages) {
+                System.out.println("- "+ errorMessage);
+            }
+        }else{
+            // Memasukkan data ke dalam database
+            System.out.println("MEMASUKKAN DATA KE DALAM DATABSE");
+            DataInserter dataInserter = new DataInserter();
+            dataInserter.insertData(dataPerkebunan);
+            
+            form.reset();
+            
+            //Mencoba mengambil data dari database
+            System.out.println("MENGAMBIL DATA \"Perusahaan Tebu Sejahtera\" DARI DATABSE");
+            DataRetriever dataRetriever = new DataRetriever();
+            dataPerkebunan = dataRetriever.retrieveData("Perusahaan Tebu Sejahtera");
+            form.setDataPerkebunan(dataPerkebunan);
+            
+            form.print();
+        }
+    }//GEN-LAST:event_simpanToggleButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        String namaPetugas = null;
+        DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -165,7 +219,7 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel4().setVisible(true);
+                new kuesionerPanel4(namaPetugas, dataPerkebunan).setVisible(true);
             }
         });
     }
@@ -175,10 +229,10 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton simpanToggleButton;
+    private javax.swing.JTextField stok_pabrik_gulaTextField;
+    private javax.swing.JTextField stok_pedagangTextField;
+    private javax.swing.JTextField stok_petaniTextField;
     // End of variables declaration//GEN-END:variables
 }

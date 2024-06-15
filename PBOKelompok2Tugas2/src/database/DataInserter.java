@@ -1,11 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import mform.entity.DataPerkebunan;
 import mform.entity.Kebun;
+
+/**
+ *
+ * @author yedij
+ */
 
 public class DataInserter {
 
@@ -20,46 +30,39 @@ public class DataInserter {
         try {
             connection = DatabaseConnection.getConnection();
             connection.setAutoCommit(false);
-            
-            Integer kantorPusatId = null;
-            Integer grupPerusahaanId = null;
 
-            // Insert data kantor pusat jika ada
-            if (dataPerkebunan.getKantorPusat() != null){
-                String sqlKantorPusat = "INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                psKantorPusat = connection.prepareStatement(sqlKantorPusat, PreparedStatement.RETURN_GENERATED_KEYS);
-                psKantorPusat.setString(1, dataPerkebunan.getKantorPusat().getNama());
-                psKantorPusat.setString(2, dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap());
-                psKantorPusat.setString(3, dataPerkebunan.getKantorPusat().getAlamat().getKodePos());
-                psKantorPusat.setString(4, dataPerkebunan.getKantorPusat().getAlamat().getTelepon());
-                psKantorPusat.setString(5, dataPerkebunan.getKantorPusat().getAlamat().getEmail());
-                psKantorPusat.setString(6, dataPerkebunan.getKantorPusat().getAlamat().getFax());
-                psKantorPusat.setString(7, dataPerkebunan.getKantorPusat().getAlamat().getProv());
-                psKantorPusat.setString(8, dataPerkebunan.getKantorPusat().getAlamat().getKabKota());
-                psKantorPusat.executeUpdate();
+            // Insert data kantor pusat
+            String sqlKantorPusat = "INSERT INTO kantor_pusat (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            psKantorPusat = connection.prepareStatement(sqlKantorPusat, PreparedStatement.RETURN_GENERATED_KEYS);
+            psKantorPusat.setString(1, dataPerkebunan.getKantorPusat().getNama());
+            psKantorPusat.setString(2, dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap());
+            psKantorPusat.setString(3, dataPerkebunan.getKantorPusat().getAlamat().getKodePos());
+            psKantorPusat.setString(4, dataPerkebunan.getKantorPusat().getAlamat().getTelepon());
+            psKantorPusat.setString(5, dataPerkebunan.getKantorPusat().getAlamat().getEmail());
+            psKantorPusat.setString(6, dataPerkebunan.getKantorPusat().getAlamat().getFax());
+            psKantorPusat.setString(7, dataPerkebunan.getKantorPusat().getAlamat().getProv());
+            psKantorPusat.setString(8, dataPerkebunan.getKantorPusat().getAlamat().getKabKota());
+            psKantorPusat.executeUpdate();
 
-                // Get generated ID for kantor_pusat
-                kantorPusatId = getGeneratedId(psKantorPusat);
-            }
+            // Get generated ID for kantor_pusat
+            int kantorPusatId = getGeneratedId(psKantorPusat);
 
-            // Insert data grup perusahaan jika ada
-            if (dataPerkebunan.getGroupPerusahaan() != null){
-                String sqlGrupPerusahaan = "INSERT INTO grup_perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                psGrupPerusahaan = connection.prepareStatement(sqlGrupPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
-                psGrupPerusahaan.setString(1, dataPerkebunan.getGroupPerusahaan().getNama());
-                psGrupPerusahaan.setString(2, dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
-                psGrupPerusahaan.setString(3, dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos());
-                psGrupPerusahaan.setString(4, dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon());
-                psGrupPerusahaan.setString(5, dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail());
-                psGrupPerusahaan.setString(6, dataPerkebunan.getGroupPerusahaan().getAlamat().getFax());
-                psGrupPerusahaan.setString(7, dataPerkebunan.getGroupPerusahaan().getAlamat().getProv());
-                psGrupPerusahaan.setString(8, dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota());
-                psGrupPerusahaan.executeUpdate();
+            // Insert data grup perusahaan
+            String sqlGrupPerusahaan = "INSERT INTO grup_perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            psGrupPerusahaan = connection.prepareStatement(sqlGrupPerusahaan, PreparedStatement.RETURN_GENERATED_KEYS);
+            psGrupPerusahaan.setString(1, dataPerkebunan.getGroupPerusahaan().getNama());
+            psGrupPerusahaan.setString(2, dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
+            psGrupPerusahaan.setString(3, dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos());
+            psGrupPerusahaan.setString(4, dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon());
+            psGrupPerusahaan.setString(5, dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail());
+            psGrupPerusahaan.setString(6, dataPerkebunan.getGroupPerusahaan().getAlamat().getFax());
+            psGrupPerusahaan.setString(7, dataPerkebunan.getGroupPerusahaan().getAlamat().getProv());
+            psGrupPerusahaan.setString(8, dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota());
+            psGrupPerusahaan.executeUpdate();
 
-                // Get generated ID for grup_perusahaan
-                grupPerusahaanId = getGeneratedId(psGrupPerusahaan);
-            }
-            
+            // Get generated ID for grup_perusahaan
+            int grupPerusahaanId = getGeneratedId(psGrupPerusahaan);
+
             // Insert data perusahaan
             String sqlPerusahaan = "INSERT INTO perusahaan (nama, alamat, kode_pos, telepon, email, fax, provinsi_kode, kab_kota_kode, kecamatan_kode, desa_kelurahan_kode, " +
                 "nama_pic, telepon_pic, jabatan_pic, jenis_kelamin_pic, unit_kerja_pic, status, latitude, longitude, kbli, kantor_pusat_id, grup_perusahaan_id, " +
@@ -85,16 +88,8 @@ public class DataInserter {
             psPerusahaan.setDouble(17, dataPerkebunan.getPerusahaan().getLintang());
             psPerusahaan.setDouble(18, dataPerkebunan.getPerusahaan().getBujur());
             psPerusahaan.setString(19, dataPerkebunan.getPerusahaan().getKBLI());
-            if (kantorPusatId != null) {
-                psPerusahaan.setInt(20, kantorPusatId);
-            } else {
-                psPerusahaan.setNull(20, java.sql.Types.INTEGER);
-            }
-            if (grupPerusahaanId != null) {
-                psPerusahaan.setInt(21, grupPerusahaanId);
-            } else {
-                psPerusahaan.setNull(21, java.sql.Types.INTEGER);
-            }
+            psPerusahaan.setInt(20, kantorPusatId);
+            psPerusahaan.setInt(21, grupPerusahaanId);
             psPerusahaan.setString(22, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getStatusPemodalan()));
             psPerusahaan.setString(23, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getBentukBadanHukum()));
             psPerusahaan.setString(24, String.valueOf(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getPelaksanaanKemitraan()));
