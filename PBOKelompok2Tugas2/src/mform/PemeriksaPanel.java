@@ -182,7 +182,13 @@ public class PemeriksaPanel extends javax.swing.JFrame {
 
         //Tulis file
         CSVHandler ch = new CSVHandler();
-        ch.WriteCSV(filePath, dataPerkebunans);
+        boolean isWritten = ch.WriteCSV(filePath, dataPerkebunans);
+        if(isWritten){
+            JOptionPane.showMessageDialog(this, "Berhasil menyimpan file");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Gagal menyimpan file");
+        }
 
     }//GEN-LAST:event_csvButtonActionPerformed
 
