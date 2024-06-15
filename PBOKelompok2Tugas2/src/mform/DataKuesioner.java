@@ -33,6 +33,9 @@ public class DataKuesioner extends javax.swing.JFrame {
     private Panel3duplikat[] panel3duplikat;
     private Panel4 panel4 = new Panel4();
     
+    //index buat semua panel
+    private static int index = -1;
+    
     //Index buat panel3duplikat
     public static int indexPanel = 0;
 
@@ -58,6 +61,8 @@ public class DataKuesioner extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jLabel1 = new javax.swing.JLabel();
         simpanGlobalButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -74,12 +79,27 @@ public class DataKuesioner extends javax.swing.JFrame {
         jScrollPane1.setMinimumSize(new java.awt.Dimension(520, 625));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(520, 625));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nama petugas: " + MainFrame_Login.namaPemeriksa);
 
         simpanGlobalButton.setText("Simpan ke Database");
         simpanGlobalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanGlobalButtonActionPerformed(evt);
+            }
+        });
+
+        nextButton.setText("NEXT");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -154,23 +174,31 @@ public class DataKuesioner extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(simpanGlobalButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(simpanGlobalButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextButton))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(simpanGlobalButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(simpanGlobalButton)
+                    .addComponent(nextButton)
+                    .addComponent(backButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -181,30 +209,37 @@ public class DataKuesioner extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        index = 0;
         jScrollPane1.setViewportView(panel1);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        index = 1;
         jScrollPane1.setViewportView(panel1b);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        index = 2;
         jScrollPane1.setViewportView(panel1c);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        index = 3;
         jScrollPane1.setViewportView(panel2);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        index = 4;
         jScrollPane1.setViewportView(panel3);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        index = 4;
         jScrollPane1.setViewportView(panel3duplikat[0]);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        index = 5;
         jScrollPane1.setViewportView(panel4);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -237,12 +272,9 @@ public class DataKuesioner extends javax.swing.JFrame {
         
         //Reset data kebun
         dp.resetKebun();
-        //Masukkan data kebun pertama
-        Panel3.panel3SaveButton.doClick();
-        dp.setKebun(Panel3.kebun);
 
         //Masukkan data kebun lain kalau ada
-        for(int i = 1; i < dp.getJumlahKebun(); i++){
+        for(int i = 0; i < dp.getJumlahKebun(); i++){
             panel3duplikat[i].panel3SaveButton.doClick();
             dp.setKebun(Panel3duplikat.kebuns[i]);
         }
@@ -263,6 +295,7 @@ public class DataKuesioner extends javax.swing.JFrame {
             int idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());
             int idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
             isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
+
         }
         else{
             List<String> errorMessages = form.getErrorMessages();
@@ -277,7 +310,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         dp.getKeteranganPetugas().setNamaPemeriksa(MainFrame_Login.namaPemeriksa);
         int idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());
         int idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
-        boolean isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
+        isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
 */
         //Kalau update berhasil tampilkan dialog berhasil disimpan
         if(isUpdated){
@@ -294,6 +327,41 @@ public class DataKuesioner extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_simpanGlobalButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        index++;
+        if(index > 5){
+            index = 0;
+        }
+
+        switch (index) {
+            case 0 -> jScrollPane1.setViewportView(panel1);
+            case 1 -> jScrollPane1.setViewportView(panel1b);
+            case 2 -> jScrollPane1.setViewportView(panel1c);
+            case 3 -> jScrollPane1.setViewportView(panel2);
+            case 4 -> jScrollPane1.setViewportView(panel3duplikat[0]);
+            case 5 -> jScrollPane1.setViewportView(panel4);
+            default -> jScrollPane1.setViewportView(home);
+        }
+
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        index--;
+        if(index < 0){
+            index = 5;
+        }
+
+        switch (index) {
+            case 0 -> jScrollPane1.setViewportView(panel1);
+            case 1 -> jScrollPane1.setViewportView(panel1b);
+            case 2 -> jScrollPane1.setViewportView(panel1c);
+            case 3 -> jScrollPane1.setViewportView(panel2);
+            case 4 -> jScrollPane1.setViewportView(panel3duplikat[0]);
+            case 5 -> jScrollPane1.setViewportView(panel4);
+            default -> jScrollPane1.setViewportView(home);
+        }
+    }//GEN-LAST:event_backButtonActionPerformed
 
     //Bikin Panel3 sebanyak jumlah kebun
     //Ini habis 3 jam sendiri :)
@@ -313,7 +381,6 @@ public class DataKuesioner extends javax.swing.JFrame {
         indexPanel = 0;
         return panel3s;
     }
-
 
     /**
      * @param args the command line arguments
@@ -351,6 +418,7 @@ public class DataKuesioner extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -362,6 +430,7 @@ public class DataKuesioner extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton simpanGlobalButton;
     // End of variables declaration//GEN-END:variables
 }
