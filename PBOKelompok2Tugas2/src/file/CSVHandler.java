@@ -20,7 +20,7 @@ public class CSVHandler {
     public boolean WriteCSV(String path, ArrayList<DataPerkebunan> dp){
         String header = "nama,alamat,kode_pos,telepon,email,fax,provinsi_kode,kab_kota_kode,kecamatan_kode,desa_kelurahan_kode,nama_pic,telepon_pic,jabatan_pic,jenis_kelamin_pic,unit_kerja_pic,status,latitude,longitude,kbli,status_pemodalan,bentuk_badan_hukum,pelaksana_kemitraan,kebun_plasma_konversi,punya_unit_pengolahan_produksi,tahun_berdiri,jenis_perusahaan_tebu,produk_utama,kode_kbki,stok_pabrik_gula,stok_pedagang,stok_petani,nama_kp,alamat_kp,kode_pos_kp,telepon_kp,email_kp,fax_kp,provinsi_kode_kp,kab_kota_kode_kp,nama_gp,alamat_gp,kode_pos_gp,telepon_gp,email_gp,fax_gp,provinsi_kode_gp,kab_kota_kode_gp,jenis_kebun,provinsi_kode_kebun,kab_kota_kode_kebun,luas_areal_tanam,luas_areal_tebang,produksi_tebu,produksi_gkp,produksi_tetes,produksi_hablur,rendemen_hablur,nama_pencacah,tanggal_mencacah,nama_pemeriksa,tanggal_memeriksa";
         
-        try(FileWriter fileWriter = new FileWriter(path);
+        try(FileWriter fileWriter = new FileWriter(path + "\\output.csv");
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
             //Buat header
