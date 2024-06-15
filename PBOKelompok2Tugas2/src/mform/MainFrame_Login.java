@@ -4,12 +4,13 @@
  */
 package mform;
 
+
 /**
  *
  * @author yedij
  */
 public class MainFrame_Login extends javax.swing.JFrame {
-
+    public static String namaPemeriksa = "Fatih Hakim Mudzaky";
     /**
      * Creates new form MainFrame
      */
@@ -66,6 +67,11 @@ public class MainFrame_Login extends javax.swing.JFrame {
         JUDUL1.setToolTipText("");
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         buttonGroup.add(pencacahRadioButton);
         pencacahRadioButton.setText("Pencacah");
@@ -153,6 +159,15 @@ public class MainFrame_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pemeriksaRadioButtonActionPerformed
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        if(pemeriksaRadioButton.isSelected()){
+            this.setVisible(false);
+            new PemeriksaPanel().setVisible(true);
+            revalidate();
+            repaint();
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,13 +197,14 @@ public class MainFrame_Login extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame_Login().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,4 +219,5 @@ public class MainFrame_Login extends javax.swing.JFrame {
     private javax.swing.JRadioButton pencacahRadioButton;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
+
 }
