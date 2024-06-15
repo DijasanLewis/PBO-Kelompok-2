@@ -98,58 +98,62 @@ public class FormDataPerkebunan extends Form{
 
         // Validasi detail Kantor Pusat
         KantorPusat kantorPusat = dataPerkebunan.getKantorPusat();
-        if (kantorPusat.getNama().length() > 25) {
-            super.addErrorMessages("Nama Kantor Pusat tidak boleh lebih dari 25 karakter.");
+        if (kantorPusat != null){
+                if (kantorPusat.getNama().length() > 25) {
+                super.addErrorMessages("Nama Kantor Pusat tidak boleh lebih dari 25 karakter.");
+            }
+            if (kantorPusat.getAlamat().getAlamatLengkap().length() > 50) {
+                super.addErrorMessages("Alamat Kantor Pusat tidak boleh lebih dari 50 karakter.");
+            }
+            if (!kantorPusat.getAlamat().getKodePos().matches("\\d{5}")) {
+                super.addErrorMessages("Kode Pos Kantor Pusat harus terdiri dari 5 angka.");
+            }
+            if (!kantorPusat.getAlamat().getTelepon().matches("\\d{12}")) {
+                super.addErrorMessages("Telepon Kantor Pusat harus terdiri dari 12 angka.");
+            }
+            String emailKantorPusat = kantorPusat.getAlamat().getEmail();
+            if (!(emailKantorPusat.contains("@") && emailKantorPusat.contains("."))) {
+                super.addErrorMessages("Email Kantor Pusat harus memiliki karakter '@' dan '.'.");
+            }
+            if (!kantorPusat.getAlamat().getFax().matches("\\d{12}")) {
+                super.addErrorMessages("Fax Kantor Pusat harus terdiri dari 12 angka.");
+            }
+            if (!kantorPusat.getAlamat().getProv().matches("\\d{2}")) {
+                super.addErrorMessages("Kode Provinsi Kantor Pusat harus terdiri dari 2 angka.");
+            }
+            if (!kantorPusat.getAlamat().getKabKota().matches("\\d{2}")) {
+                super.addErrorMessages("Kode Kabupaten/Kota Kantor Pusat harus terdiri dari 2 angka.");
+            }
         }
-        if (kantorPusat.getAlamat().getAlamatLengkap().length() > 50) {
-            super.addErrorMessages("Alamat Kantor Pusat tidak boleh lebih dari 50 karakter.");
-        }
-        if (!kantorPusat.getAlamat().getKodePos().matches("\\d{5}")) {
-            super.addErrorMessages("Kode Pos Kantor Pusat harus terdiri dari 5 angka.");
-        }
-        if (!kantorPusat.getAlamat().getTelepon().matches("\\d{12}")) {
-            super.addErrorMessages("Telepon Kantor Pusat harus terdiri dari 12 angka.");
-        }
-        String emailKantorPusat = kantorPusat.getAlamat().getEmail();
-        if (!(emailKantorPusat.contains("@") && emailKantorPusat.contains("."))) {
-            super.addErrorMessages("Email Kantor Pusat harus memiliki karakter '@' dan '.'.");
-        }
-        if (!kantorPusat.getAlamat().getFax().matches("\\d{12}")) {
-            super.addErrorMessages("Fax Kantor Pusat harus terdiri dari 12 angka.");
-        }
-        if (!kantorPusat.getAlamat().getProv().matches("\\d{2}")) {
-            super.addErrorMessages("Kode Provinsi Kantor Pusat harus terdiri dari 2 angka.");
-        }
-        if (!kantorPusat.getAlamat().getKabKota().matches("\\d{2}")) {
-            super.addErrorMessages("Kode Kabupaten/Kota Kantor Pusat harus terdiri dari 2 angka.");
-        }
-
+        
         // Validasi detail Group Perusahaan
         GroupPerusahaan groupPerusahaan = dataPerkebunan.getGroupPerusahaan();
-        if (groupPerusahaan.getNama().length() > 25) {
-            super.addErrorMessages("Nama Group Perusahaan tidak boleh lebih dari 25 karakter.");
-        }
-        if (groupPerusahaan.getAlamat().getAlamatLengkap().length() > 50) {
-            super.addErrorMessages("Alamat Group Perusahaan tidak boleh lebih dari 50 karakter.");
-        }
-        if (!groupPerusahaan.getAlamat().getKodePos().matches("\\d{5}")) {
-            super.addErrorMessages("Kode Pos Group Perusahaan harus terdiri dari 5 angka.");
-        }
-        if (!groupPerusahaan.getAlamat().getTelepon().matches("\\d{12}")) {
-            super.addErrorMessages("Telepon Group Perusahaan harus terdiri dari 12 angka.");
-        }
-        String emailGroupPerusahaan = groupPerusahaan.getAlamat().getEmail();
-        if (!(emailGroupPerusahaan.contains("@") && emailGroupPerusahaan.contains("."))) {
-            super.addErrorMessages("Email Group Perusahaan harus memiliki karakter '@' dan '.'.");
-        }
-        if (!groupPerusahaan.getAlamat().getFax().matches("\\d{12}")) {
-            super.addErrorMessages("Fax Group Perusahaan harus terdiri dari 12 angka.");
-        }
-        if (!groupPerusahaan.getAlamat().getProv().matches("\\d{2}")) {
-            super.addErrorMessages("Kode Provinsi Group Perusahaan harus terdiri dari 2 angka.");
-        }
-        if (!groupPerusahaan.getAlamat().getKabKota().matches("\\d{2}")) {
-            super.addErrorMessages("Kode Kabupaten/Kota Group Perusahaan harus terdiri dari 2 angka.");
+        if (groupPerusahaan != null){
+            if (groupPerusahaan.getNama().length() > 25) {
+                super.addErrorMessages("Nama Group Perusahaan tidak boleh lebih dari 25 karakter.");
+            }
+            if (groupPerusahaan.getAlamat().getAlamatLengkap().length() > 50) {
+                super.addErrorMessages("Alamat Group Perusahaan tidak boleh lebih dari 50 karakter.");
+            }
+            if (!groupPerusahaan.getAlamat().getKodePos().matches("\\d{5}")) {
+                super.addErrorMessages("Kode Pos Group Perusahaan harus terdiri dari 5 angka.");
+            }
+            if (!groupPerusahaan.getAlamat().getTelepon().matches("\\d{12}")) {
+                super.addErrorMessages("Telepon Group Perusahaan harus terdiri dari 12 angka.");
+            }
+            String emailGroupPerusahaan = groupPerusahaan.getAlamat().getEmail();
+            if (!(emailGroupPerusahaan.contains("@") && emailGroupPerusahaan.contains("."))) {
+                super.addErrorMessages("Email Group Perusahaan harus memiliki karakter '@' dan '.'.");
+            }
+            if (!groupPerusahaan.getAlamat().getFax().matches("\\d{12}")) {
+                super.addErrorMessages("Fax Group Perusahaan harus terdiri dari 12 angka.");
+            }
+            if (!groupPerusahaan.getAlamat().getProv().matches("\\d{2}")) {
+                super.addErrorMessages("Kode Provinsi Group Perusahaan harus terdiri dari 2 angka.");
+            }
+            if (!groupPerusahaan.getAlamat().getKabKota().matches("\\d{2}")) {
+                super.addErrorMessages("Kode Kabupaten/Kota Group Perusahaan harus terdiri dari 2 angka.");
+            }
         }
 
         // KETERANGAN PERUSAHAAN
@@ -275,27 +279,31 @@ public class FormDataPerkebunan extends Form{
             writer.write("Koordinat Bujur: " + dataPerkebunan.getPerusahaan().getBujur() + "\n");
             writer.write("KBLI: " + dataPerkebunan.getPerusahaan().getKBLI() + "\n");
 
-            // Informasi Kantor Pusat
-            writer.write("\n===== Informasi Kantor Pusat =====\n");
-            writer.write("Nama: " + dataPerkebunan.getKantorPusat().getNama() + "\n");
-            writer.write("Alamat: " + dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap() + "\n");
-            writer.write("Kode Pos: " + dataPerkebunan.getKantorPusat().getAlamat().getKodePos() + "\n");
-            writer.write("Telepon: " + dataPerkebunan.getKantorPusat().getAlamat().getTelepon() + "\n");
-            writer.write("Email: " + dataPerkebunan.getKantorPusat().getAlamat().getEmail() + "\n");
-            writer.write("Fax: " + dataPerkebunan.getKantorPusat().getAlamat().getFax() + "\n");
-            writer.write("Provinsi: " + dataPerkebunan.getKantorPusat().getAlamat().getProv() + "\n");
-            writer.write("Kabupaten/Kota: " + dataPerkebunan.getKantorPusat().getAlamat().getKabKota() + "\n");
+            // Informasi Kantor Pusat jika ada
+            if (dataPerkebunan.getKantorPusat() != null){
+                writer.write("\n===== Informasi Kantor Pusat =====\n");
+                writer.write("Nama: " + dataPerkebunan.getKantorPusat().getNama() + "\n");
+                writer.write("Alamat: " + dataPerkebunan.getKantorPusat().getAlamat().getAlamatLengkap() + "\n");
+                writer.write("Kode Pos: " + dataPerkebunan.getKantorPusat().getAlamat().getKodePos() + "\n");
+                writer.write("Telepon: " + dataPerkebunan.getKantorPusat().getAlamat().getTelepon() + "\n");
+                writer.write("Email: " + dataPerkebunan.getKantorPusat().getAlamat().getEmail() + "\n");
+                writer.write("Fax: " + dataPerkebunan.getKantorPusat().getAlamat().getFax() + "\n");
+                writer.write("Provinsi: " + dataPerkebunan.getKantorPusat().getAlamat().getProv() + "\n");
+                writer.write("Kabupaten/Kota: " + dataPerkebunan.getKantorPusat().getAlamat().getKabKota() + "\n");
+            }
 
-            // Informasi Group Perusahaan
-            writer.write("\n===== Informasi Group Perusahaan =====\n");
-            writer.write("Nama: " + dataPerkebunan.getGroupPerusahaan().getNama() + "\n");
-            writer.write("Alamat: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap() + "\n");
-            writer.write("Kode Pos: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos() + "\n");
-            writer.write("Telepon: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon() + "\n");
-            writer.write("Email: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail() + "\n");
-            writer.write("Fax: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getFax() + "\n");
-            writer.write("Provinsi: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getProv() + "\n");
-            writer.write("Kabupaten/Kota: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota() + "\n");
+            // Informasi Group Perusahaan jika ada
+            if (dataPerkebunan.getGroupPerusahaan() != null){
+                writer.write("\n===== Informasi Group Perusahaan =====\n");
+                writer.write("Nama: " + dataPerkebunan.getGroupPerusahaan().getNama() + "\n");
+                writer.write("Alamat: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap() + "\n");
+                writer.write("Kode Pos: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos() + "\n");
+                writer.write("Telepon: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon() + "\n");
+                writer.write("Email: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail() + "\n");
+                writer.write("Fax: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getFax() + "\n");
+                writer.write("Provinsi: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getProv() + "\n");
+                writer.write("Kabupaten/Kota: " + dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota() + "\n");
+            }
 
             // Informasi Keterangan Perusahaan
             writer.write("\n===== Keterangan Perusahaan =====\n");
@@ -377,24 +385,28 @@ public class FormDataPerkebunan extends Form{
         dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setJenisPerusahaanTebu('\0');
 
         // Kantor Pusat
-        dataPerkebunan.getKantorPusat().setNama("");
-        dataPerkebunan.getKantorPusat().getAlamat().setAlamatLengkap("");
-        dataPerkebunan.getKantorPusat().getAlamat().setKodePos("");
-        dataPerkebunan.getKantorPusat().getAlamat().setTelepon("");
-        dataPerkebunan.getKantorPusat().getAlamat().setEmail("");
-        dataPerkebunan.getKantorPusat().getAlamat().setFax("");
-        dataPerkebunan.getKantorPusat().getAlamat().setProv("");
-        dataPerkebunan.getKantorPusat().getAlamat().setKabKota("");
+        if (dataPerkebunan.getKantorPusat() != null) {
+            dataPerkebunan.getKantorPusat().setNama("");
+            dataPerkebunan.getKantorPusat().getAlamat().setAlamatLengkap("");
+            dataPerkebunan.getKantorPusat().getAlamat().setKodePos("");
+            dataPerkebunan.getKantorPusat().getAlamat().setTelepon("");
+            dataPerkebunan.getKantorPusat().getAlamat().setEmail("");
+            dataPerkebunan.getKantorPusat().getAlamat().setFax("");
+            dataPerkebunan.getKantorPusat().getAlamat().setProv("");
+            dataPerkebunan.getKantorPusat().getAlamat().setKabKota("");
+        }
 
         // Group Perusahaan
-        dataPerkebunan.getGroupPerusahaan().setNama("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setAlamatLengkap("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setKodePos("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setTelepon("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setEmail("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setFax("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setProv("");
-        dataPerkebunan.getGroupPerusahaan().getAlamat().setKabKota("");
+        if (dataPerkebunan.getKantorPusat() != null) {
+            dataPerkebunan.getGroupPerusahaan().setNama("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setAlamatLengkap("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setKodePos("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setTelepon("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setEmail("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setFax("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setProv("");
+            dataPerkebunan.getGroupPerusahaan().getAlamat().setKabKota("");
+        }
 
         // Kebun
         dataPerkebunan.setProdukUtama("");
