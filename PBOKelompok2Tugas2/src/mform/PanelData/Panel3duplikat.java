@@ -4,6 +4,7 @@
  */
 package mform.PanelData;
 
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import mform.DataKuesioner;
@@ -221,11 +222,20 @@ public class Panel3duplikat extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel3SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel3SaveButtonActionPerformed
-        save();
+        try {
+            save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal melakukan penyimpanan data Kebun\n" + e.getMessage());
+        }
     }//GEN-LAST:event_panel3SaveButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        save();
+        try{
+            save();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        
         System.out.println(DataKuesioner.indexPanel);
         DataKuesioner.indexPanel++;
 
@@ -278,48 +288,15 @@ public class Panel3duplikat extends javax.swing.JPanel {
         kebun.getLetak().setKabKota(kabKotaTextField.getText());
     
         // Luas
-        try {
-            kebun.setLuasArealTanam(Double.parseDouble(luasTanamTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-    
-        try {
-            kebun.getProduksi().setLuasArealTebang(Double.parseDouble(luasTebangTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+        kebun.setLuasArealTanam(Double.parseDouble(luasTanamTextField.getText()));
+        kebun.getProduksi().setLuasArealTebang(Double.parseDouble(luasTebangTextField.getText()));
     
         // Produksi
-        try {
-            kebun.getProduksi().setProduksiTebu(Double.parseDouble(tebuTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-    
-        try {
-            kebun.getProduksi().setProduksiGKP(Double.parseDouble(gkpTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-    
-        try {
-            kebun.getProduksi().setProduksiTetes(Double.parseDouble(tetesTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-    
-        try {
-            kebun.getProduksi().setProduksiHablur(Double.parseDouble(hablurTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-    
-        try {
-            kebun.getProduksi().setRendemenHablur(Double.parseDouble(rendemenHablurTextField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+        kebun.getProduksi().setProduksiTebu(Double.parseDouble(tebuTextField.getText()));
+        kebun.getProduksi().setProduksiGKP(Double.parseDouble(gkpTextField.getText()));
+        kebun.getProduksi().setProduksiTetes(Double.parseDouble(tetesTextField.getText()));
+        kebun.getProduksi().setProduksiHablur(Double.parseDouble(hablurTextField.getText()));
+        kebun.getProduksi().setRendemenHablur(Double.parseDouble(rendemenHablurTextField.getText()));
 
         kebuns[DataKuesioner.indexPanel] = kebun;
     }

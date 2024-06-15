@@ -4,6 +4,8 @@
  */
 package mform.PanelData;
 
+import javax.swing.JOptionPane;
+
 import mform.PemeriksaPanel;
 import mform.entity.DataPerkebunan;
 import mform.entity.KeteranganPerusahaan;
@@ -240,7 +242,11 @@ public class Panel2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel2SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel2SaveButtonActionPerformed
-        save();
+        try {
+            save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal melakukan penyimpanan data Keterangan Perusahaan\n" + e.getMessage());
+        }
     }//GEN-LAST:event_panel2SaveButtonActionPerformed
     
     private void setField(){

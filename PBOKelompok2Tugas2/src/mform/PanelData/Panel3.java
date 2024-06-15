@@ -4,6 +4,8 @@
  */
 package mform.PanelData;
 
+import javax.swing.JOptionPane;
+
 import mform.PemeriksaPanel;
 import mform.entity.Kebun;
 
@@ -84,7 +86,7 @@ public class Panel3 extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("LUAS TANAMAN DAN PRODUKSI");
+        jLabel2.setText("LUAS TANAMAN DAN PRODUKSI KEBUN KE-1");
 
         jLabel5.setText("Produksi (Ton):");
 
@@ -131,10 +133,8 @@ public class Panel3 extends javax.swing.JPanel {
                             .addComponent(provTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kabKotaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(panel3SaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +190,11 @@ public class Panel3 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel3SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel3SaveButtonActionPerformed
-        save();
+        try {
+            save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal melakukan penyimpanan data Kebun 1\n" + e.getMessage());
+        }
     }//GEN-LAST:event_panel3SaveButtonActionPerformed
 
     private void setField(){
