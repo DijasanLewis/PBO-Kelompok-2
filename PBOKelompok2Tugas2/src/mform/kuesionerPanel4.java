@@ -163,6 +163,7 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
         
         FormDataPerkebunan form = new FormDataPerkebunan();
         dataPerkebunan.getKeteranganPetugas().setNamaPencacah(namaPetugas);
+        dataPerkebunan.getKeteranganPetugas().setNamaPemeriksa("");
         form.setDataPerkebunan(dataPerkebunan);
         
         //Validate
