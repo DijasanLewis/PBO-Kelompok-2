@@ -181,7 +181,7 @@ public class MainFrame extends javax.swing.JFrame {
                  if (pencacahRadioButton.isSelected()) {
                     boolean kenaValidasi = false;
                     dataPerkebunan = new DataPerkebunan();
-                    kuesionerPanel1 kuesioner = new kuesionerPanel1(namaPetugas, kenaValidasi, dataPerkebunan);
+                    KuesionerPanel1 kuesioner = new KuesionerPanel1(namaPetugas, kenaValidasi, dataPerkebunan);
                     kuesioner.setVisible(true);
                     this.setVisible(false);
                 } else if (pemeriksaRadioButton.isSelected()) {

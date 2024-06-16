@@ -14,7 +14,7 @@ import mform.entity.DataPerkebunan;
  * 4. Zahra Mufidah
  */
 
-public class kuesionerPanel1 extends javax.swing.JFrame {
+public class KuesionerPanel1 extends javax.swing.JFrame {
     private boolean memilikiKantorPusat = false;
     private boolean kenaValidasi;
     private boolean memilikiGroupPerusahaan = false;
@@ -23,7 +23,7 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
     /**
      * Creates new form MainFrameKelompok2
      */
-    public kuesionerPanel1(String namaPetugas, boolean kenaValidasi, DataPerkebunan dataPerkebunan) {
+    public KuesionerPanel1(String namaPetugas, boolean kenaValidasi, DataPerkebunan dataPerkebunan) {
         initComponents();
         this.namaPetugas = namaPetugas;
         this.kenaValidasi = kenaValidasi;
@@ -578,7 +578,7 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         
         memilikiKantorPusat = memiliki_kantor_pusatCheckBox.isSelected();
         memilikiGroupPerusahaan = memiliki_group_perusahaanCheckBox.isSelected();
-        kuesionerPanel1b panel1b = new kuesionerPanel1b(namaPetugas, kenaValidasi, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan);
+        KuesionerPanel1b panel1b = new KuesionerPanel1b(namaPetugas, kenaValidasi, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan);
         panel1b.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_nextToggleButtonActionPerformed
@@ -642,14 +642,30 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -670,7 +686,7 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel1(namaPetugas, kenaValidasi, dataPerkebunan).setVisible(true);
+                new KuesionerPanel1(namaPetugas, kenaValidasi, dataPerkebunan).setVisible(true);
             }
         });
     }

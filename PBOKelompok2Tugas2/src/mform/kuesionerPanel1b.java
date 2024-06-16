@@ -15,7 +15,7 @@ import mform.entity.DataPerkebunan;
  * 4. Zahra Mufidah
  */
 
-public class kuesionerPanel1b extends javax.swing.JFrame {
+public class KuesionerPanel1b extends javax.swing.JFrame {
     private String namaPetugas;
     private boolean kenaValidasi;
     private boolean memilikiKantorPusat;
@@ -25,7 +25,7 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
     /**
      * Creates new form MF_Blok1_b
      */
-    public kuesionerPanel1b(String namaPetugas, boolean kenaValidasi, boolean memilikiKantorPusat, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
+    public KuesionerPanel1b(String namaPetugas, boolean kenaValidasi, boolean memilikiKantorPusat, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
         this.namaPetugas = namaPetugas;
         this.kenaValidasi = kenaValidasi;
         this.memilikiKantorPusat = memilikiKantorPusat;
@@ -38,7 +38,7 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
             if(kenaValidasi && (dataPerkebunan.getKantorPusat()!= null)) {
                 dataPerkebunan.setKantorPusat(null);
             }
-            kuesionerPanel1c panel1c = new kuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan);
+            KuesionerPanel1c panel1c = new KuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan);
             panel1c.setVisible(true);
             this.setVisible(false);
             return;
@@ -277,7 +277,7 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
         dataPerkebunan.getKantorPusat().getAlamat().setProv(provinsi_kode_kantor_pusatTextField.getText());
         dataPerkebunan.getKantorPusat().getAlamat().setKabKota(kab_kota_kode_kantor_pusatTextField.getText());
         
-        kuesionerPanel1c panel1c = new kuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan);
+        KuesionerPanel1c panel1c = new KuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan);
         panel1c.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_nextToggleButtonActionPerformed
@@ -314,14 +314,30 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1b.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -342,7 +358,7 @@ public class kuesionerPanel1b extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel1b(namaPetugas, kenaValidasi, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
+                new KuesionerPanel1b(namaPetugas, kenaValidasi, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
             }
         });
     }
