@@ -90,8 +90,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="produk_UtamaTextField" min="-2" pref="241" max="-2" attributes="0"/>
-                          <Component id="kbkiTextField" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="jumlah_KebunComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="kbkiTextField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="nextToggleButton" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
