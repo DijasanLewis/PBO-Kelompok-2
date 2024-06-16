@@ -238,18 +238,6 @@ public class FormDataPerkebunan extends Form{
 
         // Validasi Keterangan Petugas
         KeteranganPetugas keteranganPetugas = dataPerkebunan.getKeteranganPetugas();
-        if (keteranganPetugas.getNamaPencacah().length() > 50) {
-            super.addErrorMessages("Nama Pencacah tidak boleh lebih dari 50 karakter.");
-        }
-        if (keteranganPetugas.getNamaPemeriksa().length() > 50) {
-            super.addErrorMessages("Nama Pemeriksa tidak boleh lebih dari 50 karakter.");
-        }
-        if (keteranganPetugas.getTanggalMencacah() == null) {
-            super.addErrorMessages("Tanggal Mencacah tidak boleh kosong.");
-        }
-        if (keteranganPetugas.getTanggalMemeriksa() == null) {
-            super.addErrorMessages("Tanggal Memeriksa tidak boleh kosong.");
-        }
         if (keteranganPetugas.getTanggalMencacah().isAfter(keteranganPetugas.getTanggalMemeriksa())) {
             super.addErrorMessages("Tanggal Mencacah tidak boleh setelah Tanggal Memeriksa.");
         }
