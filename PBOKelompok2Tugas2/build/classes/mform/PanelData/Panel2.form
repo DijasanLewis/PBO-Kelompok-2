@@ -254,7 +254,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel18">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Status:"/>
+        <Property name="text" type="java.lang.String" value="Bentuk Badan Hukum:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">

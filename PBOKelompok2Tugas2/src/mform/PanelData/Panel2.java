@@ -100,7 +100,7 @@ public class Panel2 extends javax.swing.JPanel {
 
         statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Persero/Perum", "Perusahaan Daerah (PD)/BUMD", "Perseroan Terbatas (PT)", "Koperasi/KUD", "Yayasan", "NV", "CV", "Firma", "Perwakilan Perusahaan/Lembaga Asing" }));
 
-        jLabel18.setText("Status:");
+        jLabel18.setText("Bentuk Badan Hukum:");
 
         jLabel19.setText("Apakah sebagai Pelaksana Kemitraan?");
 
