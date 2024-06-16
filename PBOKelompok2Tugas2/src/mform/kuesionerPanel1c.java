@@ -15,7 +15,7 @@ import mform.entity.DataPerkebunan;
  * 4. Zahra Mufidah
  */
 
-public class kuesionerPanel1c extends javax.swing.JFrame {
+public class KuesionerPanel1c extends javax.swing.JFrame {
     private String namaPetugas;
     private boolean kenaValidasi;
     private boolean memilikiGroupPerusahaan;
@@ -23,7 +23,7 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
     /**
      * Creates new form MF_Blok1_b
      */
-    public kuesionerPanel1c(String namaPetugas, boolean kenaValidasi, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
+    public KuesionerPanel1c(String namaPetugas, boolean kenaValidasi, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
         this.namaPetugas = namaPetugas;
         this.kenaValidasi = kenaValidasi;
         this.memilikiGroupPerusahaan = memilikiGroupPerusahaan;
@@ -35,7 +35,7 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
             if(kenaValidasi && (dataPerkebunan.getGroupPerusahaan()!= null)) {
                 dataPerkebunan.setGroupPerusahaan(null);
             }
-            kuesionerPanel2 panel2 = new kuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan);
+            KuesionerPanel2 panel2 = new KuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan);
             panel2.setVisible(true);
             this.setVisible(false);
             return;
@@ -271,7 +271,7 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
         dataPerkebunan.getGroupPerusahaan().getAlamat().setProv(provinsi_kode_group_perusahaanTextField.getText());
         dataPerkebunan.getGroupPerusahaan().getAlamat().setKabKota(kab_kota_kode_group_perusahaanTextField.getText());
         
-        kuesionerPanel2 panel2 = new kuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan);
+        KuesionerPanel2 panel2 = new KuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan);
         panel2.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_nextToggleButtonActionPerformed
@@ -307,14 +307,46 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(kuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KuesionerPanel1c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -351,7 +383,7 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
+                new KuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
             }
         });
     }
