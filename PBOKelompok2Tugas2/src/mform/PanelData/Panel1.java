@@ -424,8 +424,8 @@ public class Panel1 extends javax.swing.JPanel {
         lintangTextField.setText(Double.toString(PemeriksaPanel.dataPerkebunan.getPerusahaan().getLintang()));
         bujurTextField.setText(Double.toString(PemeriksaPanel.dataPerkebunan.getPerusahaan().getBujur()));
         kbliTextField.setText(PemeriksaPanel.dataPerkebunan.getPerusahaan().getKBLI());
-        hasKPComboBox.setSelected(!(PemeriksaPanel.dataPerkebunan.getKantorPusat().getNama() == null));
-        hasGPComboBox.setSelected(!(PemeriksaPanel.dataPerkebunan.getGroupPerusahaan().getNama() == null));
+        hasKPComboBox.setSelected(PemeriksaPanel.dataPerkebunan.getKantorPusat() == null);
+        hasGPComboBox.setSelected((PemeriksaPanel.dataPerkebunan.getGroupPerusahaan() == null));
             
     }
     

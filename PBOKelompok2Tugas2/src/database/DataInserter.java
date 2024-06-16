@@ -141,7 +141,7 @@ public class DataInserter {
             psKebun.executeBatch();
 
             // Insert data keterangan petugas, hanya Pencacah
-            String sqlKeteranganPetugas = "INSERT INTO keterangan_petugas (perusahaan_id, nama_pencacah, tanggal_mencacah) VALUES (?, ?, ?, ?, ?)";
+            String sqlKeteranganPetugas = "INSERT INTO keterangan_petugas (perusahaan_id, nama_pencacah, tanggal_mencacah) VALUES (?, ?, ?)";
             psKeteranganPetugas = connection.prepareStatement(sqlKeteranganPetugas);
             psKeteranganPetugas.setInt(1, perusahaanId);
             psKeteranganPetugas.setString(2, dataPerkebunan.getKeteranganPetugas().getNamaPencacah());

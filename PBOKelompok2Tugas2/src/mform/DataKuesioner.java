@@ -55,7 +55,6 @@ public class DataKuesioner extends javax.swing.JFrame {
     }
     public DataKuesioner(String namaPemeriksa) {
         this.namaPemeriksa = namaPemeriksa;
-        System.out.println(this.namaPemeriksa + "TES");
         initComponents();
         panel3duplikat = initPanel();
         idPerusahaan = du.getIdPerusahaan(dp.getPerusahaan().getNama());
@@ -269,14 +268,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         }
         else{
             //kalo box punya kantor pusat di panel 1 gak dicentang set semua atribut ke null
-            dp.getKantorPusat().setNama(null);
-            dp.getKantorPusat().getAlamat().setAlamatLengkap(null);
-            dp.getKantorPusat().getAlamat().setEmail(null);
-            dp.getKantorPusat().getAlamat().setFax(null);
-            dp.getKantorPusat().getAlamat().setKabKota(null);
-            dp.getKantorPusat().getAlamat().setKodePos(null);
-            dp.getKantorPusat().getAlamat().setProv(null);
-            dp.getKantorPusat().getAlamat().setTelepon(null);
+            dp.setKantorPusat(null);
         }
 
         //Masukkan data Group Perusahaan ke variabel dp
@@ -285,15 +277,7 @@ public class DataKuesioner extends javax.swing.JFrame {
             dp.setGroupPerusahaan(Panel1c.gp);
         }
         else{
-            //Kalo box punya grup perusahaan di panel 1 gak dicentang set semua atribut ke null
-            dp.getGroupPerusahaan().setNama(null);
-            dp.getGroupPerusahaan().getAlamat().setAlamatLengkap(null);
-            dp.getGroupPerusahaan().getAlamat().setEmail(null);
-            dp.getGroupPerusahaan().getAlamat().setFax(null);
-            dp.getGroupPerusahaan().getAlamat().setKabKota(null);
-            dp.getGroupPerusahaan().getAlamat().setKodePos(null);
-            dp.getGroupPerusahaan().getAlamat().setProv(null);
-            dp.getGroupPerusahaan().getAlamat().setTelepon(null);
+            dp.setGroupPerusahaan(null);
         }
         
         //Masukkan data Keterangan Perusahaan, jumlah kebun, produk utama, 
@@ -331,8 +315,14 @@ public class DataKuesioner extends javax.swing.JFrame {
             dp.getKeteranganPetugas().setNamaPemeriksa(namaPemeriksa);
             
             //Save ke database
-            int idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());
-            int idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
+            int idGP = -1;
+            int idKP = -1;
+            if(dp.getGroupPerusahaan() != null){
+                idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());
+            }
+            if(dp.getKantorPusat() != null){
+                idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
+            }
             isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
 
         }
