@@ -83,7 +83,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="kodePosTextField" min="-2" pref="71" max="-2" attributes="0"/>
                                               <Component id="provinsiTextField" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="faxTextField" min="-2" pref="140" max="-2" attributes="0"/>
+                                              <Component id="emailTextField" min="-2" pref="140" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -144,7 +144,7 @@
                               </Group>
                           </Group>
                           <Component id="teleponTextField" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="emailTextField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="faxTextField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                           <Component id="teleponPICTextField" min="-2" pref="140" max="-2" attributes="0"/>
                           <Component id="panel1SaveButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -178,7 +178,7 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="faxTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -250,7 +250,7 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="faxTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -329,7 +329,10 @@
         <Property name="text" type="java.lang.String" value="Status:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="emailTextField">
+    <Component class="javax.swing.JTextField" name="faxTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="faxTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="statusComboBox">
       <Properties>
@@ -345,7 +348,10 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="faxTextField">
+    <Component class="javax.swing.JTextField" name="emailTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="panel1SaveButton">
       <Properties>
