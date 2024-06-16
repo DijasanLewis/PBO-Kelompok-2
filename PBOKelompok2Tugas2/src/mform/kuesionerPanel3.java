@@ -30,9 +30,9 @@ public class kuesionerPanel3 extends javax.swing.JFrame {
         this.jumlah_kebun = jumlah_kebun;
         this.nomorKebun = nomorKebun;
         this.dataPerkebunan = dataPerkebunan;
-        if (kenaValidasi) {
+        if (kenaValidasi && (nomorKebun <= dataPerkebunan.getJumlahKebun()) && (nomorKebun <= jumlah_kebun)) {
             setField();
-        }else {
+        } else {
             dataPerkebunan.setKebun();
         }
         judulLabel.setText("LUAS TANAMAN DAN PRODUKSI KEBUN KE-" + nomorKebun);
