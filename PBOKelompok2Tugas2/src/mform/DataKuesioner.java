@@ -23,6 +23,7 @@ public class DataKuesioner extends javax.swing.JFrame {
     private DataPerkebunan dp = PemeriksaPanel.dataPerkebunan;
     private DataUpdater du = new DataUpdater();
     private int idPerusahaan;
+    private String namaPemeriksa;
     
     private HomePanel home = new HomePanel();
     private Panel1 panel1 = new Panel1();
@@ -43,6 +44,14 @@ public class DataKuesioner extends javax.swing.JFrame {
      * Creates new form DataKuesioner
      */
     public DataKuesioner() {
+        initComponents();
+        panel3duplikat = initPanel();
+        idPerusahaan = du.getIdPerusahaan(dp.getPerusahaan().getNama());
+        jScrollPane1.setViewportView(home);
+    }
+    public DataKuesioner(String namaPemeriksa) {
+        this.namaPemeriksa = namaPemeriksa;
+        System.out.println(this.namaPemeriksa + "TES");
         initComponents();
         panel3duplikat = initPanel();
         idPerusahaan = du.getIdPerusahaan(dp.getPerusahaan().getNama());
@@ -80,7 +89,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(520, 625));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nama petugas: " + MainFrame_Login.namaPemeriksa);
+        jLabel1.setText("Nama petugas: " + namaPemeriksa);
 
         simpanGlobalButton.setText("Selesai Periksa");
         simpanGlobalButton.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +324,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         form.validate();
         if(form.getErrorMessages().isEmpty()){
             //Set keterangan petugas
-            dp.getKeteranganPetugas().setNamaPemeriksa(MainFrame_Login.namaPemeriksa);
+            dp.getKeteranganPetugas().setNamaPemeriksa(namaPemeriksa);
             
             //Save ke database
             int idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());

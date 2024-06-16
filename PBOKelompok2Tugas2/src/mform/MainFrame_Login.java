@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  * @author yedij
  */
 public class MainFrame_Login extends javax.swing.JFrame {
+    private String namaPetugas;
     private DatabaseConnection databaseConnection;
     
     /**
@@ -170,15 +171,16 @@ public class MainFrame_Login extends javax.swing.JFrame {
         
         try {
             if (databaseConnection.verifyCredentials(username, passwordChar)) {
-                String namaPetugas = databaseConnection.getNamaPetugas(username); // Menyimpan Nama Perugas
+                namaPetugas = databaseConnection.getNamaPetugas(username); // Menyimpan Nama Petugas
+                System.out.println(namaPetugas);
                  if (pencacahRadioButton.isSelected()) {
                     kuesionerPanel1 kuesioner = new kuesionerPanel1(namaPetugas);
                     kuesioner.setVisible(true);
                     dispose();
                 } else if (pemeriksaRadioButton.isSelected()) {
-                    //editAndExport editdanexport = new editAndExport();
-                    //editdanexport.setVisible(true);
-                    //dispose();
+                    PemeriksaPanel pemeriksaPanel = new PemeriksaPanel(namaPetugas);
+                    pemeriksaPanel.setVisible(true);
+                    dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);

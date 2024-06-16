@@ -150,7 +150,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;Nama petugas: &quot; + MainFrame_Login.namaPemeriksa" type="code"/>
+          <Connection code="&quot;Nama petugas: &quot; + namaPemeriksa" type="code"/>
         </Property>
       </Properties>
     </Component>

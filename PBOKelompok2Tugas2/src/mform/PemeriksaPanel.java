@@ -21,10 +21,16 @@ import mform.entity.DataPerkebunan;
 public class PemeriksaPanel extends javax.swing.JFrame {
     public static DataPerkebunan dataPerkebunan = null;
     public static String idPerusahaan;
+    public static String namaPemeriksa;
     /**
      * Creates new form PemeriksaPanel
      */
     public PemeriksaPanel() {
+        initComponents();
+        pathTextField.setText("");
+    }
+    public PemeriksaPanel(String namaPemeriksa) {
+        this.namaPemeriksa = namaPemeriksa;
         initComponents();
         pathTextField.setText("");
     }
@@ -227,7 +233,8 @@ public class PemeriksaPanel extends javax.swing.JFrame {
         try{
             if(dataPerkebunan != null){
                 this.setVisible(false);
-                new DataKuesioner().setVisible(true);
+                System.out.println(this.namaPemeriksa);
+                new DataKuesioner(namaPemeriksa).setVisible(true);
                 revalidate();
                 repaint();
             }
