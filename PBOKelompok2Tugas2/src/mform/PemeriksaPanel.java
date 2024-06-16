@@ -15,9 +15,13 @@ import file.XlsxHandler;
 import mform.entity.DataPerkebunan;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class PemeriksaPanel extends javax.swing.JFrame {
     public static DataPerkebunan dataPerkebunan = null;
     public static String idPerusahaan;
@@ -233,7 +237,6 @@ public class PemeriksaPanel extends javax.swing.JFrame {
         try{
             if(dataPerkebunan != null){
                 this.setVisible(false);
-                System.out.println(this.namaPemeriksa);
                 new DataKuesioner(namaPemeriksa).setVisible(true);
                 revalidate();
                 repaint();
@@ -291,6 +294,7 @@ public class PemeriksaPanel extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PemeriksaPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

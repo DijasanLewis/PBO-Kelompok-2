@@ -9,9 +9,13 @@ import java.util.List;
 import mform.entity.*;
 
 /**
- *
- * @author yedij
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public abstract class Form {
     private List<String> errorMessages = new ArrayList<String>();
 

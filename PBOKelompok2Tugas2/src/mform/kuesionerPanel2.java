@@ -9,19 +9,28 @@ import javax.swing.JOptionPane;
 import mform.entity.DataPerkebunan;
 
 /**
- *
- * @author USER
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class kuesionerPanel2 extends javax.swing.JFrame {
     private String namaPetugas;
+    private boolean kenaValidasi;
     private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MF_Blok2
      */
-    public kuesionerPanel2(String namaPetugas, DataPerkebunan dataPerkebunan) {
+    public kuesionerPanel2(String namaPetugas, boolean kenaValidasi, DataPerkebunan dataPerkebunan) {
         initComponents();
         this.namaPetugas = namaPetugas;
+        this.kenaValidasi = kenaValidasi;
         this.dataPerkebunan = dataPerkebunan;
+        if (kenaValidasi) {
+            setField();
+        }
     }
 
     /**
@@ -362,7 +371,6 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
         if(tidak_kebun_plasma_belum_dikonversiRadioButton.isSelected()){
             dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setKebunPlasmaKonversi('2');
         }
-        
         //Unit pengolahan produksi
         if(ya_unit_pengolahan_produksiRadioButton.isSelected()){
             dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().setUnitPengolahanProduksi('1');
@@ -387,19 +395,89 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
         dataPerkebunan.setProdukUtama(produk_UtamaTextField.getText());
         dataPerkebunan.setKBKI(kbkiTextField.getText());
         
-        int jumlah_Kebun = Integer.parseInt(jumlah_KebunComboBox.getSelectedItem().toString());
+        int jumlah_kebun = Integer.parseInt(jumlah_KebunComboBox.getSelectedItem().toString());
         int nomorKebun = 1;
         setVisible(false);
-        kuesionerPanel3 panel3 = new kuesionerPanel3(namaPetugas, jumlah_Kebun, nomorKebun, dataPerkebunan);
+        kuesionerPanel3 panel3 = new kuesionerPanel3(namaPetugas, kenaValidasi, jumlah_kebun, nomorKebun, dataPerkebunan);
         panel3.setVisible(true);
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_nextToggleButtonActionPerformed
 
+    private void setField(){
+        //Keterangan perusahaan
+        if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getStatusPemodalan() == '1'){
+            pmdnRadioButton.setSelected(true);
+        }
+        else{
+            pmaRadioButton.setSelected(true);
+        }
+        //Bentuk badan hukum
+        switch (dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getBentukBadanHukum()) {
+            case '1' -> bentuk_badan_hukumComboBox.setSelectedIndex(0);
+            case '2' -> bentuk_badan_hukumComboBox.setSelectedIndex(1);
+            case '3' -> bentuk_badan_hukumComboBox.setSelectedIndex(2);
+            case '4' -> bentuk_badan_hukumComboBox.setSelectedIndex(3);
+            case '5' -> bentuk_badan_hukumComboBox.setSelectedIndex(4);
+            case '6' -> bentuk_badan_hukumComboBox.setSelectedIndex(5);
+            case '7' -> bentuk_badan_hukumComboBox.setSelectedIndex(6);
+            case '8' -> bentuk_badan_hukumComboBox.setSelectedIndex(7);
+            default -> bentuk_badan_hukumComboBox.setSelectedIndex(8);
+        }
+        //Pelaksana kemitraan
+        if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getPelaksanaanKemitraan() == '1'){
+            ya_pelaksana_kemitraanRadioButton.setSelected(true);
+        }
+        else if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getPelaksanaanKemitraan() == '2'){
+            tidak_pelaksana_kemitraanRadioButton.setSelected(true);
+        }
+        //Kebun plasma konversi
+        if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getKebunPlasmaKonversi() == '1'){
+            ya_kebun_plasma_belum_dikonversiRadioButton.setSelected(true);
+        }
+        else if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getKebunPlasmaKonversi() == '2'){
+            tidak_kebun_plasma_belum_dikonversiRadioButton.setSelected(true);
+        }
+        //Unit pengolahan produksi
+        if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getUnitPengolahanProduksi() == '1'){
+            ya_unit_pengolahan_produksiRadioButton.setSelected(true);
+        }
+        else if(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getUnitPengolahanProduksi() == '2'){
+            tidak_unit_pengolahan_produksiRadioButton.setSelected(true);
+        }
+        
+        tahun_berdiri_perusahaanTextField.setText(Integer.toString(dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getTahunBerdiri()));
+        
+        //Jenis perusahaan tebu
+        switch (dataPerkebunan.getPerusahaan().getKeteranganPerusahaan().getJenisPerusahaanTebu()) {
+            case '1' -> kebunRadioButton.setSelected(true);
+            case '2' -> pabrikRadioButton.setSelected(true);
+            case '3' -> kebun_pabrikRadioButton.setSelected(true);
+            default -> kebunRadioButton.setSelected(false);
+        }
+        //Jumlah kebun
+        switch (dataPerkebunan.getJumlahKebun()) {
+            case 1 -> jumlah_KebunComboBox.setSelectedIndex(0);
+            case 2 -> jumlah_KebunComboBox.setSelectedIndex(1);
+            case 3 -> jumlah_KebunComboBox.setSelectedIndex(2);
+            case 4 -> jumlah_KebunComboBox.setSelectedIndex(3);
+            case 5 -> jumlah_KebunComboBox.setSelectedIndex(4);
+            case 6 -> jumlah_KebunComboBox.setSelectedIndex(5);
+            case 7 -> jumlah_KebunComboBox.setSelectedIndex(6);
+            case 8 -> jumlah_KebunComboBox.setSelectedIndex(7);
+            case 9 -> jumlah_KebunComboBox.setSelectedIndex(8);
+            case 10 -> jumlah_KebunComboBox.setSelectedIndex(9);
+            default -> jumlah_KebunComboBox.setSelectedIndex(0);
+        }
+        
+        produk_UtamaTextField.setText(dataPerkebunan.getProdukUtama());
+        kbkiTextField.setText(dataPerkebunan.getKBKI());
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         String namaPetugas = null;
+        boolean kenaValidasi = false;
         DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -430,11 +508,19 @@ public class kuesionerPanel2 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel2(namaPetugas, dataPerkebunan).setVisible(true);
+                new kuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan).setVisible(true);
             }
         });
     }

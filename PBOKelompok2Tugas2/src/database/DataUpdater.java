@@ -13,9 +13,13 @@ import mform.entity.DataPerkebunan;
 import mform.entity.Kebun;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class DataUpdater {
     private Connection connection = null;
 

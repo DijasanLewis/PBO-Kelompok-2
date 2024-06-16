@@ -4,10 +4,15 @@
  */
 package mform.PanelData;
 
+
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class HomePanel extends javax.swing.JPanel {
 
     /**

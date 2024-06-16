@@ -5,13 +5,13 @@
 package mform.entity;
 
 /**
- *
  * @author: Kelompok 2
  * 1. Alvin Jeremy Naiborhu
  * 2. Fstih Mudzaky
  * 3. Yedija Lewi Suryadi
  * 4. Zahra Mufidah
  */
+
 public class DataPerkebunan {
     
     private Perusahaan perusahaan;
@@ -106,6 +106,11 @@ public class DataPerkebunan {
         }
     }
 
+    public void deleteKebun(int nomor) {
+        if (kebun != null) {
+            kebun[nomor] = null;
+        }
+    }
     
     public void resetKebun(){
         if (kebun != null) {
@@ -118,6 +123,10 @@ public class DataPerkebunan {
     
     public int getJumlahKebun(){
         return jumlahKebun;
+    }
+    
+    public void setJumlahKebun(int i) {
+        jumlahKebun = i;
     }
     
     //BAGIAN STOK GKP

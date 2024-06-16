@@ -7,6 +7,14 @@ import java.sql.SQLException;
 import mform.entity.DataPerkebunan;
 import mform.entity.Kebun;
 
+/**
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
+ */
+
 public class DataInserter {
 
     public boolean insertData(DataPerkebunan dataPerkebunan) {
@@ -132,14 +140,12 @@ public class DataInserter {
             }
             psKebun.executeBatch();
 
-            // Insert data keterangan petugas
-            String sqlKeteranganPetugas = "INSERT INTO keterangan_petugas (perusahaan_id, nama_pencacah, tanggal_mencacah, nama_pemeriksa, tanggal_memeriksa) VALUES (?, ?, ?, ?, ?)";
+            // Insert data keterangan petugas, hanya Pencacah
+            String sqlKeteranganPetugas = "INSERT INTO keterangan_petugas (perusahaan_id, nama_pencacah, tanggal_mencacah) VALUES (?, ?, ?, ?, ?)";
             psKeteranganPetugas = connection.prepareStatement(sqlKeteranganPetugas);
             psKeteranganPetugas.setInt(1, perusahaanId);
             psKeteranganPetugas.setString(2, dataPerkebunan.getKeteranganPetugas().getNamaPencacah());
             psKeteranganPetugas.setDate(3, java.sql.Date.valueOf(dataPerkebunan.getKeteranganPetugas().getTanggalMencacah()));
-            psKeteranganPetugas.setString(4, dataPerkebunan.getKeteranganPetugas().getNamaPemeriksa());
-            psKeteranganPetugas.setDate(5, java.sql.Date.valueOf(dataPerkebunan.getKeteranganPetugas().getTanggalMemeriksa()));
             psKeteranganPetugas.executeUpdate();
 
             connection.commit();

@@ -8,29 +8,45 @@ import mform.entity.DataPerkebunan;
  */
 
 /**
- *
- * @author USER
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class kuesionerPanel1c extends javax.swing.JFrame {
     private String namaPetugas;
+    private boolean kenaValidasi;
     private boolean memilikiGroupPerusahaan;
     private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MF_Blok1_b
      */
-    public kuesionerPanel1c(String namaPetugas, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
+    public kuesionerPanel1c(String namaPetugas, boolean kenaValidasi, boolean memilikiGroupPerusahaan, DataPerkebunan dataPerkebunan) {
         this.namaPetugas = namaPetugas;
+        this.kenaValidasi = kenaValidasi;
         this.memilikiGroupPerusahaan = memilikiGroupPerusahaan;
         this.dataPerkebunan = dataPerkebunan;
         
-        // Jika tidak memiliki Group Perusahaan
+        // Jika tidak memilih memiliki Group Perusahaan
         if (!memilikiGroupPerusahaan) {
-            kuesionerPanel2 panel2 = new kuesionerPanel2(namaPetugas, dataPerkebunan);
+            //Jika kena validasi dan memilih memiliki group perusahaan sebelumnya
+            if(kenaValidasi && (dataPerkebunan.getGroupPerusahaan()!= null)) {
+                dataPerkebunan.setGroupPerusahaan(null);
+            }
+            kuesionerPanel2 panel2 = new kuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan);
             panel2.setVisible(true);
-            dispose();
+            this.setVisible(false);
             return;
         }
         initComponents();
+        //Jika terkena validasi dan memilih memiliki kantor pusat sebelumnya
+        if (kenaValidasi && (dataPerkebunan.getGroupPerusahaan()!= null)) {
+            setField();
+        }else {
+            dataPerkebunan.setGroupPerusahaan();
+        }
     }
 
     /**
@@ -246,7 +262,6 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
 
     private void nextToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextToggleButtonActionPerformed
         // TODO add your handling code here:
-        dataPerkebunan.setGroupPerusahaan();
         dataPerkebunan.getGroupPerusahaan().setNama(nama_group_perusahaanTextField.getText());
         dataPerkebunan.getGroupPerusahaan().getAlamat().setAlamatLengkap(alamat_group_perusahaanTextArea.getText());
         dataPerkebunan.getGroupPerusahaan().getAlamat().setKodePos(kode_pos_group_perusahaanTextField.getText());
@@ -256,16 +271,27 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
         dataPerkebunan.getGroupPerusahaan().getAlamat().setProv(provinsi_kode_group_perusahaanTextField.getText());
         dataPerkebunan.getGroupPerusahaan().getAlamat().setKabKota(kab_kota_kode_group_perusahaanTextField.getText());
         
-        kuesionerPanel2 panel2 = new kuesionerPanel2(namaPetugas, dataPerkebunan);
+        kuesionerPanel2 panel2 = new kuesionerPanel2(namaPetugas, kenaValidasi, dataPerkebunan);
         panel2.setVisible(true);
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_nextToggleButtonActionPerformed
 
+    private void setField(){
+        nama_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getNama());
+        alamat_group_perusahaanTextArea.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getAlamatLengkap());
+        kode_pos_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getKodePos());
+        telepon_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getTelepon());
+        email_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getEmail());
+        fax_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getFax());
+        provinsi_kode_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getProv());
+        kab_kota_kode_group_perusahaanTextField.setText(dataPerkebunan.getGroupPerusahaan().getAlamat().getKabKota());
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         String namaPetugas = null;
+        boolean kenaValidasi = false;
         boolean memilikiGroupPerusahaan = false;
         DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
@@ -305,11 +331,27 @@ public class kuesionerPanel1c extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel1c(namaPetugas, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
+                new kuesionerPanel1c(namaPetugas, kenaValidasi, memilikiGroupPerusahaan, dataPerkebunan).setVisible(true);
             }
         });
     }

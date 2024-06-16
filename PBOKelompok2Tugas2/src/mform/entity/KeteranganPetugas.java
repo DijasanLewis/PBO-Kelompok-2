@@ -5,10 +5,15 @@
 package mform.entity;
 
 import java.time.LocalDate;
+
 /**
- *
- * @author yedij
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class KeteranganPetugas {
     private String namaPencacah;
     private LocalDate tanggalMencacah;

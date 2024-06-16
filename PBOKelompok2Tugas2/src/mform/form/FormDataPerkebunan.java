@@ -9,11 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import mform.entity.*;
 
-
 /**
- *
- * @author yedij
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class FormDataPerkebunan extends Form{
 
     private DataPerkebunan dataPerkebunan;
@@ -38,23 +41,23 @@ public class FormDataPerkebunan extends Form{
 
         // Validasi detail Perusahaan
         Perusahaan perusahaan = dataPerkebunan.getPerusahaan();
-        if (perusahaan.getNama().length() > 25) {
-            super.addErrorMessages("Nama Perusahaan tidak boleh lebih dari 25 karakter.");
+        if (perusahaan.getNama().length() > 50) {
+            super.addErrorMessages("Nama Perusahaan tidak boleh lebih dari 50 karakter.");
         }
-        if (perusahaan.getAlamat().getAlamatLengkap().length() > 50) {
-            super.addErrorMessages("Alamat Perusahaan tidak boleh lebih dari 50 karakter.");
+        if (perusahaan.getAlamat().getAlamatLengkap().length() > 250) {
+            super.addErrorMessages("Alamat Perusahaan tidak boleh lebih dari 250 karakter.");
         }
         if (!perusahaan.getAlamat().getKodePos().matches("\\d{5}")) {
             super.addErrorMessages("Kode Pos Perusahaan harus terdiri dari 5 angka.");
         }
-        if (!perusahaan.getAlamat().getTelepon().matches("\\d{12}")) {
-            super.addErrorMessages("Telepon Perusahaan harus terdiri dari 12 angka.");
+        if (!perusahaan.getAlamat().getTelepon().matches("\\d{10,12}")) {
+            super.addErrorMessages("Telepon Perusahaan harus terdiri dari 10 hingga 12 angka.");
         }
         if (!(perusahaan.getAlamat().getEmail().contains("@") && perusahaan.getAlamat().getEmail().contains("."))) {
             super.addErrorMessages("Email Perusahaan harus valid dengan karakter '@' dan '.'.");
         }
-        if (!perusahaan.getAlamat().getFax().matches("\\d{12}")) {
-            super.addErrorMessages("Fax Perusahaan harus terdiri dari 12 angka.");
+        if (!perusahaan.getAlamat().getFax().matches("\\d{10,12}")) {
+            super.addErrorMessages("Fax Perusahaan harus terdiri dari 10 hingga 12 angka.");
         }
         if (!perusahaan.getAlamat().getProv().matches("\\d{2}")) {
             super.addErrorMessages("Kode Provinsi Perusahaan harus terdiri dari 2 angka.");
@@ -68,20 +71,20 @@ public class FormDataPerkebunan extends Form{
         if (!perusahaan.getDesaKel().matches("\\d{3}")) {
             super.addErrorMessages("Kode Desa/Kelurahan harus terdiri dari 3 angka.");
         }
-        if (perusahaan.getNamaPIC().length() > 25) {
-            super.addErrorMessages("Nama PIC tidak boleh lebih dari 25 karakter.");
+        if (perusahaan.getNamaPIC().length() > 50) {
+            super.addErrorMessages("Nama PIC tidak boleh lebih dari 50 karakter.");
         }
-        if (!perusahaan.getTelpPIC().matches("\\d{12}")) {
-            super.addErrorMessages("Telepon PIC harus terdiri dari 12 angka.");
+        if (!perusahaan.getTelpPIC().matches("\\d{10,12}")) {
+            super.addErrorMessages("Telepon PIC harus terdiri dari 10 hingga 12 angka.");
         }
-        if (perusahaan.getJabatanPIC().length() > 20) {
-            super.addErrorMessages("Jabatan PIC tidak boleh lebih dari 20 karakter.");
+        if (perusahaan.getJabatanPIC().length() > 50) {
+            super.addErrorMessages("Jabatan PIC tidak boleh lebih dari 50 karakter.");
         }
         if (perusahaan.getJK_PIC() != '1' && perusahaan.getJK_PIC() != '2') {
             super.addErrorMessages("Jenis Kelamin PIC harus '1' atau '2'.");
         }
-        if (perusahaan.getUnitKerjaPIC().length() > 25) {
-            super.addErrorMessages("Unit Kerja PIC tidak boleh lebih dari 25 karakter.");
+        if (perusahaan.getUnitKerjaPIC().length() > 50) {
+            super.addErrorMessages("Unit Kerja PIC tidak boleh lebih dari 50 karakter.");
         }
         if (!("Aktif".equals(perusahaan.getStatus()) || "Tutup".equals(perusahaan.getStatus()) || "Tutup Sementara".equals(perusahaan.getStatus()))) {
             super.addErrorMessages("Status Perusahaan harus 'Aktif', 'Tutup', atau 'Tutup Sementara'.");
@@ -99,24 +102,24 @@ public class FormDataPerkebunan extends Form{
         // Validasi detail Kantor Pusat
         KantorPusat kantorPusat = dataPerkebunan.getKantorPusat();
         if (kantorPusat != null){
-                if (kantorPusat.getNama().length() > 25) {
-                super.addErrorMessages("Nama Kantor Pusat tidak boleh lebih dari 25 karakter.");
+                if (kantorPusat.getNama().length() > 50) {
+                super.addErrorMessages("Nama Kantor Pusat tidak boleh lebih dari 50 karakter.");
             }
-            if (kantorPusat.getAlamat().getAlamatLengkap().length() > 50) {
-                super.addErrorMessages("Alamat Kantor Pusat tidak boleh lebih dari 50 karakter.");
+            if (kantorPusat.getAlamat().getAlamatLengkap().length() > 250) {
+                super.addErrorMessages("Alamat Kantor Pusat tidak boleh lebih dari 250 karakter.");
             }
             if (!kantorPusat.getAlamat().getKodePos().matches("\\d{5}")) {
                 super.addErrorMessages("Kode Pos Kantor Pusat harus terdiri dari 5 angka.");
             }
-            if (!kantorPusat.getAlamat().getTelepon().matches("\\d{12}")) {
-                super.addErrorMessages("Telepon Kantor Pusat harus terdiri dari 12 angka.");
+            if (!kantorPusat.getAlamat().getTelepon().matches("\\d{10,12}")) {
+                super.addErrorMessages("Telepon Kantor Pusat harus terdiri dari 10 hingga 12 angka.");
             }
             String emailKantorPusat = kantorPusat.getAlamat().getEmail();
             if (!(emailKantorPusat.contains("@") && emailKantorPusat.contains("."))) {
                 super.addErrorMessages("Email Kantor Pusat harus memiliki karakter '@' dan '.'.");
             }
-            if (!kantorPusat.getAlamat().getFax().matches("\\d{12}")) {
-                super.addErrorMessages("Fax Kantor Pusat harus terdiri dari 12 angka.");
+            if (!kantorPusat.getAlamat().getFax().matches("\\d{10,12}")) {
+                super.addErrorMessages("Fax Kantor Pusat harus terdiri dari 10 hingga 12 angka.");
             }
             if (!kantorPusat.getAlamat().getProv().matches("\\d{2}")) {
                 super.addErrorMessages("Kode Provinsi Kantor Pusat harus terdiri dari 2 angka.");
@@ -129,24 +132,24 @@ public class FormDataPerkebunan extends Form{
         // Validasi detail Group Perusahaan
         GroupPerusahaan groupPerusahaan = dataPerkebunan.getGroupPerusahaan();
         if (groupPerusahaan != null){
-            if (groupPerusahaan.getNama().length() > 25) {
-                super.addErrorMessages("Nama Group Perusahaan tidak boleh lebih dari 25 karakter.");
+            if (groupPerusahaan.getNama().length() > 50) {
+                super.addErrorMessages("Nama Group Perusahaan tidak boleh lebih dari 50 karakter.");
             }
-            if (groupPerusahaan.getAlamat().getAlamatLengkap().length() > 50) {
-                super.addErrorMessages("Alamat Group Perusahaan tidak boleh lebih dari 50 karakter.");
+            if (groupPerusahaan.getAlamat().getAlamatLengkap().length() > 250) {
+                super.addErrorMessages("Alamat Group Perusahaan tidak boleh lebih dari 250 karakter.");
             }
             if (!groupPerusahaan.getAlamat().getKodePos().matches("\\d{5}")) {
                 super.addErrorMessages("Kode Pos Group Perusahaan harus terdiri dari 5 angka.");
             }
-            if (!groupPerusahaan.getAlamat().getTelepon().matches("\\d{12}")) {
-                super.addErrorMessages("Telepon Group Perusahaan harus terdiri dari 12 angka.");
+            if (!groupPerusahaan.getAlamat().getTelepon().matches("\\d{10,12}")) {
+                super.addErrorMessages("Telepon Group Perusahaan harus terdiri dari 10 hingga 12 angka.");
             }
             String emailGroupPerusahaan = groupPerusahaan.getAlamat().getEmail();
             if (!(emailGroupPerusahaan.contains("@") && emailGroupPerusahaan.contains("."))) {
                 super.addErrorMessages("Email Group Perusahaan harus memiliki karakter '@' dan '.'.");
             }
-            if (!groupPerusahaan.getAlamat().getFax().matches("\\d{12}")) {
-                super.addErrorMessages("Fax Group Perusahaan harus terdiri dari 12 angka.");
+            if (!groupPerusahaan.getAlamat().getFax().matches("\\d{10,12}")) {
+                super.addErrorMessages("Fax Group Perusahaan harus terdiri dari 10 hingga 12 angka.");
             }
             if (!groupPerusahaan.getAlamat().getProv().matches("\\d{2}")) {
                 super.addErrorMessages("Kode Provinsi Group Perusahaan harus terdiri dari 2 angka.");
@@ -188,8 +191,8 @@ public class FormDataPerkebunan extends Form{
         }
         
         // Validasi detail Kebun
-        if (dataPerkebunan.getProdukUtama().length() > 25) {
-            super.addErrorMessages("Nama Produk Utama tidak boleh lebih dari 25 karakter.");
+        if (dataPerkebunan.getProdukUtama().length() > 50) {
+            super.addErrorMessages("Nama Produk Utama tidak boleh lebih dari 50 karakter.");
         }
         if (!dataPerkebunan.getKBKI().matches("\\d{10}")) {
             super.addErrorMessages("KBKI harus terdiri dari 10 angka.");
@@ -235,11 +238,11 @@ public class FormDataPerkebunan extends Form{
 
         // Validasi Keterangan Petugas
         KeteranganPetugas keteranganPetugas = dataPerkebunan.getKeteranganPetugas();
-        if (keteranganPetugas.getNamaPencacah().length() > 25) {
-            super.addErrorMessages("Nama Pencacah tidak boleh lebih dari 25 karakter.");
+        if (keteranganPetugas.getNamaPencacah().length() > 50) {
+            super.addErrorMessages("Nama Pencacah tidak boleh lebih dari 50 karakter.");
         }
-        if (keteranganPetugas.getNamaPemeriksa().length() > 25) {
-            super.addErrorMessages("Nama Pemeriksa tidak boleh lebih dari 25 karakter.");
+        if (keteranganPetugas.getNamaPemeriksa().length() > 50) {
+            super.addErrorMessages("Nama Pemeriksa tidak boleh lebih dari 50 karakter.");
         }
         if (keteranganPetugas.getTanggalMencacah() == null) {
             super.addErrorMessages("Tanggal Mencacah tidak boleh kosong.");
@@ -397,7 +400,7 @@ public class FormDataPerkebunan extends Form{
         }
 
         // Group Perusahaan
-        if (dataPerkebunan.getKantorPusat() != null) {
+        if (dataPerkebunan.getGroupPerusahaan() != null) {
             dataPerkebunan.getGroupPerusahaan().setNama("");
             dataPerkebunan.getGroupPerusahaan().getAlamat().setAlamatLengkap("");
             dataPerkebunan.getGroupPerusahaan().getAlamat().setKodePos("");

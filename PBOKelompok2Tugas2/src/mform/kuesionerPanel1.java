@@ -6,24 +6,33 @@ package mform;
 
 import mform.entity.DataPerkebunan;
 
-
-
 /**
- *
- * @author USER
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class kuesionerPanel1 extends javax.swing.JFrame {
     private boolean memilikiKantorPusat = false;
+    private boolean kenaValidasi;
     private boolean memilikiGroupPerusahaan = false;
     private String namaPetugas;
     private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MainFrameKelompok2
      */
-    public kuesionerPanel1(String namaPetugas) {
+    public kuesionerPanel1(String namaPetugas, boolean kenaValidasi, DataPerkebunan dataPerkebunan) {
         initComponents();
         this.namaPetugas = namaPetugas;
-        dataPerkebunan = new DataPerkebunan();
+        this.kenaValidasi = kenaValidasi;
+        this.dataPerkebunan = dataPerkebunan;
+        
+        //Jika terkena validasi
+        if (kenaValidasi) {
+            setField();
+        }
     }
 
     /**
@@ -81,8 +90,8 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         kbli_perusahaanTextField = new javax.swing.JTextField();
         provinsi_kode_perusahaanTextField = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        memilikiKantorPusatCheckBox = new javax.swing.JCheckBox();
-        memilikiGroupPerusahaanCheckBox = new javax.swing.JCheckBox();
+        memiliki_kantor_pusatCheckBox = new javax.swing.JCheckBox();
+        memiliki_group_perusahaanCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -244,17 +253,17 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("PENGENALAN TEMPAT");
 
-        memilikiKantorPusatCheckBox.setText("Memiiki Kantor Pusat");
-        memilikiKantorPusatCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        memiliki_kantor_pusatCheckBox.setText("Memiiki Kantor Pusat");
+        memiliki_kantor_pusatCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                memilikiKantorPusatCheckBoxActionPerformed(evt);
+                memiliki_kantor_pusatCheckBoxActionPerformed(evt);
             }
         });
 
-        memilikiGroupPerusahaanCheckBox.setText("Memiiki Group Perusahaan");
-        memilikiGroupPerusahaanCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        memiliki_group_perusahaanCheckBox.setText("Memiiki Group Perusahaan");
+        memiliki_group_perusahaanCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                memilikiGroupPerusahaanCheckBoxActionPerformed(evt);
+                memiliki_group_perusahaanCheckBoxActionPerformed(evt);
             }
         });
 
@@ -287,78 +296,75 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
                                             .addComponent(kbli_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(238, 238, 238))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jabatan_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jabatan_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(unit_kerja_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(unit_kerja_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(2, 2, 2)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGap(2, 2, 2)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(perempuanRadioButton)
-                                                            .addComponent(laki_lakiRadioButton)
-                                                            .addComponent(telepon_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(telepon_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(fax_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addComponent(nextToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(status_perusahaanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nama_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(kode_pos_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(email_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(provinsi_kode_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(kab_kota_kode_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(desa_kelurahan_kode_perusahaanTextField))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(kecamatan_kode_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(memilikiKantorPusatCheckBox)
-                                    .addComponent(memilikiGroupPerusahaanCheckBox))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                                    .addComponent(perempuanRadioButton)
+                                                    .addComponent(laki_lakiRadioButton)
+                                                    .addComponent(telepon_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(telepon_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(fax_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(nextToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(status_perusahaanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nama_picTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(kode_pos_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(email_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(provinsi_kode_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(kab_kota_kode_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(desa_kelurahan_kode_perusahaanTextField))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(kecamatan_kode_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(memiliki_kantor_pusatCheckBox)
+                            .addComponent(memiliki_group_perusahaanCheckBox)))
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -450,9 +456,9 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(kbli_perusahaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(memilikiKantorPusatCheckBox)
+                .addComponent(memiliki_kantor_pusatCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(memilikiGroupPerusahaanCheckBox)
+                .addComponent(memiliki_group_perusahaanCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nextToggleButton)
                 .addContainerGap())
@@ -538,10 +544,9 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_status_perusahaanComboBoxActionPerformed
 
-    private void memilikiKantorPusatCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memilikiKantorPusatCheckBoxActionPerformed
+    private void memiliki_kantor_pusatCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memiliki_kantor_pusatCheckBoxActionPerformed
         // TODO add your handling code here:
-        memilikiKantorPusat = memilikiKantorPusatCheckBox.isSelected();
-    }//GEN-LAST:event_memilikiKantorPusatCheckBoxActionPerformed
+    }//GEN-LAST:event_memiliki_kantor_pusatCheckBoxActionPerformed
 
     private void nextToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextToggleButtonActionPerformed
         // TODO add your handling code here
@@ -571,21 +576,59 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         dataPerkebunan.getPerusahaan().setBujur(Double.parseDouble(bujur_perusahaanTextField.getText()));
         dataPerkebunan.getPerusahaan().setKBLI(kbli_perusahaanTextField.getText());
         
-        kuesionerPanel1b panel1b = new kuesionerPanel1b(namaPetugas, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan);
+        memilikiKantorPusat = memiliki_kantor_pusatCheckBox.isSelected();
+        memilikiGroupPerusahaan = memiliki_group_perusahaanCheckBox.isSelected();
+        kuesionerPanel1b panel1b = new kuesionerPanel1b(namaPetugas, kenaValidasi, memilikiKantorPusat, memilikiGroupPerusahaan, dataPerkebunan);
         panel1b.setVisible(true);
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_nextToggleButtonActionPerformed
 
-    private void memilikiGroupPerusahaanCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memilikiGroupPerusahaanCheckBoxActionPerformed
-        // TODO add your handling code here:
-        memilikiGroupPerusahaan = memilikiGroupPerusahaanCheckBox.isSelected();
-    }//GEN-LAST:event_memilikiGroupPerusahaanCheckBoxActionPerformed
+    private void memiliki_group_perusahaanCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memiliki_group_perusahaanCheckBoxActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_memiliki_group_perusahaanCheckBoxActionPerformed
 
+    private void setField(){
+        nama_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getNama());
+        alamat_perusahaanTextArea.setText(dataPerkebunan.getPerusahaan().getAlamat().getAlamatLengkap());
+        kode_pos_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getAlamat().getKodePos());
+        telepon_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getAlamat().getTelepon());
+        email_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getAlamat().getEmail());
+        fax_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getAlamat().getFax());
+        provinsi_kode_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getAlamat().getProv());
+        kab_kota_kode_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getAlamat().getKabKota());
+        kecamatan_kode_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getKecamatan());
+        desa_kelurahan_kode_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getDesaKel());
+        nama_picTextField.setText(dataPerkebunan.getPerusahaan().getNamaPIC());
+        telepon_picTextField.setText(dataPerkebunan.getPerusahaan().getTelpPIC());
+        jabatan_picTextField.setText(dataPerkebunan.getPerusahaan().getJabatanPIC());
+        if(dataPerkebunan.getPerusahaan().getJK_PIC() == '1'){
+            laki_lakiRadioButton.setSelected(true);
+        }else{
+            perempuanRadioButton.setSelected(true);
+        }
+        unit_kerja_picTextField.setText(dataPerkebunan.getPerusahaan().getUnitKerjaPIC());
+        if(dataPerkebunan.getPerusahaan().getStatus().equalsIgnoreCase("aktif")){
+            status_perusahaanComboBox.setSelectedIndex(0);
+        }
+        else if(dataPerkebunan.getPerusahaan().getStatus().equalsIgnoreCase("tutup")){
+            status_perusahaanComboBox.setSelectedIndex(1);
+        }
+        else{
+            status_perusahaanComboBox.setSelectedIndex(2);
+        }
+        lintang_perusahaanTextField.setText(Double.toString(dataPerkebunan.getPerusahaan().getLintang()));
+        bujur_perusahaanTextField.setText(Double.toString(dataPerkebunan.getPerusahaan().getBujur()));
+        kbli_perusahaanTextField.setText(dataPerkebunan.getPerusahaan().getKBLI());
+        memiliki_kantor_pusatCheckBox.setSelected(!(dataPerkebunan.getKantorPusat() == null));
+        memiliki_group_perusahaanCheckBox.setSelected(!(dataPerkebunan.getGroupPerusahaan() == null));
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         String namaPetugas = null;
+        boolean kenaValidasi = false;
+        DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -615,11 +658,19 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel1(namaPetugas).setVisible(true);
+                new kuesionerPanel1(namaPetugas, kenaValidasi, dataPerkebunan).setVisible(true);
             }
         });
     }
@@ -662,8 +713,8 @@ public class kuesionerPanel1 extends javax.swing.JFrame {
     private javax.swing.JTextField kode_pos_perusahaanTextField;
     private javax.swing.JRadioButton laki_lakiRadioButton;
     private javax.swing.JTextField lintang_perusahaanTextField;
-    private javax.swing.JCheckBox memilikiGroupPerusahaanCheckBox;
-    private javax.swing.JCheckBox memilikiKantorPusatCheckBox;
+    private javax.swing.JCheckBox memiliki_group_perusahaanCheckBox;
+    private javax.swing.JCheckBox memiliki_kantor_pusatCheckBox;
     private javax.swing.JTextField nama_perusahaanTextField;
     private javax.swing.JTextField nama_picTextField;
     private javax.swing.JToggleButton nextToggleButton;

@@ -12,9 +12,13 @@ import java.util.List;
 import mform.entity.DataPerkebunan;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class CSVHandler {
     
     public boolean WriteCSV(String path, ArrayList<DataPerkebunan> dp){

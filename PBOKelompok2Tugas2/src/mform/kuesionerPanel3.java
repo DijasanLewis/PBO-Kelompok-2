@@ -7,23 +7,34 @@ package mform;
 import mform.entity.DataPerkebunan;
 
 /**
- *
- * @author USER
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class kuesionerPanel3 extends javax.swing.JFrame {
-    private int jumlah_Kebun;
-    private int nomorKebun = 1;
     private String namaPetugas;
+    private boolean kenaValidasi;
+    private int jumlah_kebun;
+    private int nomorKebun = 1;
     private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MF_Blok2
      */
-    public kuesionerPanel3(String namaPetugas, int jumlah_Kebun, int nomorKebun, DataPerkebunan dataPerkebunan) {
+    public kuesionerPanel3(String namaPetugas, boolean kenaValidasi, int jumlah_kebun, int nomorKebun, DataPerkebunan dataPerkebunan) {
         initComponents();
         this.namaPetugas = namaPetugas;
-        this.jumlah_Kebun = jumlah_Kebun;
+        this.kenaValidasi = kenaValidasi;
+        this.jumlah_kebun = jumlah_kebun;
         this.nomorKebun = nomorKebun;
         this.dataPerkebunan = dataPerkebunan;
+        if (kenaValidasi) {
+            setField();
+        }else {
+            dataPerkebunan.setKebun();
+        }
         judulLabel.setText("LUAS TANAMAN DAN PRODUKSI KEBUN KE-" + nomorKebun);
     }
 
@@ -264,7 +275,6 @@ public class kuesionerPanel3 extends javax.swing.JFrame {
 
     private void nextToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextToggleButtonActionPerformed
         // TODO add your handling code here:
-        dataPerkebunan.setKebun();
         dataPerkebunan.getKebun(nomorKebun - 1).setJenisKebun(jenis_kebunComboBox.getSelectedItem().toString());
         dataPerkebunan.getKebun(nomorKebun - 1).getLetak().setProv(provinsi_kode_kebunTextField.getText());
         dataPerkebunan.getKebun(nomorKebun - 1).getLetak().setKabKota(kab_kota_kode_kebunTextField.getText());
@@ -276,24 +286,51 @@ public class kuesionerPanel3 extends javax.swing.JFrame {
         dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().setProduksiHablur(Double.parseDouble(produksi_hablur_kebunTextField.getText()));
         dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().setRendemenHablur(Double.parseDouble(rendemen_hablur_kebunTextField.getText()));
         
-        if (nomorKebun == jumlah_Kebun){
-            kuesionerPanel4 panel4 = new kuesionerPanel4(namaPetugas, dataPerkebunan);
+        if (nomorKebun == jumlah_kebun){
+            if (kenaValidasi) {
+                dataPerkebunan.setJumlahKebun(jumlah_kebun);
+                for (int i = nomorKebun + 1; i <= 10; i++) {
+                    if (dataPerkebunan.getKebun(i - 1) != null) {
+                        dataPerkebunan.deleteKebun(i - 1);
+                    }
+                }
+            }
+            kuesionerPanel4 panel4 = new kuesionerPanel4(namaPetugas, kenaValidasi, dataPerkebunan);
             panel4.setVisible(true);
-            this.dispose();
+            this.setVisible(false);
         }
         else {
-            kuesionerPanel3 panel3 = new kuesionerPanel3(namaPetugas, jumlah_Kebun, nomorKebun + 1, dataPerkebunan);
+            kuesionerPanel3 panel3 = new kuesionerPanel3(namaPetugas, kenaValidasi, jumlah_kebun, nomorKebun + 1, dataPerkebunan);
             panel3.setVisible(true);
-            this.dispose();
+            this.setVisible(false);
         }
     }//GEN-LAST:event_nextToggleButtonActionPerformed
 
+    private void setField(){
+        //Jenis kebun
+        switch (dataPerkebunan.getKebun(nomorKebun - 1).getJenisKebun().toLowerCase()) {
+            case "tebu sendiri" -> jenis_kebunComboBox.setSelectedIndex(0);
+            case "tebu rakyat" -> jenis_kebunComboBox.setSelectedIndex(1);
+            case "pembelian dari pihak ketiga" -> jenis_kebunComboBox.setSelectedIndex(2);
+            default -> jenis_kebunComboBox.setSelectedIndex(0);
+        }
+        provinsi_kode_kebunTextField.setText(dataPerkebunan.getKebun(nomorKebun - 1).getLetak().getProv());
+        kab_kota_kode_kebunTextField.setText(dataPerkebunan.getKebun(nomorKebun - 1).getLetak().getKabKota());
+        luas_areal_tanam_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getLuasArealTanam()));
+        luas_areal_tebang_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().getLuasArealTebang()));
+        produksi_tebu_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().getProduksiTebu()));
+        produksi_gkp_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().getProduksiGKP()));
+        produksi_tetes_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().getProduksiTetes()));
+        produksi_hablur_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().getProduksiHablur()));
+        rendemen_hablur_kebunTextField.setText(Double.toString(dataPerkebunan.getKebun(nomorKebun - 1).getProduksi().getRendemenHablur()));
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         String namaPetugas = null;
-        int jumlah_Kebun = 1;
+        boolean kenaValidasi = false;
+        int jumlah_kebun = 1;
         int nomorKebun = 1;
         DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
@@ -333,11 +370,27 @@ public class kuesionerPanel3 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel3(namaPetugas, jumlah_Kebun, nomorKebun, dataPerkebunan).setVisible(true);
+                new kuesionerPanel3(namaPetugas, kenaValidasi, jumlah_kebun, nomorKebun, dataPerkebunan).setVisible(true);
             }
         });
     }

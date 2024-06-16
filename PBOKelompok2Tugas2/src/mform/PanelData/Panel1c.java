@@ -10,9 +10,13 @@ import mform.PemeriksaPanel;
 import mform.entity.GroupPerusahaan;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class Panel1c extends javax.swing.JPanel {
     public static GroupPerusahaan gp = PemeriksaPanel.dataPerkebunan.getGroupPerusahaan();
 

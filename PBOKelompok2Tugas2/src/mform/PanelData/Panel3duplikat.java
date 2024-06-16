@@ -12,9 +12,13 @@ import mform.PemeriksaPanel;
 import mform.entity.Kebun;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class Panel3duplikat extends javax.swing.JPanel {
     JScrollPane pane = null;
     private Panel3duplikat[] panel3duplikat; 

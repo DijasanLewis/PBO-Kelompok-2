@@ -9,9 +9,13 @@ import java.util.List;
 import mform.entity.*;
 import mform.form.*;
 /**
- *
- * @author yedij
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class Mform {
     public static void main(String[] args) {
         FormDataPerkebunan form = new FormDataPerkebunan();

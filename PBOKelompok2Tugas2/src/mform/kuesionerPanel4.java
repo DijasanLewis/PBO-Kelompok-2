@@ -7,23 +7,33 @@ package mform;
 import database.DataInserter;
 import database.DataRetriever;
 import java.util.List;
+import javax.swing.JOptionPane;
 import mform.entity.DataPerkebunan;
 import mform.form.FormDataPerkebunan;
 
 /**
- *
- * @author USER
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class kuesionerPanel4 extends javax.swing.JFrame {
     private String namaPetugas;
+    private boolean kenaValidasi;
     private DataPerkebunan dataPerkebunan;
     /**
      * Creates new form MF_BlokV
      */
-    public kuesionerPanel4(String namaPetugas, DataPerkebunan dataPerkebunan) {
+    public kuesionerPanel4(String namaPetugas, boolean kenaValidasi, DataPerkebunan dataPerkebunan) {
         initComponents();
         this.namaPetugas = namaPetugas;
+        this.kenaValidasi = kenaValidasi;
         this.dataPerkebunan = dataPerkebunan;
+        if (kenaValidasi) {
+            setField();
+        }
     }
 
     /**
@@ -150,41 +160,50 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
         dataPerkebunan.getStokGKP().setStokPabrikGula(Double.parseDouble(stok_pabrik_gulaTextField.getText()));
         dataPerkebunan.getStokGKP().setStokPedagang(Double.parseDouble(stok_pedagangTextField.getText()));
         dataPerkebunan.getStokGKP().setStokPetani(Double.parseDouble(stok_petaniTextField.getText()));
+        
         FormDataPerkebunan form = new FormDataPerkebunan();
         dataPerkebunan.getKeteranganPetugas().setNamaPencacah(namaPetugas);
-        dataPerkebunan.getKeteranganPetugas().setNamaPemeriksa("NamaPemeriksaTest");
         form.setDataPerkebunan(dataPerkebunan);
         
         //Validate
         if(!form.validate()){
-            System.out.println("Data invalid. Fix errors below:");
             List<String> errorMessages = form.getErrorMessages();
+            String message = "Data Tidak Valid. Perbaiki error berikut:\n";
             for (String errorMessage : errorMessages) {
-                System.out.println("- "+ errorMessage);
+                message += (errorMessage + "\n");
             }
+            JOptionPane.showMessageDialog(this, message);
+            
+            kenaValidasi = true;
+            kuesionerPanel1 kuesioner = new kuesionerPanel1(namaPetugas, kenaValidasi, dataPerkebunan);
+            kuesioner.setVisible(true);
+            this.setVisible(false);
         }else{
+            kenaValidasi = false;
             // Memasukkan data ke dalam database
-            System.out.println("MEMASUKKAN DATA KE DALAM DATABSE");
+            JOptionPane.showMessageDialog(this,"MEMASUKKAN DATA KE DALAM DATABASE");
             DataInserter dataInserter = new DataInserter();
             dataInserter.insertData(dataPerkebunan);
             
             form.reset();
-            
-            //Mencoba mengambil data dari database
-            System.out.println("MENGAMBIL DATA \"Perusahaan Tebu Sejahtera\" DARI DATABSE");
-            DataRetriever dataRetriever = new DataRetriever();
-            dataPerkebunan = dataRetriever.retrieveData("Perusahaan Tebu Sejahtera");
-            form.setDataPerkebunan(dataPerkebunan);
-            
-            form.print();
+            JOptionPane.showMessageDialog(this,"DATA BERHASIL DIMASUKKAN KE DALAM DATABASE");
+            MainFrame mainFrameLogin = new MainFrame();
+            mainFrameLogin.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_simpanToggleButtonActionPerformed
 
+    private void setField(){
+        stok_pabrik_gulaTextField.setText(Double.toString(dataPerkebunan.getStokGKP().getStokPabrikGula()));
+        stok_pedagangTextField.setText(Double.toString(dataPerkebunan.getStokGKP().getStokPedagang()));
+        stok_petaniTextField.setText(Double.toString(dataPerkebunan.getStokGKP().getStokPetani()));
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         String namaPetugas = null;
+        boolean kenaValidasi = false;
         DataPerkebunan dataPerkebunan = null;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -215,11 +234,19 @@ public class kuesionerPanel4 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kuesionerPanel4(namaPetugas, dataPerkebunan).setVisible(true);
+                new kuesionerPanel4(namaPetugas, kenaValidasi, dataPerkebunan).setVisible(true);
             }
         });
     }

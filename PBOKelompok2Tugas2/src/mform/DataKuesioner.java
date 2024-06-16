@@ -16,9 +16,13 @@ import mform.form.Form;
 import mform.form.FormDataPerkebunan;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class DataKuesioner extends javax.swing.JFrame {
     private DataPerkebunan dp = PemeriksaPanel.dataPerkebunan;
     private DataUpdater du = new DataUpdater();
@@ -353,7 +357,7 @@ public class DataKuesioner extends javax.swing.JFrame {
 
             //Balik ke login
             this.setVisible(false);
-            new MainFrame_Login().setVisible(true);
+            new MainFrame().setVisible(true);
             revalidate();
             repaint();
         }

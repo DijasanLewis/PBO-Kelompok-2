@@ -5,13 +5,13 @@
 package mform.entity;
 
 /**
- *
  * @author: Kelompok 2
  * 1. Alvin Jeremy Naiborhu
  * 2. Fstih Mudzaky
  * 3. Yedija Lewi Suryadi
  * 4. Zahra Mufidah
  */
+
 public class GroupPerusahaan {
     private String nama;
     private Alamat alamat;

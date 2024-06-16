@@ -11,9 +11,13 @@ import mform.entity.DataPerkebunan;
 import mform.entity.KeteranganPerusahaan;
 
 /**
- *
- * @author fatih
+ * @author: Kelompok 2
+ * 1. Alvin Jeremy Naiborhu
+ * 2. Fstih Mudzaky
+ * 3. Yedija Lewi Suryadi
+ * 4. Zahra Mufidah
  */
+
 public class Panel2 extends javax.swing.JPanel {
     public static KeteranganPerusahaan keteranganPerusahaan = PemeriksaPanel.dataPerkebunan.getPerusahaan().getKeteranganPerusahaan();
     public static String produkUtama = PemeriksaPanel.dataPerkebunan.getProdukUtama();
