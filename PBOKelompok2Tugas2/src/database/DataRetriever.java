@@ -45,28 +45,32 @@ public class DataRetriever {
 
             if (rs.next()) {
                 // Set Kantor Pusat
-                KantorPusat kantorPusat = new KantorPusat();
-                kantorPusat.setNama(rs.getString("kp.nama"));
-                kantorPusat.getAlamat().setAlamatLengkap(rs.getString("kp.alamat"));
-                kantorPusat.getAlamat().setKodePos(rs.getString("kp.kode_pos"));
-                kantorPusat.getAlamat().setTelepon(rs.getString("kp.telepon"));
-                kantorPusat.getAlamat().setEmail(rs.getString("kp.email"));
-                kantorPusat.getAlamat().setFax(rs.getString("kp.fax"));
-                kantorPusat.getAlamat().setProv(rs.getString("kp.provinsi_kode"));
-                kantorPusat.getAlamat().setKabKota(rs.getString("kp.kab_kota_kode"));
-                dataPerkebunan.setKantorPusat(kantorPusat);
+                if (rs.getString("kp.id") != null){
+                    KantorPusat kantorPusat = new KantorPusat();
+                    kantorPusat.setNama(rs.getString("kp.nama"));
+                    kantorPusat.getAlamat().setAlamatLengkap(rs.getString("kp.alamat"));
+                    kantorPusat.getAlamat().setKodePos(rs.getString("kp.kode_pos"));
+                    kantorPusat.getAlamat().setTelepon(rs.getString("kp.telepon"));
+                    kantorPusat.getAlamat().setEmail(rs.getString("kp.email"));
+                    kantorPusat.getAlamat().setFax(rs.getString("kp.fax"));
+                    kantorPusat.getAlamat().setProv(rs.getString("kp.provinsi_kode"));
+                    kantorPusat.getAlamat().setKabKota(rs.getString("kp.kab_kota_kode"));
+                    dataPerkebunan.setKantorPusat(kantorPusat);
+                }
 
                 // Set Group Perusahaan
-                GroupPerusahaan groupPerusahaan = new GroupPerusahaan();
-                groupPerusahaan.setNama(rs.getString("gp.nama"));
-                groupPerusahaan.getAlamat().setAlamatLengkap(rs.getString("gp.alamat"));
-                groupPerusahaan.getAlamat().setKodePos(rs.getString("gp.kode_pos"));
-                groupPerusahaan.getAlamat().setTelepon(rs.getString("gp.telepon"));
-                groupPerusahaan.getAlamat().setEmail(rs.getString("gp.email"));
-                groupPerusahaan.getAlamat().setFax(rs.getString("gp.fax"));
-                groupPerusahaan.getAlamat().setProv(rs.getString("gp.provinsi_kode"));
-                groupPerusahaan.getAlamat().setKabKota(rs.getString("gp.kab_kota_kode"));
-                dataPerkebunan.setGroupPerusahaan(groupPerusahaan);
+                if (rs.getString("gp.id") != null){
+                    GroupPerusahaan groupPerusahaan = new GroupPerusahaan();
+                    groupPerusahaan.setNama(rs.getString("gp.nama"));
+                    groupPerusahaan.getAlamat().setAlamatLengkap(rs.getString("gp.alamat"));
+                    groupPerusahaan.getAlamat().setKodePos(rs.getString("gp.kode_pos"));
+                    groupPerusahaan.getAlamat().setTelepon(rs.getString("gp.telepon"));
+                    groupPerusahaan.getAlamat().setEmail(rs.getString("gp.email"));
+                    groupPerusahaan.getAlamat().setFax(rs.getString("gp.fax"));
+                    groupPerusahaan.getAlamat().setProv(rs.getString("gp.provinsi_kode"));
+                    groupPerusahaan.getAlamat().setKabKota(rs.getString("gp.kab_kota_kode"));
+                    dataPerkebunan.setGroupPerusahaan(groupPerusahaan);
+                }
 
                 // Set Perusahaan
                 Perusahaan perusahaan = new Perusahaan();

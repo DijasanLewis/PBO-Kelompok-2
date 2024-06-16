@@ -173,14 +173,16 @@ public class Panel1b extends javax.swing.JPanel {
 
     //Isi form dengan data dari database
     private void setField(){
-        namaKPTextField.setText(kp.getNama());
-        alamatTextField.setText(kp.getAlamat().getAlamatLengkap());
-        kodePosTextField.setText(kp.getAlamat().getKodePos());
-        teleponTextField.setText(kp.getAlamat().getTelepon());
-        emailTextField.setText(kp.getAlamat().getEmail());
-        faxTextField.setText(kp.getAlamat().getFax());
-        provinsiTextField.setText(kp.getAlamat().getProv());
-        kabKotaTextField.setText(kp.getAlamat().getKabKota());
+        if (kp != null){
+            namaKPTextField.setText(kp.getNama());
+            alamatTextField.setText(kp.getAlamat().getAlamatLengkap());
+            kodePosTextField.setText(kp.getAlamat().getKodePos());
+            teleponTextField.setText(kp.getAlamat().getTelepon());
+            emailTextField.setText(kp.getAlamat().getEmail());
+            faxTextField.setText(kp.getAlamat().getFax());
+            provinsiTextField.setText(kp.getAlamat().getProv());
+            kabKotaTextField.setText(kp.getAlamat().getKabKota());
+        }
     }
     
     //simpan perubahan ke variabel static kp

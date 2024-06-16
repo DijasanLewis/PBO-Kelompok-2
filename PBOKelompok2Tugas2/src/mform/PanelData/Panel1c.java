@@ -174,15 +174,16 @@ public class Panel1c extends javax.swing.JPanel {
     
     //Isi form
     private void setField(){
-        namaGPTextField.setText(gp.getNama());
-        alamatTextField.setText(gp.getAlamat().getAlamatLengkap());
-        kodePosTextField.setText(gp.getAlamat().getKodePos());
-        teleponTextField.setText(gp.getAlamat().getTelepon());
-        emailTextField.setText(gp.getAlamat().getEmail());
-        faxTextField.setText(gp.getAlamat().getFax());
-        provinsiTextField.setText(gp.getAlamat().getProv());
-        kabKotaTextField.setText(gp.getAlamat().getKabKota());
-
+        if (gp != null) {
+            namaGPTextField.setText(gp.getNama());
+            alamatTextField.setText(gp.getAlamat().getAlamatLengkap());
+            kodePosTextField.setText(gp.getAlamat().getKodePos());
+            teleponTextField.setText(gp.getAlamat().getTelepon());
+            emailTextField.setText(gp.getAlamat().getEmail());
+            faxTextField.setText(gp.getAlamat().getFax());
+            provinsiTextField.setText(gp.getAlamat().getProv());
+            kabKotaTextField.setText(gp.getAlamat().getKabKota());
+        }
     }
 
     //Simpan perubahan ke variabel static gp
