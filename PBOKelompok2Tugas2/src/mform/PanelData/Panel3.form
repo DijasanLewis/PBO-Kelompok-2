@@ -63,12 +63,9 @@
                   </Group>
                   <Component id="panel3SaveButton" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="249" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel2" min="-2" pref="402" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jLabel2" alignment="0" pref="599" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -231,7 +228,7 @@
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="LUAS TANAMAN DAN PRODUKSI"/>
+        <Property name="text" type="java.lang.String" value="LUAS TANAMAN DAN PRODUKSI KEBUN KE-1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">

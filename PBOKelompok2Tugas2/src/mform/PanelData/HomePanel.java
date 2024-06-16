@@ -33,6 +33,7 @@ public class HomePanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Selamat Datang di Menu Pemeriksa");
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Untuk melakukan pengecekan atau pengubahan data, silakan klik tombol kuesioner di atas!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

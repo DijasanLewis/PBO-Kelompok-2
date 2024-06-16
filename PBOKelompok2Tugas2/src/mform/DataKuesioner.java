@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import database.DataInserter;
+import database.DataUpdater;
 import mform.PanelData.*;
 import mform.entity.*;
 import mform.form.Form;
@@ -19,7 +21,10 @@ import mform.form.FormDataPerkebunan;
  */
 public class DataKuesioner extends javax.swing.JFrame {
     private DataPerkebunan dp = PemeriksaPanel.dataPerkebunan;
-
+    private DataUpdater du = new DataUpdater();
+    private int idPerusahaan;
+    
+    private HomePanel home = new HomePanel();
     private Panel1 panel1 = new Panel1();
     private Panel1b panel1b = new Panel1b();
     private Panel1c panel1c = new Panel1c();
@@ -27,6 +32,9 @@ public class DataKuesioner extends javax.swing.JFrame {
     private Panel3 panel3 = new Panel3();
     private Panel3duplikat[] panel3duplikat;
     private Panel4 panel4 = new Panel4();
+    
+    //index buat semua panel
+    private static int index = -1;
     
     //Index buat panel3duplikat
     public static int indexPanel = 0;
@@ -37,7 +45,8 @@ public class DataKuesioner extends javax.swing.JFrame {
     public DataKuesioner() {
         initComponents();
         panel3duplikat = initPanel();
-        jScrollPane1.setViewportView(panel1);
+        idPerusahaan = du.getIdPerusahaan(dp.getPerusahaan().getNama());
+        jScrollPane1.setViewportView(home);
     }
 
     /**
@@ -52,6 +61,8 @@ public class DataKuesioner extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jLabel1 = new javax.swing.JLabel();
         simpanGlobalButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,12 +79,27 @@ public class DataKuesioner extends javax.swing.JFrame {
         jScrollPane1.setMinimumSize(new java.awt.Dimension(520, 625));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(520, 625));
 
-        jLabel1.setText("Nama Petugas:");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Nama petugas: " + MainFrame_Login.namaPemeriksa);
 
-        simpanGlobalButton.setText("Simpan ke Database");
+        simpanGlobalButton.setText("Selesai Periksa");
         simpanGlobalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanGlobalButtonActionPerformed(evt);
+            }
+        });
+
+        nextButton.setText("NEXT");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -84,7 +110,7 @@ public class DataKuesioner extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("kuesioner 1");
+        jMenuItem1.setText("perusahaan");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -92,7 +118,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("kuesioner 1b");
+        jMenuItem2.setText("kantor pusat");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -100,7 +126,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("kuesioner 1c");
+        jMenuItem3.setText("grup perusahaan");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -108,7 +134,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
-        jMenuItem4.setText("kuesioner 2");
+        jMenuItem4.setText("kantor administratur");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -116,7 +142,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setText("kuesioner 3");
+        jMenuItem5.setText("kebun pertama");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -124,7 +150,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
-        jMenuItem6.setText("kuesioner 3-II");
+        jMenuItem6.setText("semua kebun");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -132,7 +158,7 @@ public class DataKuesioner extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
-        jMenuItem7.setText("kuesioner 4");
+        jMenuItem7.setText("stok gkp");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -148,23 +174,31 @@ public class DataKuesioner extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(simpanGlobalButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(simpanGlobalButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextButton))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(simpanGlobalButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(simpanGlobalButton)
+                    .addComponent(nextButton)
+                    .addComponent(backButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -175,30 +209,37 @@ public class DataKuesioner extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        index = 0;
         jScrollPane1.setViewportView(panel1);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        index = 1;
         jScrollPane1.setViewportView(panel1b);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        index = 2;
         jScrollPane1.setViewportView(panel1c);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        index = 3;
         jScrollPane1.setViewportView(panel2);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        index = 4;
         jScrollPane1.setViewportView(panel3);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        index = 4;
         jScrollPane1.setViewportView(panel3duplikat[0]);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        index = 5;
         jScrollPane1.setViewportView(panel4);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -209,12 +250,38 @@ public class DataKuesioner extends javax.swing.JFrame {
         dp.setPerusahaan(Panel1.perusahaan);
 
         //Masukkan data Kantor Pusat ke variabel dp
-        Panel1b.panel1bSaveButton.doClick();
-        dp.setKantorPusat(Panel1b.kp);
+        if(panel1.getHasKPComboBox().isSelected()){
+            Panel1b.panel1bSaveButton.doClick();
+            dp.setKantorPusat(Panel1b.kp);
+        }
+        else{
+            //kalo box punya kantor pusat di panel 1 gak dicentang set semua atribut ke null
+            dp.getKantorPusat().setNama(null);
+            dp.getKantorPusat().getAlamat().setAlamatLengkap(null);
+            dp.getKantorPusat().getAlamat().setEmail(null);
+            dp.getKantorPusat().getAlamat().setFax(null);
+            dp.getKantorPusat().getAlamat().setKabKota(null);
+            dp.getKantorPusat().getAlamat().setKodePos(null);
+            dp.getKantorPusat().getAlamat().setProv(null);
+            dp.getKantorPusat().getAlamat().setTelepon(null);
+        }
 
         //Masukkan data Group Perusahaan ke variabel dp
-        Panel1c.panel1cSaveButton.doClick();
-        dp.setGroupPerusahaan(Panel1c.gp);
+        if(panel1.getHasGPComboBox().isSelected()){
+            Panel1c.panel1cSaveButton.doClick();
+            dp.setGroupPerusahaan(Panel1c.gp);
+        }
+        else{
+            //Kalo box punya grup perusahaan di panel 1 gak dicentang set semua atribut ke null
+            dp.getGroupPerusahaan().setNama(null);
+            dp.getGroupPerusahaan().getAlamat().setAlamatLengkap(null);
+            dp.getGroupPerusahaan().getAlamat().setEmail(null);
+            dp.getGroupPerusahaan().getAlamat().setFax(null);
+            dp.getGroupPerusahaan().getAlamat().setKabKota(null);
+            dp.getGroupPerusahaan().getAlamat().setKodePos(null);
+            dp.getGroupPerusahaan().getAlamat().setProv(null);
+            dp.getGroupPerusahaan().getAlamat().setTelepon(null);
+        }
         
         //Masukkan data Keterangan Perusahaan, jumlah kebun, produk utama, 
         //kode kbki ke variabel dp
@@ -231,12 +298,9 @@ public class DataKuesioner extends javax.swing.JFrame {
         
         //Reset data kebun
         dp.resetKebun();
-        //Masukkan data kebun pertama
-        Panel3.panel3SaveButton.doClick();
-        dp.setKebun(Panel3.kebun);
 
         //Masukkan data kebun lain kalau ada
-        for(int i = 1; i < dp.getJumlahKebun(); i++){
+        for(int i = 0; i < dp.getJumlahKebun(); i++){
             panel3duplikat[i].panel3SaveButton.doClick();
             dp.setKebun(Panel3duplikat.kebuns[i]);
         }
@@ -246,10 +310,18 @@ public class DataKuesioner extends javax.swing.JFrame {
         dp.setStokGKP(Panel4.stokGKP);
         
         //Validasi & upload data ke database
+        boolean isUpdated = false;
         FormDataPerkebunan form = new FormDataPerkebunan(dp);
         form.validate();
         if(form.getErrorMessages().isEmpty()){
+            //Set keterangan petugas
+            dp.getKeteranganPetugas().setNamaPemeriksa(MainFrame_Login.namaPemeriksa);
+            
             //Save ke database
+            int idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());
+            int idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
+            isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
+
         }
         else{
             List<String> errorMessages = form.getErrorMessages();
@@ -259,28 +331,82 @@ public class DataKuesioner extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(this, message);
         }
+/*
+        //TODO: Kalo udah selesai tes dihapus
+        dp.getKeteranganPetugas().setNamaPemeriksa(MainFrame_Login.namaPemeriksa);
+        int idGP = du.getIdGroupPerusahaan(dp.getGroupPerusahaan().getNama());
+        int idKP = du.getIdKantorPusat(dp.getKantorPusat().getNama());
+        isUpdated = du.updateData(dp, idPerusahaan, idGP, idKP);
+*/
+        //Tampilan dialog tergantung data berhasil disimpan apa gak
+        if(isUpdated){
+            JOptionPane.showMessageDialog(this, "Data Selesai Diperiksa");
+
+            //Balik ke login
+            this.setVisible(false);
+            new MainFrame_Login().setVisible(true);
+            revalidate();
+            repaint();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Data Gagal Disimpan ke Database");
+        }
         
     }//GEN-LAST:event_simpanGlobalButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        index++;
+        if(index > 5){
+            index = 0;
+        }
+
+        switch (index) {
+            case 0 -> jScrollPane1.setViewportView(panel1);
+            case 1 -> jScrollPane1.setViewportView(panel1b);
+            case 2 -> jScrollPane1.setViewportView(panel1c);
+            case 3 -> jScrollPane1.setViewportView(panel2);
+            case 4 -> jScrollPane1.setViewportView(panel3duplikat[0]);
+            case 5 -> jScrollPane1.setViewportView(panel4);
+            default -> jScrollPane1.setViewportView(home);
+        }
+
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        index--;
+        if(index < 0){
+            index = 5;
+        }
+
+        switch (index) {
+            case 0 -> jScrollPane1.setViewportView(panel1);
+            case 1 -> jScrollPane1.setViewportView(panel1b);
+            case 2 -> jScrollPane1.setViewportView(panel1c);
+            case 3 -> jScrollPane1.setViewportView(panel2);
+            case 4 -> jScrollPane1.setViewportView(panel3duplikat[0]);
+            case 5 -> jScrollPane1.setViewportView(panel4);
+            default -> jScrollPane1.setViewportView(home);
+        }
+    }//GEN-LAST:event_backButtonActionPerformed
 
     //Bikin Panel3 sebanyak jumlah kebun
     //Ini habis 3 jam sendiri :)
     private Panel3duplikat[] initPanel(){
         Panel3duplikat[] panel3s = new Panel3duplikat[dp.getJumlahKebun()];
         //inisiasi
-        for(int i = 0; i < dp.getJumlahKebun() - 1; i++){
+        for(int i = 0; i < dp.getJumlahKebun() ; i++){
             panel3s[i] = new Panel3duplikat(jScrollPane1);
             indexPanel++;
         }
         //Masukkan array panel3s ke semua panel
         //Array ini dipakai buat pindah2 view
-        for(int i = 0; i < dp.getJumlahKebun() - 1; i++){
+        for(int i = 0; i < dp.getJumlahKebun() ; i++){
             panel3s[i].setPanel3duplikat(panel3s);
         }
 
         indexPanel = 0;
         return panel3s;
     }
-
 
     /**
      * @param args the command line arguments
@@ -318,6 +444,7 @@ public class DataKuesioner extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -329,6 +456,7 @@ public class DataKuesioner extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton simpanGlobalButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,8 @@
  */
 package mform.PanelData;
 
+import javax.swing.JOptionPane;
+
 import mform.PemeriksaPanel;
 import mform.entity.GroupPerusahaan;
 
@@ -159,7 +161,11 @@ public class Panel1c extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel1cSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel1cSaveButtonActionPerformed
-        save();
+        try {
+            save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal melakukan penyimpanan data Grup Perusahaan\n" + e.getMessage());
+        }
     }//GEN-LAST:event_panel1cSaveButtonActionPerformed
     
     //Isi form
