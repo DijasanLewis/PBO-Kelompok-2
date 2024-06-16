@@ -250,12 +250,38 @@ public class DataKuesioner extends javax.swing.JFrame {
         dp.setPerusahaan(Panel1.perusahaan);
 
         //Masukkan data Kantor Pusat ke variabel dp
-        Panel1b.panel1bSaveButton.doClick();
-        dp.setKantorPusat(Panel1b.kp);
+        if(panel1.getHasKPComboBox().isSelected()){
+            Panel1b.panel1bSaveButton.doClick();
+            dp.setKantorPusat(Panel1b.kp);
+        }
+        else{
+            //kalo box punya kantor pusat di panel 1 gak dicentang set semua atribut ke null
+            dp.getKantorPusat().setNama(null);
+            dp.getKantorPusat().getAlamat().setAlamatLengkap(null);
+            dp.getKantorPusat().getAlamat().setEmail(null);
+            dp.getKantorPusat().getAlamat().setFax(null);
+            dp.getKantorPusat().getAlamat().setKabKota(null);
+            dp.getKantorPusat().getAlamat().setKodePos(null);
+            dp.getKantorPusat().getAlamat().setProv(null);
+            dp.getKantorPusat().getAlamat().setTelepon(null);
+        }
 
         //Masukkan data Group Perusahaan ke variabel dp
-        Panel1c.panel1cSaveButton.doClick();
-        dp.setGroupPerusahaan(Panel1c.gp);
+        if(panel1.getHasGPComboBox().isSelected()){
+            Panel1c.panel1cSaveButton.doClick();
+            dp.setGroupPerusahaan(Panel1c.gp);
+        }
+        else{
+            //Kalo box punya grup perusahaan di panel 1 gak dicentang set semua atribut ke null
+            dp.getGroupPerusahaan().setNama(null);
+            dp.getGroupPerusahaan().getAlamat().setAlamatLengkap(null);
+            dp.getGroupPerusahaan().getAlamat().setEmail(null);
+            dp.getGroupPerusahaan().getAlamat().setFax(null);
+            dp.getGroupPerusahaan().getAlamat().setKabKota(null);
+            dp.getGroupPerusahaan().getAlamat().setKodePos(null);
+            dp.getGroupPerusahaan().getAlamat().setProv(null);
+            dp.getGroupPerusahaan().getAlamat().setTelepon(null);
+        }
         
         //Masukkan data Keterangan Perusahaan, jumlah kebun, produk utama, 
         //kode kbki ke variabel dp
