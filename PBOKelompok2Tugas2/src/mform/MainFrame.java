@@ -192,7 +192,10 @@ public class MainFrame extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
             }
-        } finally {
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Gagal Tersambung dengan Database", "Koneksi Database Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        finally {
             // Clear the password array
             Arrays.fill(passwordChar, '\0');
         }
