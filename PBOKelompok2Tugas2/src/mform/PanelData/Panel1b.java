@@ -4,6 +4,8 @@
  */
 package mform.PanelData;
 
+import javax.swing.JOptionPane;
+
 import mform.PemeriksaPanel;
 import mform.entity.*;
 
@@ -158,7 +160,11 @@ public class Panel1b extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel1bSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel1bSaveButtonActionPerformed
-        save();
+        try {
+            save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal melakukan penyimpanan data Kantor Pusat\n" + e.getMessage());
+        }
     }//GEN-LAST:event_panel1bSaveButtonActionPerformed
 
     //Isi form dengan data dari database

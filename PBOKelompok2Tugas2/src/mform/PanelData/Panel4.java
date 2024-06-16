@@ -4,6 +4,8 @@
  */
 package mform.PanelData;
 
+import javax.swing.JOptionPane;
+
 import mform.PemeriksaPanel;
 import mform.entity.StokGKP;
 
@@ -103,7 +105,11 @@ public class Panel4 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel4SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panel4SaveButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            save();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal melakukan penyimpanan data Stok GKP\n" + e.getMessage());
+        }
     }//GEN-LAST:event_panel4SaveButtonActionPerformed
 
     private void setField(){
