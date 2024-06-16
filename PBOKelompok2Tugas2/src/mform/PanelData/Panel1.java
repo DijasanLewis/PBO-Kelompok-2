@@ -5,6 +5,7 @@
 package mform.PanelData;
 
 
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 import mform.*;
@@ -22,6 +23,14 @@ public class Panel1 extends javax.swing.JPanel {
     public Panel1() {
         initComponents();
         setField();
+    }
+
+    public JCheckBox getHasGPComboBox() {
+        return hasGPComboBox;
+    }
+
+    public JCheckBox getHasKPComboBox() {
+        return hasKPComboBox;
     }
 
     /**
@@ -393,8 +402,7 @@ public class Panel1 extends javax.swing.JPanel {
         kbliTextField.setText(PemeriksaPanel.dataPerkebunan.getPerusahaan().getKBLI());
         hasKPComboBox.setSelected(!(PemeriksaPanel.dataPerkebunan.getKantorPusat().getNama() == null));
         hasGPComboBox.setSelected(!(PemeriksaPanel.dataPerkebunan.getGroupPerusahaan().getNama() == null));
-        
-        
+            
     }
     
     //Simpan perubahan ke variabel static perusahaan
