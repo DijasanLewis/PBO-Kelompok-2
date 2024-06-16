@@ -236,12 +236,6 @@ public class FormDataPerkebunan extends Form{
             super.addErrorMessages("Stok Petani tidak boleh negatif.");
         }
 
-        // Validasi Keterangan Petugas
-        KeteranganPetugas keteranganPetugas = dataPerkebunan.getKeteranganPetugas();
-        if (keteranganPetugas.getTanggalMencacah().isAfter(keteranganPetugas.getTanggalMemeriksa())) {
-            super.addErrorMessages("Tanggal Mencacah tidak boleh setelah Tanggal Memeriksa.");
-        }
-
         return super.getErrorMessages().isEmpty();
     }
 
